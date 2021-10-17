@@ -6,6 +6,8 @@ import java.util.List;
 import java.util.Objects;
 
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
@@ -17,17 +19,22 @@ public class Seguradora implements Serializable {
 	private static final long serialVersionUID = 1L;
 	
 	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer id;
 	private String nome;
 	private String sinistro;
 	
 	@ManyToMany
-	@JoinTable(name="SEGUROS_VEICULOS",
+	@JoinTable(name="VEICULOS_SEGUROS",
 				joinColumns = @JoinColumn (name= "seguradora_sinistro ", referencedColumnName = "sinistro"),
 				inverseJoinColumns = @JoinColumn (name= "veiculo_placa", referencedColumnName = "placa"))
+	
     private List<Veiculo> veiculos = new ArrayList<>();
 	
-	@ManyToMany(mappedBy="seguradoras")
+	@ManyToMany
+	@JoinTable(name="SEGUROS_OFICINA",
+				joinColumns = @JoinColumn (name= "seguradora_sinistro ", referencedColumnName = "sinistro"),
+				inverseJoinColumns = @JoinColumn (name= "oficina_codigoservico", referencedColumnName = "codigoServico"))
 	private List<Oficina> oficinas = new ArrayList<>();
 	
 	public Seguradora() {
@@ -81,6 +88,12 @@ public class Seguradora implements Serializable {
 
 	public void setOficinas(List<Oficina> oficinas) {
 		this.oficinas = oficinas;
+	}
+	
+	
+
+	public void setId(Integer id) {
+		this.id = id;
 	}
 
 	@Override

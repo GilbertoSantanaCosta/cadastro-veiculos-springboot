@@ -8,6 +8,8 @@ import java.util.Objects;
 import java.util.Optional;
 
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
@@ -25,15 +27,16 @@ public class Oficina implements Serializable {
 	private int id;
 	private String nome;
 	private Tipo tipo;
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer codigoServico;
 	
-	@ManyToMany(mappedBy="oficinas")
+	@ManyToMany
+	@JoinTable(name="OFICINA_VEICULO",
+				joinColumns = @JoinColumn (name= "oficina_codigoServico", referencedColumnName = "codigoServico"),
+				inverseJoinColumns = @JoinColumn (name= "veiculo_placa", referencedColumnName = "placa"))
 	private List<Veiculo> veiculos = new ArrayList<>();
 	
-	@ManyToMany
-	@JoinTable(name="OFICINA_SEGUROS",
-				joinColumns = @JoinColumn (name= "oficina_codigoServico", referencedColumnName = "codigoServico"),
-				inverseJoinColumns = @JoinColumn (name= "seguradora_sinistro ", referencedColumnName = "sinistro"))
+	@ManyToMany(mappedBy="oficinas")
 	private List<Seguradora> seguradoras = new ArrayList<>();
 
 	public Oficina() {
@@ -125,6 +128,8 @@ public class Oficina implements Serializable {
 	public void setCodigoServico(Integer codigoServico) {
 		this.codigoServico = codigoServico;
 	}
+	
+	
 
 	@Override
 	public int hashCode() {

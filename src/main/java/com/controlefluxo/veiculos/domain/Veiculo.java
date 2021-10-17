@@ -24,14 +24,13 @@ public class Veiculo implements Serializable {
 	private String marca;
 	
 	@ManyToMany(mappedBy="veiculos")
+	private List<Oficina> oficinas = new ArrayList<>();  
+	
+	@ManyToMany(mappedBy="veiculos")
 	private List<Seguradora> seguradoras = new ArrayList<>();
 
-	@ManyToMany
-	@JoinTable(name="VEICULO_OFICINA",
-				joinColumns= @JoinColumn (name= "veiculo_placa"),
-				inverseJoinColumns= @JoinColumn(name= "oficina_id")
-			)
-	private List<Oficina> oficinas = new ArrayList<>();
+	
+	
 	
 	public Veiculo() {
 
@@ -93,6 +92,14 @@ public class Veiculo implements Serializable {
 
 	public void setOficinas(List<Oficina> oficinas) {
 		this.oficinas = oficinas;
+	}
+
+	public List<Seguradora> getSeguradoras() {
+		return seguradoras;
+	}
+
+	public void setSeguradoras(List<Seguradora> seguradoras) {
+		this.seguradoras = seguradoras;
 	}
 
 	@Override
