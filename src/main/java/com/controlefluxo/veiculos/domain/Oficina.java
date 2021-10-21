@@ -1,12 +1,9 @@
 package com.controlefluxo.veiculos.domain;
 
 import java.io.Serializable;
-import java.lang.Enum.EnumDesc;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
-import java.util.Optional;
-
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -16,6 +13,7 @@ import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
 
 import com.controlefluxo.veiculos.domain.enums.Tipo;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 @Entity
 public class Oficina implements Serializable {
@@ -24,39 +22,39 @@ public class Oficina implements Serializable {
 	private static final long serialVersionUID = 1L;
 	
 	@Id
-	private int id;
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	private Integer id;
 	private String nome;
 	private Tipo tipo;
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private Integer codigoServico;
 	
+	
+	@JsonIgnore
 	@ManyToMany
 	@JoinTable(name="OFICINA_VEICULO",
-				joinColumns = @JoinColumn (name= "oficina_codigoServico", referencedColumnName = "codigoServico"),
-				inverseJoinColumns = @JoinColumn (name= "veiculo_placa", referencedColumnName = "placa"))
+				joinColumns = @JoinColumn (name= "oficina_id"),
+				inverseJoinColumns = @JoinColumn (name= "veiculo_id"))
 	private List<Veiculo> veiculos = new ArrayList<>();
 	
-	@ManyToMany(mappedBy="oficinas")
-	private List<Seguradora> seguradoras = new ArrayList<>();
 
 	public Oficina() {
 		
 	}
 	
-	public Oficina(int id, String nome, Tipo tipo, Integer codigoServico ) {
+	public Oficina(Integer id, String nome, Tipo tipo) {
 		super();
 		this.id = id;
 		this.nome = nome;
 		this.tipo = tipo;
-		this.codigoServico = codigoServico;
+		
+		
 		
 	}
 
-	public int getId() {
+	public Integer getId() {
 		return id;
 	}
 
-	public void setId(int id) {
+	public void setId(Integer id) {
 		this.id = id;
 	}
 
@@ -82,18 +80,6 @@ public class Oficina implements Serializable {
 		return tipo.toString();
 	}
 
-	public final int compareTo(Tipo o) {
-		return tipo.compareTo(o);
-	}
-
-	public final Class<Tipo> getDeclaringClass() {
-		return tipo.getDeclaringClass();
-	}
-
-	public final Optional<EnumDesc<Tipo>> describeConstable() {
-		return tipo.describeConstable();
-	}
-
 	
 	public List<Veiculo> getVeiculos() {
 		return veiculos;
@@ -103,16 +89,6 @@ public class Oficina implements Serializable {
 		this.veiculos = veiculos;
 	}
 
-	public List<Seguradora> getSeguradoras() {
-		return seguradoras;
-	}
-
-	public void setSeguradoras(List<Seguradora> seguradoras) {
-		this.seguradoras = seguradoras;
-	}
-	
-	
-
 	public Tipo getTipo() {
 		return tipo;
 	}
@@ -120,15 +96,6 @@ public class Oficina implements Serializable {
 	public void setTipo(Tipo tipo) {
 		this.tipo = tipo;
 	}
-
-	public Integer getCodigoServico() {
-		return codigoServico;
-	}
-
-	public void setCodigoServico(Integer codigoServico) {
-		this.codigoServico = codigoServico;
-	}
-	
 	
 
 	@Override
