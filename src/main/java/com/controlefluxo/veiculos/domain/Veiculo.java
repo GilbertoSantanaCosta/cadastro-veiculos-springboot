@@ -13,6 +13,7 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
+import javax.persistence.OneToMany;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
@@ -39,6 +40,10 @@ public class Veiculo implements Serializable {
 				joinColumns = @JoinColumn (name= "veiculo_id"),
 				inverseJoinColumns = @JoinColumn (name= "seguro_id"))
 	private List<Seguro> seguros = new ArrayList<>();
+	
+	@JsonIgnore
+	@OneToMany(mappedBy = "veiculos")
+	private List<TipoServico> tipoServicos = new ArrayList<>();
 	
 	public Veiculo() {
 
@@ -109,6 +114,14 @@ public class Veiculo implements Serializable {
 
 	public void setSeguros(List<Seguro> seguros) {
 		this.seguros = seguros;
+	}
+
+	public List<TipoServico> getTipoServicos() {
+		return tipoServicos;
+	}
+
+	public void setTipoServicos(List<TipoServico> tipoServicos) {
+		this.tipoServicos = tipoServicos;
 	}
 
 	@Override
