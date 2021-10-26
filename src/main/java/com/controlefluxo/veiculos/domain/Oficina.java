@@ -11,6 +11,7 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
+import javax.persistence.OneToMany;
 
 import com.controlefluxo.veiculos.domain.enums.Tipo;
 import com.fasterxml.jackson.annotation.JsonIgnore;
@@ -35,7 +36,7 @@ public class Oficina implements Serializable {
 				inverseJoinColumns = @JoinColumn (name= "veiculo_id"))
 	private List<Veiculo> veiculos = new ArrayList<>();
 	
-
+	
 	public Oficina() {
 		
 	}
@@ -72,7 +73,6 @@ public class Oficina implements Serializable {
 	}
 
 	
-
 	@Override
 	public int hashCode() {
 		return Objects.hash(id);

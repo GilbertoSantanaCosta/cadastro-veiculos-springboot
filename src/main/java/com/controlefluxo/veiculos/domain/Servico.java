@@ -1,7 +1,9 @@
 package com.controlefluxo.veiculos.domain;
 
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 import java.util.Objects;
 
 
@@ -10,11 +12,12 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
-
+import javax.persistence.JoinTable;
 import javax.persistence.ManyToOne;
 
-
+import com.controlefluxo.veiculos.domain.enums.Status;
 import com.controlefluxo.veiculos.domain.enums.Tipo;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 @Entity
 public class Servico implements Serializable {
@@ -32,21 +35,27 @@ public class Servico implements Serializable {
 	private Date previsaoDeEntrada;
 	private Date entrada;
 	private Date entrega;
+	private Date entregaRetorno;
+	private Status status;
 	private String obs;
 	
-	
+	@ManyToOne
+	@JoinColumn(name = "cliente_id")
+	private Cliente clientes;
 	
 	@ManyToOne
-	@JoinColumn(name="tipoServico_id")
+	@JoinColumn(name="veiculo_id")
 	private Veiculo veiculos;
+	
+	
 	
 	public Servico() {
 	
 	}
-	
+
 
 	public Servico(Integer id, String codigoParticular, String sinistro, Tipo tipo, Date vistoria,
-			Date previsaoDeEntrada, Date entrada, Date entrega, String obs) {
+			Date previsaoDeEntrada, Date entrada, Date entrega, Date entregaRetorno, Status status, String obs) {
 		super();
 		this.id = id;
 		this.codigoParticular = codigoParticular;
@@ -56,10 +65,10 @@ public class Servico implements Serializable {
 		this.previsaoDeEntrada = previsaoDeEntrada;
 		this.entrada = entrada;
 		this.entrega = entrega;
+		this.entregaRetorno = entregaRetorno;
+		this.status = status;
 		this.obs = obs;
 	}
-
-
 
 
 	public Integer getId() {
@@ -160,6 +169,35 @@ public class Servico implements Serializable {
 		this.obs = obs;
 	}
 
+
+	public Date getEntregaRetorno() {
+		return entregaRetorno;
+	}
+
+
+	public void setEntregaRetorno(Date entregaRetorno) {
+		this.entregaRetorno = entregaRetorno;
+	}
+
+
+	public Status getStatus() {
+		return status;
+	}
+
+
+	public void setStatus(Status status) {
+		this.status = status;
+	}
+
+
+	public Cliente getClientes() {
+		return clientes;
+	}
+
+
+	public void setClientes(Cliente clientes) {
+		this.clientes = clientes;
+	}
 
 	@Override
 	public int hashCode() {

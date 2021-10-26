@@ -41,6 +41,7 @@ public class Veiculo implements Serializable {
 				inverseJoinColumns = @JoinColumn (name= "seguro_id"))
 	private List<Seguro> seguros = new ArrayList<>();
 	
+	
 	@JsonIgnore
 	@OneToMany(mappedBy = "veiculos")
 	private List<Servico> tipoServicos = new ArrayList<>();
