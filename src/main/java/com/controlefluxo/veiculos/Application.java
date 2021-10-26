@@ -10,12 +10,13 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.web.bind.annotation.RestController;
 import com.controlefluxo.veiculos.domain.Oficina;
 import com.controlefluxo.veiculos.domain.Seguro;
-import com.controlefluxo.veiculos.domain.TipoServico;
+import com.controlefluxo.veiculos.domain.Servico;
+
 import com.controlefluxo.veiculos.domain.Veiculo;
 import com.controlefluxo.veiculos.domain.enums.Tipo;
 import com.controlefluxo.veiculos.repositories.OficinaRepository;
 import com.controlefluxo.veiculos.repositories.SeguroRepository;
-import com.controlefluxo.veiculos.repositories.TipoServicoRepository;
+import com.controlefluxo.veiculos.repositories.ServicoRepository;
 import com.controlefluxo.veiculos.repositories.VeiculoRepository;
 @RestController
 @SpringBootApplication
@@ -31,7 +32,7 @@ public class Application implements CommandLineRunner{
 	private SeguroRepository seguroRepository;
 	
 	@Autowired
-	private TipoServicoRepository tipoServicoRepository;
+	private ServicoRepository ServicoRepository;
 	
 
 	public static void main(String[] args) {
@@ -46,8 +47,8 @@ public class Application implements CommandLineRunner{
 		Veiculo v1 = new Veiculo(null,"abc1234", "1988", "corsa", "gm");
 		Veiculo v2 = new Veiculo(null,"abc4321", "2000", "palio", "fiat");
 		Oficina of1 = new Oficina(null, "flamacar", Tipo.SEGURO);
-		TipoServico t1 = new TipoServico(null, "1111", null, Tipo.PARTICULAR);
-		TipoServico t2 = new TipoServico(null, "2222", "33333", Tipo.SEGURO);
+		Servico t1 = new Servico(null, "1111", null, Tipo.PARTICULAR,null,null,null,null,null);
+		Servico t2 = new Servico(null, "2222", "33333", Tipo.SEGURO,null,null,null,null,null);
 		
 		Seguro sg1 = new Seguro(null, "porto", "123132113");
 		
@@ -71,7 +72,7 @@ public class Application implements CommandLineRunner{
 		veiculoRepository.saveAll(Arrays.asList(v1,v2));
 		oficinaRepository.saveAll(Arrays.asList(of1));
 		
-		tipoServicoRepository.saveAll(Arrays.asList(t1,t2));
+	    ServicoRepository.saveAll(Arrays.asList(t1,t2));
 		
 		
 		

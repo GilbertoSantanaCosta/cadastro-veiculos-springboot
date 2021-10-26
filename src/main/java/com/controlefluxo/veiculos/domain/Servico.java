@@ -1,8 +1,7 @@
 package com.controlefluxo.veiculos.domain;
 
 import java.io.Serializable;
-import java.util.ArrayList;
-import java.util.List;
+import java.util.Date;
 import java.util.Objects;
 
 
@@ -18,7 +17,7 @@ import javax.persistence.ManyToOne;
 import com.controlefluxo.veiculos.domain.enums.Tipo;
 
 @Entity
-public class TipoServico implements Serializable {
+public class Servico implements Serializable {
 
 
 	private static final long serialVersionUID = 1L;
@@ -29,22 +28,38 @@ public class TipoServico implements Serializable {
 	private String codigoParticular;
 	private String sinistro;
 	private Tipo tipo;
+	private Date vistoria;
+	private Date previsaoDeEntrada;
+	private Date entrada;
+	private Date entrega;
+	private String obs;
+	
+	
 	
 	@ManyToOne
 	@JoinColumn(name="tipoServico_id")
 	private Veiculo veiculos;
 	
-	public TipoServico() {
+	public Servico() {
 	
 	}
 	
-	public TipoServico(Integer id, String codigoParticular, String sinistro, Tipo tipo) {
+
+	public Servico(Integer id, String codigoParticular, String sinistro, Tipo tipo, Date vistoria,
+			Date previsaoDeEntrada, Date entrada, Date entrega, String obs) {
 		super();
 		this.id = id;
 		this.codigoParticular = codigoParticular;
 		this.sinistro = sinistro;
 		this.tipo = tipo;
+		this.vistoria = vistoria;
+		this.previsaoDeEntrada = previsaoDeEntrada;
+		this.entrada = entrada;
+		this.entrega = entrega;
+		this.obs = obs;
 	}
+
+
 
 
 	public Integer getId() {
@@ -95,6 +110,56 @@ public class TipoServico implements Serializable {
 		this.veiculos = veiculos;
 	}
 
+	
+	public Date getVistoria() {
+		return vistoria;
+	}
+
+
+	public void setVistoria(Date vistoria) {
+		this.vistoria = vistoria;
+	}
+
+
+	public Date getPrevisaoDeEntrada() {
+		return previsaoDeEntrada;
+	}
+
+
+	public void setPrevisaoDeEntrada(Date previsaoDeEntrada) {
+		this.previsaoDeEntrada = previsaoDeEntrada;
+	}
+
+
+	public Date getEntrada() {
+		return entrada;
+	}
+
+
+	public void setEntrada(Date entrada) {
+		this.entrada = entrada;
+	}
+
+
+	public Date getEntrega() {
+		return entrega;
+	}
+
+
+	public void setEntrega(Date entrega) {
+		this.entrega = entrega;
+	}
+	
+	
+	public String getObs() {
+		return obs;
+	}
+
+
+	public void setObs(String obs) {
+		this.obs = obs;
+	}
+
 
 	@Override
 	public int hashCode() {
@@ -110,7 +175,7 @@ public class TipoServico implements Serializable {
 			return false;
 		if (getClass() != obj.getClass())
 			return false;
-		TipoServico other = (TipoServico) obj;
+		Servico other = (Servico) obj;
 		return Objects.equals(id, other.id);
 	}
 	

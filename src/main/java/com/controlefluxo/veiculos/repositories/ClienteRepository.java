@@ -1,11 +1,11 @@
 package com.controlefluxo.veiculos.repositories;
+
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
-import com.controlefluxo.veiculos.domain.TipoServico;
 
+import com.controlefluxo.veiculos.domain.Cliente;
 
 @Repository
-public interface TipoServicoRepository extends JpaRepository<TipoServico, Integer> {
+public interface ClienteRepository extends JpaRepository<Cliente, Integer> {
 
-	
 }

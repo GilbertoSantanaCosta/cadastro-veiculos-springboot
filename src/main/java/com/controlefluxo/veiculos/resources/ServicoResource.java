@@ -7,20 +7,22 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
-import com.controlefluxo.veiculos.domain.TipoServico;
-import com.controlefluxo.veiculos.service.TipoServicoService;
+
+import com.controlefluxo.veiculos.domain.Servico;
+
+import com.controlefluxo.veiculos.service.ServicoService;
 
 @RestController
-@RequestMapping(value = "/tiposervico")
-public class TipoServicoResource {
+@RequestMapping(value = "/servico")
+public class ServicoResource {
 
 	@Autowired
-	public TipoServicoService tipoServicoService;
+	public ServicoService tipoServicoService;
 	
 	@RequestMapping(method = RequestMethod.GET)
-	public ResponseEntity<List<TipoServico>> findAll(){
+	public ResponseEntity<List<Servico>> findAll(){
 		
-		List<TipoServico> tipoServicos = tipoServicoService.findAll();
+		List<Servico> tipoServicos = tipoServicoService.findAll();
 		
 		return ResponseEntity.ok().body(tipoServicos);
 	}

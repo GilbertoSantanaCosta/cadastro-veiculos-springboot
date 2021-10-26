@@ -43,7 +43,7 @@ public class Veiculo implements Serializable {
 	
 	@JsonIgnore
 	@OneToMany(mappedBy = "veiculos")
-	private List<TipoServico> tipoServicos = new ArrayList<>();
+	private List<Servico> tipoServicos = new ArrayList<>();
 	
 	public Veiculo() {
 
@@ -116,11 +116,11 @@ public class Veiculo implements Serializable {
 		this.seguros = seguros;
 	}
 
-	public List<TipoServico> getTipoServicos() {
+	public List<Servico> getTipoServicos() {
 		return tipoServicos;
 	}
 
-	public void setTipoServicos(List<TipoServico> tipoServicos) {
+	public void setTipoServicos(List<Servico> tipoServicos) {
 		this.tipoServicos = tipoServicos;
 	}
 

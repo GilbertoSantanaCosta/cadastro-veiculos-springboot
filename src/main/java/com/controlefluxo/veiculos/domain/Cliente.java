@@ -1,22 +1,15 @@
 package com.controlefluxo.veiculos.domain;
 
 import java.io.Serializable;
-import java.util.ArrayList;
-import java.util.List;
 import java.util.Objects;
+
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.JoinTable;
-import javax.persistence.ManyToMany;
-
-import com.controlefluxo.veiculos.domain.enums.Tipo;
-import com.fasterxml.jackson.annotation.JsonIgnore;
 
 @Entity
-public class Oficina implements Serializable {
+public class Cliente implements Serializable {
 
 
 	private static final long serialVersionUID = 1L;
@@ -25,26 +18,21 @@ public class Oficina implements Serializable {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer id;
 	private String nome;
+	private String sobrenome;
+	private String cpf;
+	private String rg;
 	
+	public Cliente() {
 	
-	
-	@JsonIgnore
-	@ManyToMany
-	@JoinTable(name="OFICINA_VEICULO",
-				joinColumns = @JoinColumn (name= "oficina_id"),
-				inverseJoinColumns = @JoinColumn (name= "veiculo_id"))
-	private List<Veiculo> veiculos = new ArrayList<>();
-	
-
-	public Oficina() {
-		
 	}
 	
-	public Oficina(Integer id, String nome, Tipo tipo) {
+	public Cliente(Integer id, String nome, String sobrenome, String cpf, String rg) {
 		super();
 		this.id = id;
 		this.nome = nome;
-		
+		this.sobrenome = sobrenome;
+		this.cpf = cpf;
+		this.rg = rg;
 	}
 
 	public Integer getId() {
@@ -62,20 +50,34 @@ public class Oficina implements Serializable {
 	public void setNome(String nome) {
 		this.nome = nome;
 	}
-	
-	public List<Veiculo> getVeiculos() {
-		return veiculos;
+
+	public String getSobrenome() {
+		return sobrenome;
 	}
 
-	public void setVeiculos(List<Veiculo> veiculos) {
-		this.veiculos = veiculos;
+	public void setSobrenome(String sobrenome) {
+		this.sobrenome = sobrenome;
 	}
 
-	
+	public String getCpf() {
+		return cpf;
+	}
+
+	public void setCpf(String cpf) {
+		this.cpf = cpf;
+	}
+
+	public String getRg() {
+		return rg;
+	}
+
+	public void setRg(String rg) {
+		this.rg = rg;
+	}
 
 	@Override
 	public int hashCode() {
-		return Objects.hash(id);
+		return Objects.hash(cpf, id, nome, rg, sobrenome);
 	}
 
 	@Override
@@ -86,8 +88,9 @@ public class Oficina implements Serializable {
 			return false;
 		if (getClass() != obj.getClass())
 			return false;
-		Oficina other = (Oficina) obj;
-		return id == other.id;
+		Cliente other = (Cliente) obj;
+		return Objects.equals(cpf, other.cpf) && Objects.equals(id, other.id) && Objects.equals(nome, other.nome)
+				&& Objects.equals(rg, other.rg) && Objects.equals(sobrenome, other.sobrenome);
 	}
 	
 	
