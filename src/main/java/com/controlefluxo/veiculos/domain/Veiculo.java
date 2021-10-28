@@ -13,6 +13,7 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
+import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
@@ -41,10 +42,10 @@ public class Veiculo implements Serializable {
 				inverseJoinColumns = @JoinColumn (name= "seguro_id"))
 	private List<Seguro> seguros = new ArrayList<>();
 	
-	
-	@JsonIgnore
-	@OneToMany(mappedBy = "veiculos")
-	private List<Servico> tipoServicos = new ArrayList<>();
+	@JsonIgnore	
+	@ManyToOne
+	@JoinColumn(name = "cliente_id")
+	private Cliente clientes;
 	
 	public Veiculo() {
 
@@ -116,13 +117,14 @@ public class Veiculo implements Serializable {
 	public void setSeguros(List<Seguro> seguros) {
 		this.seguros = seguros;
 	}
-
-	public List<Servico> getTipoServicos() {
-		return tipoServicos;
+	
+	
+	public Cliente getClientes() {
+		return clientes;
 	}
 
-	public void setTipoServicos(List<Servico> tipoServicos) {
-		this.tipoServicos = tipoServicos;
+	public void setClientes(Cliente clientes) {
+		this.clientes = clientes;
 	}
 
 	@Override

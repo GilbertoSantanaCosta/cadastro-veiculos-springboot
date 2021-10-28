@@ -15,6 +15,7 @@ import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
 import javax.persistence.ManyToOne;
 
+import com.controlefluxo.veiculos.domain.enums.Fornecimento;
 import com.controlefluxo.veiculos.domain.enums.Status;
 import com.controlefluxo.veiculos.domain.enums.Tipo;
 import com.fasterxml.jackson.annotation.JsonIgnore;
@@ -38,15 +39,13 @@ public class Servico implements Serializable {
 	private Date entregaRetorno;
 	private Status status;
 	private String obs;
+	private Fornecimento forn;
+	
 	
 	@ManyToOne
 	@JoinColumn(name = "cliente_id")
 	private Cliente clientes;
-	
-	@ManyToOne
-	@JoinColumn(name="veiculo_id")
-	private Veiculo veiculos;
-	
+
 	
 	
 	public Servico() {
@@ -55,7 +54,7 @@ public class Servico implements Serializable {
 
 
 	public Servico(Integer id, String codigoParticular, String sinistro, Tipo tipo, Date vistoria,
-			Date previsaoDeEntrada, Date entrada, Date entrega, Date entregaRetorno, Status status, String obs) {
+			Date previsaoDeEntrada, Date entrada, Date entrega, Date entregaRetorno, Status status, String obs, Fornecimento forn) {
 		super();
 		this.id = id;
 		this.codigoParticular = codigoParticular;
@@ -68,6 +67,7 @@ public class Servico implements Serializable {
 		this.entregaRetorno = entregaRetorno;
 		this.status = status;
 		this.obs = obs;
+		this.forn = forn;
 	}
 
 
@@ -110,14 +110,8 @@ public class Servico implements Serializable {
 		this.tipo = tipo;
 	}
 
-	public Veiculo getVeiculos() {
-		return veiculos;
-	}
-
-
-	public void setVeiculos(Veiculo veiculos) {
-		this.veiculos = veiculos;
-	}
+	
+	
 
 	
 	public Date getVistoria() {
@@ -198,6 +192,18 @@ public class Servico implements Serializable {
 	public void setClientes(Cliente clientes) {
 		this.clientes = clientes;
 	}
+	
+	
+
+	public Fornecimento getForn() {
+		return forn;
+	}
+
+
+	public void setForn(Fornecimento forn) {
+		this.forn = forn;
+	}
+
 
 	@Override
 	public int hashCode() {

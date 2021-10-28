@@ -31,6 +31,10 @@ public class Cliente implements Serializable {
 	@OneToMany(mappedBy = "clientes")
 	private List<Servico> servicos = new ArrayList<>();
 	
+   
+	@OneToMany(mappedBy = "clientes")
+	private List<Veiculo> veiculos = new ArrayList<>();
+	
 	public Cliente() {
 	
 	}
@@ -92,6 +96,15 @@ public class Cliente implements Serializable {
 
 	public void setServicos(List<Servico> servicos) {
 		this.servicos = servicos;
+	}
+	
+
+	public List<Veiculo> getVeiculos() {
+		return veiculos;
+	}
+
+	public void setVeiculos(List<Veiculo> veiculos) {
+		this.veiculos = veiculos;
 	}
 
 	@Override
