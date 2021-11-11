@@ -8,8 +8,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.controlefluxo.veiculos.domain.Servico;
 
+import com.controlefluxo.veiculos.domain.dto.ServicoDTO;
 import com.controlefluxo.veiculos.service.ServicoService;
 
 @RestController
@@ -20,9 +20,9 @@ public class ServicoResource {
 	public ServicoService tipoServicoService;
 	
 	@RequestMapping(method = RequestMethod.GET)
-	public ResponseEntity<List<Servico>> findAll(){
+	public ResponseEntity<List<ServicoDTO>> findAll(){
 		
-		List<Servico> tipoServicos = tipoServicoService.findAll();
+		List<ServicoDTO> tipoServicos = tipoServicoService.findAll();
 		
 		return ResponseEntity.ok().body(tipoServicos);
 	}

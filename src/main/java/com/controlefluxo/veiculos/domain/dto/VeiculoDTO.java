@@ -1,30 +1,20 @@
-package com.controlefluxo.veiculos.domain;
+package com.controlefluxo.veiculos.domain.dto;
 
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
+import com.controlefluxo.veiculos.domain.Cliente;
+import com.controlefluxo.veiculos.domain.Oficina;
+import com.controlefluxo.veiculos.domain.Seguro;
+import com.controlefluxo.veiculos.domain.Veiculo;
 
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.JoinTable;
-import javax.persistence.ManyToMany;
-import javax.persistence.ManyToOne;
 
-
-import com.fasterxml.jackson.annotation.JsonIgnore;
-
-@Entity
-public class Veiculo implements Serializable {
+public class VeiculoDTO implements Serializable {
 
 	private static final long serialVersionUID = 1L;
 	
-	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer id;
 	private String placa;
 	private String ano;
@@ -32,32 +22,32 @@ public class Veiculo implements Serializable {
 	private String marca;
 	
 
-	@ManyToMany(mappedBy="veiculos")
+	
 	private List<Oficina> oficinas = new ArrayList<>();
-	
-	
-	@ManyToMany
-	@JoinTable(name="VEICULO_SEGURO",
-				joinColumns = @JoinColumn (name= "veiculo_id"),
-				inverseJoinColumns = @JoinColumn (name= "seguro_id"))
 	private List<Seguro> seguros = new ArrayList<>();
-	
-	
-	@ManyToOne
-	@JoinColumn(name = "cliente_id")
 	private Cliente clientes;
 	
-	public Veiculo() {
+	public VeiculoDTO() {
 
 	}
 	
-	public Veiculo(Integer id,String placa, String ano, String modelo, String marca) {
+	public VeiculoDTO(Integer id,String placa, String ano, String modelo, String marca) {
 		super();
 		this.id = id;
 		this.placa = placa;
 		this.ano = ano;
 		this.modelo = modelo;
 		this.marca = marca;
+	}
+	
+	public VeiculoDTO(Veiculo veiculo) {
+		super();
+		this.id = veiculo.getId();
+		this.placa = veiculo.getPlaca();
+		this.ano = veiculo.getAno();
+		this.modelo = veiculo.getModelo();
+		this.marca = veiculo.getMarca();
+		
 	}
 
 	
@@ -140,7 +130,7 @@ public class Veiculo implements Serializable {
 			return false;
 		if (getClass() != obj.getClass())
 			return false;
-		Veiculo other = (Veiculo) obj;
+		VeiculoDTO other = (VeiculoDTO) obj;
 		return Objects.equals(placa, other.placa);
 	}
 	

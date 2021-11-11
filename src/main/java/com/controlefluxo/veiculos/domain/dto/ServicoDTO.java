@@ -1,31 +1,17 @@
-package com.controlefluxo.veiculos.domain;
+package com.controlefluxo.veiculos.domain.dto;
 
 import java.io.Serializable;
-
 import java.util.Date;
-
-import java.util.Objects;
-
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-
-import javax.persistence.ManyToOne;
-
+import com.controlefluxo.veiculos.domain.Cliente;
+import com.controlefluxo.veiculos.domain.Servico;
 import com.controlefluxo.veiculos.domain.enums.Fornecimento;
 import com.controlefluxo.veiculos.domain.enums.Status;
 import com.controlefluxo.veiculos.domain.enums.Tipo;
-import com.fasterxml.jackson.annotation.JsonIgnore;
 
-@Entity
-public class Servico implements Serializable {
+public class ServicoDTO implements Serializable {
 
 	private static final long serialVersionUID = 1L;
 
-	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer id;
 	private String codigoParticular;
 	private String sinistro;
@@ -39,18 +25,15 @@ public class Servico implements Serializable {
 	private String obs;
 	private Fornecimento forn;
 
-	
-	@ManyToOne
-	@JoinColumn(name = "cliente_id")
-	private Cliente clientes;
+	private ClienteDTO cliente;
 
-	public Servico() {
+	public ServicoDTO() {
 
 	}
 
-	public Servico(Integer id, String codigoParticular, String sinistro, Tipo tipo, Date vistoria,
+	public ServicoDTO(Integer id, String codigoParticular, String sinistro, Tipo tipo, Date vistoria,
 			Date previsaoDeEntrada, Date entrada, Date entrega, Date entregaRetorno, Status status, String obs,
-			Fornecimento forn) {
+			Fornecimento forn, ClienteDTO cliente) {
 		super();
 		this.id = id;
 		this.codigoParticular = codigoParticular;
@@ -64,6 +47,24 @@ public class Servico implements Serializable {
 		this.status = status;
 		this.obs = obs;
 		this.forn = forn;
+		this.cliente = cliente;
+	}
+	
+	public ServicoDTO(Servico servico) {
+		super();
+		this.id = servico.getId();
+		this.codigoParticular = servico.getCodigoParticular();
+		this.sinistro = servico.getSinistro();
+		this.tipo = servico.getTipo();
+		this.vistoria = servico.getVistoria();
+		this.previsaoDeEntrada = servico.getPrevisaoDeEntrada();
+		this.entrada = servico.getEntrada();
+		this.entrega = servico.getEntrega();
+		this.entregaRetorno = servico.getEntregaRetorno();
+		this.status = servico.getStatus();
+		this.obs = servico.getObs();
+		this.forn = servico.getForn();
+		this.cliente = new ClienteDTO(servico.getClientes());
 	}
 
 	public Integer getId() {
@@ -154,12 +155,12 @@ public class Servico implements Serializable {
 		this.status = status;
 	}
 
-	public Cliente getClientes() {
-		return clientes;
+	public ClienteDTO getClientes() {
+		return cliente;
 	}
 
-	public void setClientes(Cliente clientes) {
-		this.clientes = clientes;
+	public void setClientesDTO(ClienteDTO cliente) {
+		this.cliente = cliente;
 	}
 
 	public Fornecimento getForn() {
@@ -168,23 +169,6 @@ public class Servico implements Serializable {
 
 	public void setForn(Fornecimento forn) {
 		this.forn = forn;
-	}
-
-	@Override
-	public int hashCode() {
-		return Objects.hash(id);
-	}
-
-	@Override
-	public boolean equals(Object obj) {
-		if (this == obj)
-			return true;
-		if (obj == null)
-			return false;
-		if (getClass() != obj.getClass())
-			return false;
-		Servico other = (Servico) obj;
-		return Objects.equals(id, other.id);
 	}
 
 }

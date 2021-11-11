@@ -11,7 +11,6 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
-import javax.persistence.OneToMany;
 
 import com.controlefluxo.veiculos.domain.enums.Tipo;
 import com.fasterxml.jackson.annotation.JsonIgnore;
@@ -19,33 +18,27 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 @Entity
 public class Oficina implements Serializable {
 
-
 	private static final long serialVersionUID = 1L;
-	
+
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer id;
 	private String nome;
-	
-	
-	
+
 	@JsonIgnore
 	@ManyToMany
-	@JoinTable(name="OFICINA_VEICULO",
-				joinColumns = @JoinColumn (name= "oficina_id"),
-				inverseJoinColumns = @JoinColumn (name= "veiculo_id"))
+	@JoinTable(name = "OFICINA_VEICULO", joinColumns = @JoinColumn(name = "oficina_id"), inverseJoinColumns = @JoinColumn(name = "veiculo_id"))
 	private List<Veiculo> veiculos = new ArrayList<>();
-	
-	
+
 	public Oficina() {
-		
+
 	}
-	
+
 	public Oficina(Integer id, String nome, Tipo tipo) {
 		super();
 		this.id = id;
 		this.nome = nome;
-		
+
 	}
 
 	public Integer getId() {
@@ -63,7 +56,7 @@ public class Oficina implements Serializable {
 	public void setNome(String nome) {
 		this.nome = nome;
 	}
-	
+
 	public List<Veiculo> getVeiculos() {
 		return veiculos;
 	}
@@ -72,7 +65,6 @@ public class Oficina implements Serializable {
 		this.veiculos = veiculos;
 	}
 
-	
 	@Override
 	public int hashCode() {
 		return Objects.hash(id);
@@ -89,7 +81,5 @@ public class Oficina implements Serializable {
 		Oficina other = (Oficina) obj;
 		return id == other.id;
 	}
-	
-	
-	
+
 }

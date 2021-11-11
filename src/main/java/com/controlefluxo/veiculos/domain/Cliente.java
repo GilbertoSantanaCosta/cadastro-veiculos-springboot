@@ -27,11 +27,11 @@ public class Cliente implements Serializable {
 	private String cpf;
 	private String rg;
 	
-	@JsonIgnore
+	
 	@OneToMany(mappedBy = "clientes")
 	private List<Servico> servicos = new ArrayList<>();
 	
-   
+	@JsonIgnore
 	@OneToMany(mappedBy = "clientes")
 	private List<Veiculo> veiculos = new ArrayList<>();
 	
