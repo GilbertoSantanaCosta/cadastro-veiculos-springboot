@@ -33,7 +33,7 @@ public class ServicoDTO implements Serializable {
 
 	public ServicoDTO(Integer id, String codigoParticular, String sinistro, Tipo tipo, Date vistoria,
 			Date previsaoDeEntrada, Date entrada, Date entrega, Date entregaRetorno, Status status, String obs,
-			Fornecimento forn, ClienteDTO cliente) {
+			Fornecimento forn) {
 		super();
 		this.id = id;
 		this.codigoParticular = codigoParticular;
@@ -64,7 +64,7 @@ public class ServicoDTO implements Serializable {
 		this.status = servico.getStatus();
 		this.obs = servico.getObs();
 		this.forn = servico.getForn();
-		this.cliente = new ClienteDTO(servico.getClientes());
+		
 	}
 
 	public Integer getId() {

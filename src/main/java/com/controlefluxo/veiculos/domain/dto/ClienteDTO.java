@@ -3,6 +3,7 @@ package com.controlefluxo.veiculos.domain.dto;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
 
 import com.controlefluxo.veiculos.domain.Cliente;
 
@@ -19,6 +20,7 @@ public class ClienteDTO implements Serializable {
 	private String rg;
 
 	private List<Veiculo> veiculos = new ArrayList<>();
+	private List<VeiculoDTO> veiculosDTO = new ArrayList<>();
 
 	public ClienteDTO() {
 
@@ -40,6 +42,7 @@ public class ClienteDTO implements Serializable {
 		this.sobrenome = cliente.getSobrenome();
 		this.cpf = cliente.getCpf();
 		this.rg = cliente.getRg();
+		this.veiculos = getVeiculosDTO(cliente);
 	}
 
 	public Integer getId() {
@@ -88,6 +91,11 @@ public class ClienteDTO implements Serializable {
 
 	public void setVeiculos(List<Veiculo> veiculos) {
 		this.veiculos = veiculos;
+	}
+	
+	public List<Veiculo> getVeiculosDTO(Cliente cliente) {
+		
+		return veiculos = cliente.getVeiculos();
 	}
 
 }

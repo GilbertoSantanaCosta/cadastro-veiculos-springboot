@@ -6,6 +6,7 @@ import java.util.Date;
 
 import java.util.Objects;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -13,6 +14,7 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToOne;
 
 import com.controlefluxo.veiculos.domain.enums.Fornecimento;
 import com.controlefluxo.veiculos.domain.enums.Status;
@@ -40,9 +42,10 @@ public class Servico implements Serializable {
 	private Fornecimento forn;
 
 	
+
 	@ManyToOne
-	@JoinColumn(name = "cliente_id")
-	private Cliente clientes;
+	@JoinColumn(name = "veiculo_id")
+	private Veiculo veiculos;
 
 	public Servico() {
 
@@ -50,7 +53,7 @@ public class Servico implements Serializable {
 
 	public Servico(Integer id, String codigoParticular, String sinistro, Tipo tipo, Date vistoria,
 			Date previsaoDeEntrada, Date entrada, Date entrega, Date entregaRetorno, Status status, String obs,
-			Fornecimento forn) {
+			Fornecimento forn, Veiculo veiculos) {
 		super();
 		this.id = id;
 		this.codigoParticular = codigoParticular;
@@ -64,6 +67,8 @@ public class Servico implements Serializable {
 		this.status = status;
 		this.obs = obs;
 		this.forn = forn;
+		this.veiculos = veiculos;
+		
 	}
 
 	public Integer getId() {
@@ -154,12 +159,12 @@ public class Servico implements Serializable {
 		this.status = status;
 	}
 
-	public Cliente getClientes() {
-		return clientes;
+	public Veiculo getVeiculos() {
+		return veiculos;
 	}
 
-	public void setClientes(Cliente clientes) {
-		this.clientes = clientes;
+	public void setVeiculos(Veiculo veiculos) {
+		this.veiculos = veiculos;
 	}
 
 	public Fornecimento getForn() {

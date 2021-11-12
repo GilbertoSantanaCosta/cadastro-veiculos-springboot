@@ -28,9 +28,6 @@ public class Cliente implements Serializable {
 	private String rg;
 	
 	
-	@OneToMany(mappedBy = "clientes")
-	private List<Servico> servicos = new ArrayList<>();
-	
 	@JsonIgnore
 	@OneToMany(mappedBy = "clientes")
 	private List<Veiculo> veiculos = new ArrayList<>();
@@ -86,18 +83,7 @@ public class Cliente implements Serializable {
 
 	public void setRg(String rg) {
 		this.rg = rg;
-	}
-	
-	
-
-	public List<Servico> getServicos() {
-		return servicos;
-	}
-
-	public void setServicos(List<Servico> servicos) {
-		this.servicos = servicos;
-	}
-	
+	}	
 
 	public List<Veiculo> getVeiculos() {
 		return veiculos;

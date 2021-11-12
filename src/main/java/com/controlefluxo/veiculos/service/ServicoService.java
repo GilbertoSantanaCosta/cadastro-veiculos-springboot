@@ -11,17 +11,21 @@ import com.controlefluxo.veiculos.domain.Servico;
 import com.controlefluxo.veiculos.domain.dto.ServicoDTO;
 import com.controlefluxo.veiculos.repositories.ServicoRepository;
 
-
-
 @Service
 public class ServicoService {
 
 	@Autowired
 	private ServicoRepository tipoSevicoRepository;
-	
-	public List<ServicoDTO> findAll() {
-		
+
+	public List<Servico> findAll() {
+
 		List<Servico> tipoServico = tipoSevicoRepository.findAll();
-		return tipoServico.stream().map(x -> new ServicoDTO(x)).collect(Collectors.toList());
+		return tipoServico;
 	}
+
+	//public List<ServicoDTO> findAll() {
+
+		//List<Servico> tipoServico = tipoSevicoRepository.findAll();
+		//return tipoServico.stream().map(x -> new ServicoDTO(x)).collect(Collectors.toList());
+	//}
 }

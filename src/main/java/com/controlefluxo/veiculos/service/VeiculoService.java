@@ -18,4 +18,10 @@ public class VeiculoService {
 		
 		return veiculoRepository.findAll();
 	}
+	
+	public Veiculo findByPlaca(String placa) {
+	
+		return veiculoRepository.findByPlaca(placa);
+			
+	}
 }

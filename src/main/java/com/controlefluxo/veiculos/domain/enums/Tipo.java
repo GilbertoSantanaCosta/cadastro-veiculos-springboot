@@ -3,5 +3,6 @@ package com.controlefluxo.veiculos.domain.enums;
 public enum Tipo {
 
 	PARTICULAR,
-	SEGURO;
+	SEGURO,
+	SEG_PART;
 }

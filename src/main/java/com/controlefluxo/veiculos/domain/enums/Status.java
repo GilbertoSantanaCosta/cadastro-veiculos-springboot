@@ -8,6 +8,8 @@ public enum Status {
 	PINTURA,
 	MONTAGEM,
 	MECANICA,
-	RETORNO
+	RETORNO,
+	ENTREGUE,
+	LIBERADO
 	
 }

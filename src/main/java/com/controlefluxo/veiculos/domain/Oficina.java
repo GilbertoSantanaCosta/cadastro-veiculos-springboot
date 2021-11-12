@@ -34,7 +34,7 @@ public class Oficina implements Serializable {
 
 	}
 
-	public Oficina(Integer id, String nome, Tipo tipo) {
+	public Oficina(Integer id, String nome) {
 		super();
 		this.id = id;
 		this.nome = nome;
