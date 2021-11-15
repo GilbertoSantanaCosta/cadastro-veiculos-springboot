@@ -3,18 +3,15 @@ package com.controlefluxo.veiculos;
 
 import java.text.SimpleDateFormat;
 import java.util.Arrays;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.web.bind.annotation.RestController;
-
 import com.controlefluxo.veiculos.domain.Cliente;
 import com.controlefluxo.veiculos.domain.Oficina;
 import com.controlefluxo.veiculos.domain.Seguro;
 import com.controlefluxo.veiculos.domain.Servico;
-
 import com.controlefluxo.veiculos.domain.Veiculo;
 import com.controlefluxo.veiculos.domain.enums.Fornecimento;
 import com.controlefluxo.veiculos.domain.enums.Status;
@@ -24,7 +21,7 @@ import com.controlefluxo.veiculos.repositories.OficinaRepository;
 import com.controlefluxo.veiculos.repositories.SeguroRepository;
 import com.controlefluxo.veiculos.repositories.ServicoRepository;
 import com.controlefluxo.veiculos.repositories.VeiculoRepository;
-import com.controlefluxo.veiculos.service.VeiculoService;
+
 @RestController
 @SpringBootApplication
 public class Application implements CommandLineRunner{
@@ -44,10 +41,6 @@ public class Application implements CommandLineRunner{
 	@Autowired
 	private ClienteRepository clienteRepository;
 	
-	@Autowired
-	private VeiculoService service;
-	
-
 	public static void main(String[] args) {
 		SpringApplication.run(Application.class, args);	
 	}
@@ -57,7 +50,7 @@ public class Application implements CommandLineRunner{
 	public void run(String... args) throws Exception{
 
 	
-		Veiculo test = new Veiculo();
+	
 		SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
 		
 		Veiculo v1 = new Veiculo(null,"abc1234", "1988", "corsa", "gm");

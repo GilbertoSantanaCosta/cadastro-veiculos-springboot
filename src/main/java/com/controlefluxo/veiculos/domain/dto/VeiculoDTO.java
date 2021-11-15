@@ -6,6 +6,7 @@ import java.util.List;
 import com.controlefluxo.veiculos.domain.Cliente;
 import com.controlefluxo.veiculos.domain.Oficina;
 import com.controlefluxo.veiculos.domain.Seguro;
+import com.controlefluxo.veiculos.domain.Servico;
 import com.controlefluxo.veiculos.domain.Veiculo;
 
 public class VeiculoDTO implements Serializable {
@@ -19,7 +20,9 @@ public class VeiculoDTO implements Serializable {
 	private String marca;
 	private List<Oficina> oficinas = new ArrayList<>();
 	private List<Seguro> seguros = new ArrayList<>();
+	private List<Servico> servico = new ArrayList<>();
 	private Cliente clientes;
+
 
 	public VeiculoDTO() {
 
@@ -41,6 +44,7 @@ public class VeiculoDTO implements Serializable {
 		this.ano = veiculo.getAno();
 		this.modelo = veiculo.getModelo();
 		this.marca = veiculo.getMarca();
+		
 
 	}
 	
@@ -119,5 +123,7 @@ public class VeiculoDTO implements Serializable {
 	public void setClientes(Cliente clientes) {
 		this.clientes = clientes;
 	}
+	
+	
 
 }

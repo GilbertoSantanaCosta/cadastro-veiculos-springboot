@@ -12,7 +12,6 @@ import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
 
-import com.controlefluxo.veiculos.domain.enums.Tipo;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
 @Entity
