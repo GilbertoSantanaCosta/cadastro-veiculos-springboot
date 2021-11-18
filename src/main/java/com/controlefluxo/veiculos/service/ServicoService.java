@@ -16,21 +16,22 @@ public class ServicoService {
 	@Autowired
 	private ServicoRepository tipoSevicoRepository;
 
-	//public List<Servico> findAll() {
+	public List<Servico> findAll() {
 
-		//List<Servico> tipoServico = tipoSevicoRepository.findAll();
-		//return tipoServico;
-	//}
-	
-	public List<Servico> findByCarInTheWorkShop(){
-		
-		List<Servico> tipoServico = tipoSevicoRepository.entradaGroupedByServico();
+		List<Servico> tipoServico = tipoSevicoRepository.findAll();
 		return tipoServico;
 	}
 
-	public List<ServicoDTO> findAll() {
+	public List<Servico> findByCarInTheWorkShop() {
 
-		List<Servico> tipoServico = tipoSevicoRepository.findAll();
-		return tipoServico.stream().map(x -> new ServicoDTO(x)).collect(Collectors.toList());
+		List<Servico> tipoServico = tipoSevicoRepository.entradaGroupedByServico();
+		return tipoServico;
 	}
+	/*
+	 * public List<ServicoDTO> findAll() {
+	 * 
+	 * List<Servico> tipoServico = tipoSevicoRepository.findAll(); return
+	 * tipoServico.stream().map(x -> new
+	 * ServicoDTO(x)).collect(Collectors.toList()); }
+	 */
 }

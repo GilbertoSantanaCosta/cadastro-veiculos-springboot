@@ -9,7 +9,9 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
+
 import com.controlefluxo.veiculos.domain.dto.VeiculoDTO;
+import com.controlefluxo.veiculos.domain.dto.VeiculoFindDTO;
 import com.controlefluxo.veiculos.service.VeiculoService;
 
 @RestController
@@ -31,6 +33,13 @@ public class VeiculoResource {
 	public ResponseEntity<VeiculoDTO> findByPlaca(@RequestParam(value = "placa") String placa){
 		System.out.println(placa);
 		VeiculoDTO veiculo = veiculoService.findByPlaca(placa);
+		return ResponseEntity.ok().body(veiculo);
+	}
+	
+	@GetMapping(value = "/find_placa")
+	public ResponseEntity<VeiculoFindDTO> findByPlacaSummary(@RequestParam(value = "placa") String placa){
+		System.out.println(placa);
+		VeiculoFindDTO veiculo = veiculoService.findByPlacaSummary(placa);
 		return ResponseEntity.ok().body(veiculo);
 	}
 }

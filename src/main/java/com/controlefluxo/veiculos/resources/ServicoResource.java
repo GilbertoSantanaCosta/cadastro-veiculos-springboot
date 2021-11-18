@@ -19,7 +19,7 @@ public class ServicoResource {
 	@Autowired
 	public ServicoService tipoServicoService;
 	
-	/*
+	
 	@RequestMapping(method = RequestMethod.GET)
 	public ResponseEntity<List<Servico>> findAll(){
 		
@@ -27,7 +27,7 @@ public class ServicoResource {
 		
 		return ResponseEntity.ok().body(tipoServicos);
 	}
-	*/
+	
 	
 	@RequestMapping(value = "/in_the_workshop", method = RequestMethod.GET)
 	public ResponseEntity<List<Servico>> findByCarInTheWorkShop(){
@@ -37,7 +37,7 @@ public class ServicoResource {
 		return ResponseEntity.ok().body(tipoServicos);
 	}
 	
-	
+	/*
 	@RequestMapping(method = RequestMethod.GET)
 	public ResponseEntity<List<ServicoDTO>> findAll(){
 		
@@ -45,4 +45,5 @@ public class ServicoResource {
 		
 		return ResponseEntity.ok().body(tipoServicos);
 	}
+	*/
 }

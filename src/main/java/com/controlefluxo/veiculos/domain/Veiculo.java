@@ -33,17 +33,18 @@ public class Veiculo implements Serializable {
 	private String marca;
 	
 
+	@JsonIgnore
 	@ManyToMany(mappedBy="veiculos")
 	private List<Oficina> oficinas = new ArrayList<>();
 	
-	
+	@JsonIgnore
 	@ManyToMany
 	@JoinTable(name="VEICULO_SEGURO",
 				joinColumns = @JoinColumn (name= "veiculo_id"),
 				inverseJoinColumns = @JoinColumn (name= "seguro_id"))
 	private List<Seguro> seguros = new ArrayList<>();
 	
-	
+	@JsonIgnore
 	@ManyToOne
 	@JoinColumn(name = "cliente_id")
 	private Cliente clientes;
