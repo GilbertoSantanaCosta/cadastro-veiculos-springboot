@@ -4,6 +4,10 @@ public enum Fornecimento {
 
 	OFICINA,
 	SEGURO,
-	OFIC_SEG;
+	OFIC_SEG,
+	PECAS_OFI_OK,
+	PEÇAS_SEG_OK,
+	PCS_OK
+	
 	
 }

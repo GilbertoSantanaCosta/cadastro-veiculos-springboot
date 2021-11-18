@@ -2,8 +2,8 @@ package com.controlefluxo.veiculos.domain.dto;
 
 import java.io.Serializable;
 import java.util.Date;
-import com.controlefluxo.veiculos.domain.Cliente;
 import com.controlefluxo.veiculos.domain.Servico;
+import com.controlefluxo.veiculos.domain.Veiculo;
 import com.controlefluxo.veiculos.domain.enums.Fornecimento;
 import com.controlefluxo.veiculos.domain.enums.Status;
 import com.controlefluxo.veiculos.domain.enums.Tipo;
@@ -24,8 +24,9 @@ public class ServicoDTO implements Serializable {
 	private Status status;
 	private String obs;
 	private Fornecimento forn;
+	private Veiculo veiculo;
+	
 
-	private ClienteDTO cliente;
 
 	public ServicoDTO() {
 
@@ -33,7 +34,7 @@ public class ServicoDTO implements Serializable {
 
 	public ServicoDTO(Integer id, String codigoParticular, String sinistro, Tipo tipo, Date vistoria,
 			Date previsaoDeEntrada, Date entrada, Date entrega, Date entregaRetorno, Status status, String obs,
-			Fornecimento forn) {
+			Fornecimento forn, Veiculo veiculo) {
 		super();
 		this.id = id;
 		this.codigoParticular = codigoParticular;
@@ -47,7 +48,8 @@ public class ServicoDTO implements Serializable {
 		this.status = status;
 		this.obs = obs;
 		this.forn = forn;
-		this.cliente = cliente;
+		this.veiculo = veiculo;
+		
 	}
 	
 	public ServicoDTO(Servico servico) {
@@ -64,6 +66,7 @@ public class ServicoDTO implements Serializable {
 		this.status = servico.getStatus();
 		this.obs = servico.getObs();
 		this.forn = servico.getForn();
+		this.veiculo = servico.getVeiculos();
 		
 	}
 
@@ -155,13 +158,6 @@ public class ServicoDTO implements Serializable {
 		this.status = status;
 	}
 
-	public ClienteDTO getClientes() {
-		return cliente;
-	}
-
-	public void setClientesDTO(ClienteDTO cliente) {
-		this.cliente = cliente;
-	}
 
 	public Fornecimento getForn() {
 		return forn;
@@ -170,5 +166,15 @@ public class ServicoDTO implements Serializable {
 	public void setForn(Fornecimento forn) {
 		this.forn = forn;
 	}
+
+	public Veiculo getVeiculo() {
+		return veiculo;
+	}
+
+	public void setVeiculo(Veiculo veiculo) {
+		this.veiculo = veiculo;
+	}
+	
+	
 
 }

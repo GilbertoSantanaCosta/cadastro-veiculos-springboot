@@ -15,6 +15,7 @@ import javax.persistence.ManyToOne;
 import com.controlefluxo.veiculos.domain.enums.Fornecimento;
 import com.controlefluxo.veiculos.domain.enums.Status;
 import com.controlefluxo.veiculos.domain.enums.Tipo;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 
 @Entity
@@ -39,6 +40,7 @@ public class Servico implements Serializable {
 
 	
 
+	@JsonIgnore
 	@ManyToOne
 	@JoinColumn(name = "veiculo_id")
 	private Veiculo veiculos;

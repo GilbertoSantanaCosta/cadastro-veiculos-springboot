@@ -44,6 +44,10 @@ public class VeiculoDTO implements Serializable {
 		this.ano = veiculo.getAno();
 		this.modelo = veiculo.getModelo();
 		this.marca = veiculo.getMarca();
+		this.oficinas = veiculo.getOficinas();
+		this.seguros = veiculo.getSeguros();
+		this.servico = veiculo.getServico();
+		this.clientes = veiculo.getClientes();
 		
 
 	}
@@ -123,6 +127,16 @@ public class VeiculoDTO implements Serializable {
 	public void setClientes(Cliente clientes) {
 		this.clientes = clientes;
 	}
+
+	public List<Servico> getServico() {
+		return servico;
+	}
+
+	public void setServico(List<Servico> servico) {
+		this.servico = servico;
+	}
+	
+	
 	
 	
 

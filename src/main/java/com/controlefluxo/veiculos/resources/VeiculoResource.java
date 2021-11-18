@@ -9,8 +9,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
-
-import com.controlefluxo.veiculos.domain.Veiculo;
+import com.controlefluxo.veiculos.domain.dto.VeiculoDTO;
 import com.controlefluxo.veiculos.service.VeiculoService;
 
 @RestController
@@ -21,17 +20,17 @@ public class VeiculoResource {
 	public VeiculoService veiculoService;
 	
 	@RequestMapping(method = RequestMethod.GET)
-	public ResponseEntity<List<Veiculo>> findAll(){
+	public ResponseEntity<List<VeiculoDTO>> findAll(){
 		
-		List<Veiculo> veiculo = veiculoService.findAll();
+		List<VeiculoDTO> veiculo = veiculoService.findAll();
 		
 		return ResponseEntity.ok().body(veiculo);
 	}
 	
 	@GetMapping(value = "/placa")
-	public ResponseEntity<Veiculo> findByPlaca(@RequestParam(value = "placa") String placa){
+	public ResponseEntity<VeiculoDTO> findByPlaca(@RequestParam(value = "placa") String placa){
 		System.out.println(placa);
-		Veiculo veiculo = veiculoService.findByPlaca(placa);
+		VeiculoDTO veiculo = veiculoService.findByPlaca(placa);
 		return ResponseEntity.ok().body(veiculo);
 	}
 }
