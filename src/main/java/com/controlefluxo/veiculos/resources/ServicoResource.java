@@ -7,9 +7,8 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
-
 import com.controlefluxo.veiculos.domain.Servico;
-import com.controlefluxo.veiculos.domain.dto.ServicoDTO;
+import com.controlefluxo.veiculos.domain.dto.ServicoFindDTO;
 import com.controlefluxo.veiculos.service.ServicoService;
 
 @RestController
@@ -21,9 +20,9 @@ public class ServicoResource {
 	
 	
 	@RequestMapping(method = RequestMethod.GET)
-	public ResponseEntity<List<Servico>> findAll(){
+	public ResponseEntity<List<ServicoFindDTO>> findAll(){
 		
-		List<Servico> tipoServicos = tipoServicoService.findAll();
+		List<ServicoFindDTO> tipoServicos = tipoServicoService.findAll();
 		
 		return ResponseEntity.ok().body(tipoServicos);
 	}
@@ -37,13 +36,7 @@ public class ServicoResource {
 		return ResponseEntity.ok().body(tipoServicos);
 	}
 	
-	/*
-	@RequestMapping(method = RequestMethod.GET)
-	public ResponseEntity<List<ServicoDTO>> findAll(){
-		
-		List<ServicoDTO> tipoServicos = tipoServicoService.findAll();
-		
-		return ResponseEntity.ok().body(tipoServicos);
-	}
-	*/
+	
+	
+	
 }

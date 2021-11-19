@@ -4,37 +4,31 @@ import java.io.Serializable;
 import java.util.ArrayList;
 
 import java.util.List;
+import java.util.stream.Collectors;
 
-import com.controlefluxo.veiculos.domain.Servico;
 import com.controlefluxo.veiculos.domain.Veiculo;
 
-
-public class VeiculoFindDTO implements Serializable{
+public class VeiculoFindDTO implements Serializable {
 
 	private static final long serialVersionUID = 1L;
-	
-	
+
 	private String veiculo;
-	private String placa; 
-	private List<Servico> servico = new ArrayList<>();
-	
-	
+	private String placa;
+	private List<ServicoFindDTO> servico = new ArrayList<>();
+
 	public VeiculoFindDTO() {
-		
+
 	}
 
-	
-	
 	public VeiculoFindDTO(Veiculo obj) {
 		super();
-		
+
 		this.veiculo = obj.getMarca();
 		this.placa = obj.getPlaca();
-		this.servico = obj.getServico();
-	
+		this.servico = obj.getServico().stream().map(x -> new ServicoFindDTO(x)).collect(Collectors.toList());
+
 	}
-	
-	
+
 	public String getVeiculo() {
 		return veiculo;
 	}
@@ -51,19 +45,12 @@ public class VeiculoFindDTO implements Serializable{
 		this.placa = placa;
 	}
 
-	public List<Servico> getServico() {
+	public List<ServicoFindDTO> getServico() {
 		return servico;
 	}
 
-
-	public void setServico(List<Servico> servico) {
+	public void setServico(List<ServicoFindDTO> servico) {
 		this.servico = servico;
 	}
 
-
-	
-	
-	
-	
-	
 }

@@ -29,9 +29,9 @@ public class Servico implements Serializable {
 	private String codigoParticular;
 	private String sinistro;
 	private Tipo tipo;
-	private Date vistoria;
 	private Date previsaoDeEntrada;
 	private Date entrada;
+	private Date previsaoDeEntrega;
 	private Date entrega;
 	private Date entregaRetorno;
 	private Status status;
@@ -49,17 +49,17 @@ public class Servico implements Serializable {
 
 	}
 
-	public Servico(Integer id, String codigoParticular, String sinistro, Tipo tipo, Date vistoria,
-			Date previsaoDeEntrada, Date entrada, Date entrega, Date entregaRetorno, Status status, String obs,
+	public Servico(Integer id, String codigoParticular, String sinistro, Tipo tipo,
+			Date previsaoDeEntrada, Date entrada, Date previsaoDeEntrega, Date entrega, Date entregaRetorno, Status status, String obs,
 			Fornecimento forn, Veiculo veiculos) {
 		super();
 		this.id = id;
 		this.codigoParticular = codigoParticular;
 		this.sinistro = sinistro;
 		this.tipo = tipo;
-		this.vistoria = vistoria;
 		this.previsaoDeEntrada = previsaoDeEntrada;
 		this.entrada = entrada;
+		this.previsaoDeEntrega = previsaoDeEntrega;
 		this.entrega = entrega;
 		this.entregaRetorno = entregaRetorno;
 		this.status = status;
@@ -101,13 +101,6 @@ public class Servico implements Serializable {
 		this.tipo = tipo;
 	}
 
-	public Date getVistoria() {
-		return vistoria;
-	}
-
-	public void setVistoria(Date vistoria) {
-		this.vistoria = vistoria;
-	}
 
 	public Date getPrevisaoDeEntrada() {
 		return previsaoDeEntrada;
@@ -171,6 +164,15 @@ public class Servico implements Serializable {
 
 	public void setForn(Fornecimento forn) {
 		this.forn = forn;
+	}
+
+	
+	public Date getPrevisaoDeEntrega() {
+		return previsaoDeEntrega;
+	}
+
+	public void setPrevisaoDeEntrega(Date previsaoDeEntrega) {
+		this.previsaoDeEntrega = previsaoDeEntrega;
 	}
 
 	@Override

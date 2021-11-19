@@ -16,7 +16,6 @@ public class ServicoDTO implements Serializable {
 	private String codigoParticular;
 	private String sinistro;
 	private Tipo tipo;
-	private Date vistoria;
 	private Date previsaoDeEntrada;
 	private Date entrada;
 	private Date entrega;
@@ -40,7 +39,6 @@ public class ServicoDTO implements Serializable {
 		this.codigoParticular = codigoParticular;
 		this.sinistro = sinistro;
 		this.tipo = tipo;
-		this.vistoria = vistoria;
 		this.previsaoDeEntrada = previsaoDeEntrada;
 		this.entrada = entrada;
 		this.entrega = entrega;
@@ -58,7 +56,6 @@ public class ServicoDTO implements Serializable {
 		this.codigoParticular = servico.getCodigoParticular();
 		this.sinistro = servico.getSinistro();
 		this.tipo = servico.getTipo();
-		this.vistoria = servico.getVistoria();
 		this.previsaoDeEntrada = servico.getPrevisaoDeEntrada();
 		this.entrada = servico.getEntrada();
 		this.entrega = servico.getEntrega();
@@ -102,13 +99,6 @@ public class ServicoDTO implements Serializable {
 		this.tipo = tipo;
 	}
 
-	public Date getVistoria() {
-		return vistoria;
-	}
-
-	public void setVistoria(Date vistoria) {
-		this.vistoria = vistoria;
-	}
 
 	public Date getPrevisaoDeEntrada() {
 		return previsaoDeEntrada;
