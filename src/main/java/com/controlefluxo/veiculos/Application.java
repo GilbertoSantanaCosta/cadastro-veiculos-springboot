@@ -74,8 +74,8 @@ public class Application implements CommandLineRunner{
 		Servico t6 = new Servico(null, "3621458", "584741", Tipo.SEG_PART,sdf.parse("09/08/2021"),sdf.parse("10/09/2021"),sdf.parse("13/09/2021"),null,null,Status.FUNILARIA,null,Fornecimento.SEGURO,v6);
 		Servico t7 = new Servico(null, "3652485", null, Tipo.PARTICULAR,sdf.parse("16/09/2021"),sdf.parse("18/09/2021"),sdf.parse("27/09/2021"),null,null,Status.MONTAGEM,null,Fornecimento.OFICINA,v7);
 		Servico t8 = new Servico(null, "3621458", "968471", Tipo.SEGURO,sdf.parse("21/10/2021"),sdf.parse("25/10/2021"),sdf.parse("26/10/2021"),null,null,Status.DESMONTAGEM,null,Fornecimento.OFIC_SEG,v8);
-		Servico t9 = new Servico(null, "3625148", null, Tipo.PARTICULAR,sdf.parse("18/10/2021"),sdf.parse("19/10/2021"),null,null,null,Status.LIBERADO,null,null,v9);
-		Servico t10 = new Servico(null,"6528499", "362481", Tipo.SEGURO,sdf.parse("19/10/2021"),sdf.parse("23/10/2021"),null,null,null,Status.LIBERADO,null,null,v10);
+		Servico t9 = new Servico(null, "3625148", null, Tipo.PARTICULAR,sdf.parse("18/10/2021"),null,null,null,null,Status.LIBERADO,null,null,v9);
+		Servico t10 = new Servico(null,"6528499", "362481", Tipo.SEGURO,sdf.parse("19/10/2021"),null,null,null,null,Status.LIBERADO,null,null,v10);
 		Servico t11 = new Servico(null, "3254825", null, Tipo.SEGURO,sdf.parse("10/09/2021"),sdf.parse("11/09/2021"),sdf.parse("13/10/2021"),sdf.parse("13/10/2021"),null,Status.ENTREGUE,null,Fornecimento.OFICINA,v1);
 		
 		

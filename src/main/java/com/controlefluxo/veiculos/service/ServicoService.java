@@ -25,7 +25,7 @@ public class ServicoService {
 
 	public List<ServicoInTheWorkShopDTO> findByCarInTheWorkShop() {
 
-		List<Servico> tipoServico = tipoSevicoRepository.entradaGroupedByServico();
+		List<Servico> tipoServico = tipoSevicoRepository.findByCarInTheWorkShop();
 		return tipoServico.stream().map(x -> new ServicoInTheWorkShopDTO(x)).collect(Collectors.toList());
 	}
 	
