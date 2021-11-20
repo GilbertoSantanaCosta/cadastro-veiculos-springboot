@@ -53,16 +53,16 @@ public class Application implements CommandLineRunner{
 	
 		SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
 		
-		Veiculo v1 = new Veiculo(null,"abc1234", "1988", "corsa", "gm");
-		Veiculo v2 = new Veiculo(null,"sed2547", "2000", "palio", "fiat");
-		Veiculo v3 = new Veiculo(null,"teg7845", "1999", "gol", "vw");
-		Veiculo v4 = new Veiculo(null,"oeb7894", "2010", "uno", "fiat");
-		Veiculo v5 = new Veiculo(null,"lro4812", "2011", "prisma", "gm");
-		Veiculo v6 = new Veiculo(null,"rqf8364", "2001", "ka", "ford");
-		Veiculo v7 = new Veiculo(null,"beg094", "2004", "207", "peugeot");
-		Veiculo v8 = new Veiculo(null,"uen4231", "2012", "versa", "nissan");
-		Veiculo v9 = new Veiculo(null,"oen8634", "2014", "strada", "fiat");
-		Veiculo v10 = new Veiculo(null,"peo9473", "2020", "bmw", "bmw");
+		Veiculo v1 = new Veiculo(null,"abc1234", "1988", "corsa", "gm" , "wind" );
+		Veiculo v2 = new Veiculo(null,"sed2547", "2000", "palio", "fiat", "fire");
+		Veiculo v3 = new Veiculo(null,"teg7845", "1999", "gol", "vw", "1000");
+		Veiculo v4 = new Veiculo(null,"oeb7894", "2010", "uno", "fiat", "fire");
+		Veiculo v5 = new Veiculo(null,"lro4812", "2011", "prisma", "gm" , "joy");
+		Veiculo v6 = new Veiculo(null,"rqf8364", "2001", "ka", "ford", "zotac");
+		Veiculo v7 = new Veiculo(null,"beg094", "2004", "207", "peugeot", "prime");
+		Veiculo v8 = new Veiculo(null,"uen4231", "2012", "versa", "nissan", "1.8");
+		Veiculo v9 = new Veiculo(null,"oen8634", "2014", "strada", "fiat", "1.6");
+		Veiculo v10 = new Veiculo(null,"peo9473", "2020", "bmw", "bmw", "prime");
 		
 		Oficina of1 = new Oficina(null, "flamacar");
 		

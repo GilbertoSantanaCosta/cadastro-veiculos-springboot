@@ -29,8 +29,9 @@ public class Veiculo implements Serializable {
 	private Integer id;
 	private String placa;
 	private String ano;
-	private String modelo;
+	private String nome;
 	private String marca;
+	private String modelo;
 	
 
 	@JsonIgnore
@@ -57,11 +58,12 @@ public class Veiculo implements Serializable {
 
 	}
 	
-	public Veiculo(Integer id,String placa, String ano, String modelo, String marca) {
+	public Veiculo(Integer id,String placa, String ano,String nome , String marca, String modelo) {
 		super();
 		this.id = id;
 		this.placa = placa;
 		this.ano = ano;
+		this.nome = nome;
 		this.modelo = modelo;
 		this.marca = marca;
 	}
@@ -141,6 +143,16 @@ public class Veiculo implements Serializable {
 
 	public void setServico(List<Servico> servico) {
 		this.servico = servico;
+	}
+	
+	
+
+	public String getNome() {
+		return nome;
+	}
+
+	public void setNome(String nome) {
+		this.nome = nome;
 	}
 
 	@Override
