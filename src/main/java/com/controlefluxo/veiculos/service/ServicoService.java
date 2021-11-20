@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import com.controlefluxo.veiculos.domain.Servico;
 import com.controlefluxo.veiculos.domain.dto.ServicoFindDTO;
+import com.controlefluxo.veiculos.domain.dto.ServicoInTheWorkShopDTO;
 import com.controlefluxo.veiculos.repositories.ServicoRepository;
 
 @Service
@@ -22,10 +23,10 @@ public class ServicoService {
 		  ServicoFindDTO(x)).collect(Collectors.toList()); }
 	 
 
-	public List<Servico> findByCarInTheWorkShop() {
+	public List<ServicoInTheWorkShopDTO> findByCarInTheWorkShop() {
 
 		List<Servico> tipoServico = tipoSevicoRepository.entradaGroupedByServico();
-		return tipoServico;
+		return tipoServico.stream().map(x -> new ServicoInTheWorkShopDTO(x)).collect(Collectors.toList());
 	}
 	
 	 

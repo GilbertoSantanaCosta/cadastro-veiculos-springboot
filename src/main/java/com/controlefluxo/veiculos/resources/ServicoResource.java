@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 import com.controlefluxo.veiculos.domain.Servico;
 import com.controlefluxo.veiculos.domain.dto.ServicoFindDTO;
+import com.controlefluxo.veiculos.domain.dto.ServicoInTheWorkShopDTO;
 import com.controlefluxo.veiculos.service.ServicoService;
 
 @RestController
@@ -29,9 +30,9 @@ public class ServicoResource {
 	
 	
 	@RequestMapping(value = "/in_the_workshop", method = RequestMethod.GET)
-	public ResponseEntity<List<Servico>> findByCarInTheWorkShop(){
+	public ResponseEntity<List<ServicoInTheWorkShopDTO>> findByCarInTheWorkShop(){
 		
-		List<Servico> tipoServicos = tipoServicoService.findByCarInTheWorkShop();
+		List<ServicoInTheWorkShopDTO> tipoServicos = tipoServicoService.findByCarInTheWorkShop();
 		
 		return ResponseEntity.ok().body(tipoServicos);
 	}
