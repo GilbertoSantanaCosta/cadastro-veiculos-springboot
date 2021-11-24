@@ -23,7 +23,7 @@ public class VeiculoFindDTO implements Serializable {
 	public VeiculoFindDTO(Veiculo obj) {
 		super();
 
-		this.veiculo = obj.getMarca();
+		this.veiculo = obj.getNome();
 		this.placa = obj.getPlaca();
 		this.servico = obj.getServico().stream().map(x -> new ServicoFindDTO(x)).collect(Collectors.toList());
 

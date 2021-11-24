@@ -2,9 +2,13 @@ package com.controlefluxo.veiculos.domain;
 
 import java.io.Serializable;
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
 import java.util.Objects;
+import java.util.Set;
 
+import javax.persistence.CollectionTable;
+import javax.persistence.ElementCollection;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -27,6 +31,12 @@ public class Cliente implements Serializable {
 	private String cpf;
 	private String rg;
 	
+	private String email;
+	
+	@ElementCollection
+	@CollectionTable(name="TELEFONES")
+	private Set<String> telefones = new HashSet<>();
+	
 	
 	@JsonIgnore
 	@OneToMany(mappedBy = "clientes")
@@ -36,13 +46,14 @@ public class Cliente implements Serializable {
 	
 	}
 	
-	public Cliente(Integer id, String nome, String sobrenome, String cpf, String rg) {
+	public Cliente(Integer id, String nome, String sobrenome, String cpf, String rg, String email) {
 		super();
 		this.id = id;
 		this.nome = nome;
 		this.sobrenome = sobrenome;
 		this.cpf = cpf;
 		this.rg = rg;
+		this.email = email;
 	}
 
 	public Integer getId() {
@@ -96,6 +107,23 @@ public class Cliente implements Serializable {
 	@Override
 	public int hashCode() {
 		return Objects.hash(cpf, id, nome, rg, sobrenome);
+	}
+	
+
+	public String getEmail() {
+		return email;
+	}
+
+	public void setEmail(String email) {
+		this.email = email;
+	}
+
+	public Set<String> getTelefones() {
+		return telefones;
+	}
+
+	public void setTelefones(Set<String> telefones) {
+		this.telefones = telefones;
 	}
 
 	@Override

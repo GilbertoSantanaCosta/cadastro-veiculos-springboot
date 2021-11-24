@@ -29,12 +29,6 @@ public class VeiculoResource {
 		return ResponseEntity.ok().body(veiculo);
 	}
 	
-	@GetMapping(value = "/placa")
-	public ResponseEntity<VeiculoDTO> findByPlaca(@RequestParam(value = "placa") String placa){
-		System.out.println(placa);
-		VeiculoDTO veiculo = veiculoService.findByPlaca(placa);
-		return ResponseEntity.ok().body(veiculo);
-	}
 	
 	@GetMapping(value = "/find_placa")
 	public ResponseEntity<VeiculoFindDTO> findByPlacaSummary(@RequestParam(value = "placa") String placa){

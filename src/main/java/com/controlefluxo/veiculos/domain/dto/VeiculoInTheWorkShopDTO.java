@@ -22,7 +22,7 @@ public class VeiculoInTheWorkShopDTO implements Serializable {
 	public VeiculoInTheWorkShopDTO(Veiculo obj) {
 		super();
 
-		this.veiculo = obj.getMarca();
+		this.veiculo = obj.getNome();
 		this.placa = obj.getPlaca();
 		
 	}

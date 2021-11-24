@@ -79,14 +79,29 @@ public class Application implements CommandLineRunner{
 		Servico t11 = new Servico(null, "3254825", null, Tipo.SEGURO,sdf.parse("10/09/2021"),sdf.parse("11/09/2021"),sdf.parse("13/10/2021"),sdf.parse("13/10/2021"),null,Status.ENTREGUE,null,Fornecimento.OFICINA,v1);
 		
 		
-		Cliente c1 = new Cliente(null, "gil", "santana", "37049612804", "425274457");
-		Cliente c2 = new Cliente(null, "ramom", "souza", "64736488326", "382977365");
-		Cliente c3 = new Cliente(null, "julio", "fernandes", "7845814587", "45218694");
-		Cliente c4 = new Cliente(null, "paula", "souza", "874515588", "985647874");
-		Cliente c5 = new Cliente(null, "rodolfo", "pereira", "755589556", "489656548");
-		Cliente c6 = new Cliente(null, "carlos", "soares", "156489665", "5151665484");
-		Cliente c7 = new Cliente(null, "kelly", "costa", "525658295", "844651566");
-		Cliente c8 = new Cliente(null, "eduardo", "cantão", "84525466221", "362458715");
+		Cliente c1 = new Cliente(null, "gil", "santana", "37049612804", "425274457", "gil@gmail.com");
+		c1.getTelefones().addAll(Arrays.asList("27363323", "93838393"));
+		
+		Cliente c2 = new Cliente(null, "ramom", "souza", "64736488326", "382977365", "ramom@gmail.com");
+		c2.getTelefones().addAll(Arrays.asList("2424-5332", "98473-9283"));
+		
+		Cliente c3 = new Cliente(null, "julio", "fernandes", "7845814587", "45218694", "julio@gmail.com");
+		c3.getTelefones().addAll(Arrays.asList("4635-6253", "93838-3930"));
+		
+		Cliente c4 = new Cliente(null, "paula", "souza", "874515588", "985647874", "paula@gmail.com");
+		c4.getTelefones().addAll(Arrays.asList("93847-6254", "93876-5142"));
+		
+		Cliente c5 = new Cliente(null, "rodolfo", "pereira", "755589556", "489656548", "rodolfo@gmail.com");
+		c5.getTelefones().addAll(Arrays.asList("5635-4747", "90847-3732"));
+		
+		Cliente c6 = new Cliente(null, "carlos", "soares", "156489665", "5151665484", "carlos@gmail.com");
+		c6.getTelefones().addAll(Arrays.asList("3524-5635", "97365-4142"));
+		
+		Cliente c7 = new Cliente(null, "kelly", "costa", "525658295", "844651566", "kelly@gmail.com");
+		c7.getTelefones().addAll(Arrays.asList("3425-4345", "98237-9263"));
+		
+		Cliente c8 = new Cliente(null, "eduardo", "cantão", "84525466221", "362458715", "eduardo@gmail.com");
+		c8.getTelefones().addAll(Arrays.asList("4635-7263", "98473-2324"));
 		
 		
 		Seguro sg1 = new Seguro(null, "porto", "123132113");
