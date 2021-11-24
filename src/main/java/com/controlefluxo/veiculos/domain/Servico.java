@@ -6,6 +6,7 @@ import java.util.Date;
 
 import java.util.Objects;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -26,7 +27,10 @@ public class Servico implements Serializable {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer id;
+	
+	@Column(unique = true , nullable = true )
 	private String codigoParticular;
+	@Column(unique = true, nullable = true)
 	private String sinistro;
 	private Tipo tipo;
 	private Date previsaoDeEntrada;
