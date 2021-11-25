@@ -3,7 +3,6 @@ package com.controlefluxo.veiculos.domain.dto;
 import java.io.Serializable;
 import java.util.Date;
 import com.controlefluxo.veiculos.domain.Servico;
-import com.controlefluxo.veiculos.domain.Veiculo;
 import com.controlefluxo.veiculos.domain.enums.Fornecimento;
 import com.controlefluxo.veiculos.domain.enums.Status;
 import com.controlefluxo.veiculos.domain.enums.Tipo;
@@ -18,22 +17,20 @@ public class ServicoDTO implements Serializable {
 	private Tipo tipo;
 	private Date previsaoDeEntrada;
 	private Date entrada;
+	private Date previsaoDeEntrega;
 	private Date entrega;
 	private Date entregaRetorno;
 	private Status status;
 	private String obs;
 	private Fornecimento forn;
-	private Veiculo veiculo;
-	
-
 
 	public ServicoDTO() {
 
 	}
 
-	public ServicoDTO(Integer id, String codigoParticular, String sinistro, Tipo tipo, Date vistoria,
-			Date previsaoDeEntrada, Date entrada, Date entrega, Date entregaRetorno, Status status, String obs,
-			Fornecimento forn, Veiculo veiculo) {
+	public ServicoDTO(Integer id, String codigoParticular, String sinistro, Tipo tipo, Date previsaoDeEntrada,
+			Date entrada, Date previsaoDeEntrega, Date entrega, Date entregaRetorno, Status status, String obs,
+			Fornecimento forn) {
 		super();
 		this.id = id;
 		this.codigoParticular = codigoParticular;
@@ -46,10 +43,9 @@ public class ServicoDTO implements Serializable {
 		this.status = status;
 		this.obs = obs;
 		this.forn = forn;
-		this.veiculo = veiculo;
-		
+
 	}
-	
+
 	public ServicoDTO(Servico servico) {
 		super();
 		this.id = servico.getId();
@@ -63,8 +59,7 @@ public class ServicoDTO implements Serializable {
 		this.status = servico.getStatus();
 		this.obs = servico.getObs();
 		this.forn = servico.getForn();
-		this.veiculo = servico.getVeiculos();
-		
+
 	}
 
 	public Integer getId() {
@@ -98,7 +93,6 @@ public class ServicoDTO implements Serializable {
 	public void setTipo(Tipo tipo) {
 		this.tipo = tipo;
 	}
-
 
 	public Date getPrevisaoDeEntrada() {
 		return previsaoDeEntrada;
@@ -148,7 +142,6 @@ public class ServicoDTO implements Serializable {
 		this.status = status;
 	}
 
-
 	public Fornecimento getForn() {
 		return forn;
 	}
@@ -157,14 +150,12 @@ public class ServicoDTO implements Serializable {
 		this.forn = forn;
 	}
 
-	public Veiculo getVeiculo() {
-		return veiculo;
+	public Date getPrevisaoDeEntrega() {
+		return previsaoDeEntrega;
 	}
 
-	public void setVeiculo(Veiculo veiculo) {
-		this.veiculo = veiculo;
+	public void setPrevisaoDeEntrega(Date previsaoDeEntrega) {
+		this.previsaoDeEntrega = previsaoDeEntrega;
 	}
-	
-	
 
 }

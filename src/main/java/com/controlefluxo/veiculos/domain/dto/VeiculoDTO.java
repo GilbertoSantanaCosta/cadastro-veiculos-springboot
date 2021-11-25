@@ -4,7 +4,6 @@ import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 import com.controlefluxo.veiculos.domain.Cliente;
-import com.controlefluxo.veiculos.domain.Oficina;
 import com.controlefluxo.veiculos.domain.Seguro;
 import com.controlefluxo.veiculos.domain.Servico;
 import com.controlefluxo.veiculos.domain.Veiculo;
@@ -14,23 +13,24 @@ public class VeiculoDTO implements Serializable {
 	private static final long serialVersionUID = 1L;
 
 	private Integer id;
+	private String nome;
 	private String placa;
 	private String ano;
 	private String modelo;
 	private String marca;
-	private List<Oficina> oficinas = new ArrayList<>();
 	private List<Seguro> seguros = new ArrayList<>();
 	private List<Servico> servico = new ArrayList<>();
 	private Cliente clientes;
-
 
 	public VeiculoDTO() {
 
 	}
 
-	public VeiculoDTO(Integer id, String placa, String ano, String modelo, String marca) {
+	public VeiculoDTO(Integer id, String nome, String placa, String ano, String modelo, String marca) {
 		super();
+
 		this.id = id;
+		this.nome = nome;
 		this.placa = placa;
 		this.ano = ano;
 		this.modelo = modelo;
@@ -40,18 +40,17 @@ public class VeiculoDTO implements Serializable {
 	public VeiculoDTO(Veiculo veiculo) {
 		super();
 		this.id = veiculo.getId();
+		this.nome = veiculo.getNome();
 		this.placa = veiculo.getPlaca();
 		this.ano = veiculo.getAno();
 		this.modelo = veiculo.getModelo();
 		this.marca = veiculo.getMarca();
-		this.oficinas = veiculo.getOficinas();
 		this.seguros = veiculo.getSeguros();
 		this.servico = veiculo.getServico();
 		this.clientes = veiculo.getClientes();
-		
 
 	}
-	
+
 	public VeiculoDTO(List<Veiculo> veiculo) {
 		super();
 		this.id = ((Cliente) veiculo).getId();
@@ -61,8 +60,6 @@ public class VeiculoDTO implements Serializable {
 		this.marca = ((Veiculo) veiculo).getMarca();
 
 	}
-	
-	
 
 	public Integer getId() {
 		return id;
@@ -70,6 +67,14 @@ public class VeiculoDTO implements Serializable {
 
 	public void setId(Integer id) {
 		this.id = id;
+	}
+
+	public String getNome() {
+		return nome;
+	}
+
+	public void setNome(String nome) {
+		this.nome = nome;
 	}
 
 	public String getPlaca() {
@@ -104,14 +109,6 @@ public class VeiculoDTO implements Serializable {
 		this.marca = marca;
 	}
 
-	public List<Oficina> getOficinas() {
-		return oficinas;
-	}
-
-	public void setOficinas(List<Oficina> oficinas) {
-		this.oficinas = oficinas;
-	}
-
 	public List<Seguro> getSeguros() {
 		return seguros;
 	}
@@ -135,9 +132,5 @@ public class VeiculoDTO implements Serializable {
 	public void setServico(List<Servico> servico) {
 		this.servico = servico;
 	}
-	
-	
-	
-	
 
 }
