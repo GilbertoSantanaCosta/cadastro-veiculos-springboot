@@ -7,6 +7,7 @@ import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.controlefluxo.veiculos.domain.Servico;
+import com.controlefluxo.veiculos.domain.enums.Status;
 
 
 
@@ -23,5 +24,8 @@ public interface ServicoRepository extends JpaRepository<Servico, Integer> {
 	
 	@Transactional(readOnly = true)
 	Servico findByCodigoParticular(String codigoParticular);
+	
+	@Transactional(readOnly = true)
+	List<Servico> findByStatus(Status status);
 	
 }

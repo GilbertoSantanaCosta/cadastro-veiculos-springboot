@@ -53,6 +53,13 @@ public class ServicoResource {
 		return ResponseEntity.ok().body(obj);
 	}
 	
+	@RequestMapping(value = "/status", method = RequestMethod.GET)
+	public ResponseEntity<List<ServicoInTheWorkShopDTO>> findByStatus() {
+
+		List<ServicoInTheWorkShopDTO> tipoServicos = servicoService.findByStatus();
+
+		return ResponseEntity.ok().body(tipoServicos);
+	}
 	
 	
 	

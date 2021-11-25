@@ -7,6 +7,7 @@ import org.springframework.stereotype.Service;
 import com.controlefluxo.veiculos.domain.Servico;
 import com.controlefluxo.veiculos.domain.dto.ServicoFindDTO;
 import com.controlefluxo.veiculos.domain.dto.ServicoInTheWorkShopDTO;
+import com.controlefluxo.veiculos.domain.enums.Status;
 import com.controlefluxo.veiculos.repositories.ServicoRepository;
 
 @Service
@@ -40,5 +41,13 @@ public class ServicoService {
 		return new ServicoInTheWorkShopDTO(obj);
 
 	}
+	
+	public List<ServicoInTheWorkShopDTO> findByStatus() {
+
+		List<Servico> obj = servicoRepository.findByStatus(Status.RETORNO);
+		return obj.stream().map(x -> new ServicoInTheWorkShopDTO(x)).collect(Collectors.toList());
+	}
+	
+	
 	 
 }
