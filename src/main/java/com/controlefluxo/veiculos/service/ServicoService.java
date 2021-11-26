@@ -48,6 +48,12 @@ public class ServicoService {
 		return obj.stream().map(x -> new ServicoInTheWorkShopDTO(x)).collect(Collectors.toList());
 	}
 	
+	public List<ServicoInTheWorkShopDTO> findByEntrada(){
+		
+		List<Servico> obj = servicoRepository.findByEntrada(null);
+		return obj.stream().map(x -> new ServicoInTheWorkShopDTO(x)).collect(Collectors.toList());
+	}
+	
 	
 	 
 }

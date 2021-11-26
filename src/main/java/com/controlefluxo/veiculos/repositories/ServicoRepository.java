@@ -1,4 +1,5 @@
 package com.controlefluxo.veiculos.repositories;
+import java.util.Date;
 import java.util.List;
 
 import org.springframework.data.jpa.repository.JpaRepository;
@@ -27,5 +28,8 @@ public interface ServicoRepository extends JpaRepository<Servico, Integer> {
 	
 	@Transactional(readOnly = true)
 	List<Servico> findByStatus(Status status);
+	
+	@Transactional(readOnly = true)
+	List<Servico> findByEntrada(Date entrada);
 	
 }

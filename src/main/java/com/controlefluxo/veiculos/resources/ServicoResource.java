@@ -61,6 +61,12 @@ public class ServicoResource {
 		return ResponseEntity.ok().body(tipoServicos);
 	}
 	
-	
+	@GetMapping(value = "/entrada")
+	public ResponseEntity<List<ServicoInTheWorkShopDTO>> findByEntrada(){
+		
+		List<ServicoInTheWorkShopDTO> obj = servicoService.findByEntrada();
+		
+		return ResponseEntity.ok().body(obj);
+	}
 	
 }

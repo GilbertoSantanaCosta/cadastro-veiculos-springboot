@@ -14,6 +14,7 @@ public class ServicoInTheWorkShopDTO implements Serializable{
 	private static final long serialVersionUID = 1L;
 	
 	private Tipo tipo;
+	private Date previsaoDeEntrada;
 	private Date previsaoDeEntrega;
 	private Status status;
 	private Fornecimento forn;
@@ -23,9 +24,10 @@ public class ServicoInTheWorkShopDTO implements Serializable{
 		
 	}
 	
-	public ServicoInTheWorkShopDTO(Tipo tipo, Date previsaoDeEntrega, Status status, Fornecimento forn, VeiculoInTheWorkShopDTO veiculo) {
+	public ServicoInTheWorkShopDTO(Tipo tipo, Date previsaoDeEntrada, Date previsaoDeEntrega, Status status, Fornecimento forn, VeiculoInTheWorkShopDTO veiculo) {
 		super();
 		this.tipo = tipo;
+		this.previsaoDeEntrada = previsaoDeEntrada;
 		this.previsaoDeEntrega = previsaoDeEntrega;
 		this.status = status;
 		this.forn = forn;
@@ -35,6 +37,7 @@ public class ServicoInTheWorkShopDTO implements Serializable{
 	public ServicoInTheWorkShopDTO(Servico servico) {
 		super();
 		this.tipo = servico.getTipo();
+		this.previsaoDeEntrada = servico.getPrevisaoDeEntrada();
 		this.previsaoDeEntrega = servico.getPrevisaoDeEntrega();
 		this.status = servico.getStatus();
 		this.forn = servico.getForn();
@@ -47,6 +50,15 @@ public class ServicoInTheWorkShopDTO implements Serializable{
 
 	public void setTipo(Tipo tipo) {
 		this.tipo = tipo;
+	}
+	
+
+	public Date getPrevisaoDeEntrada() {
+		return previsaoDeEntrada;
+	}
+
+	public void setPrevisaoDeEntrada(Date previsaoDeEntrada) {
+		this.previsaoDeEntrada = previsaoDeEntrada;
 	}
 
 	public Date getPrevisaoDeEntrega() {
