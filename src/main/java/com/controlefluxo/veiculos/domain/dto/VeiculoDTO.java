@@ -20,7 +20,7 @@ public class VeiculoDTO implements Serializable {
 	private String marca;
 	private List<Seguro> seguros = new ArrayList<>();
 	private List<Servico> servico = new ArrayList<>();
-	private Cliente clientes;
+	
 
 	public VeiculoDTO() {
 
@@ -47,7 +47,7 @@ public class VeiculoDTO implements Serializable {
 		this.marca = veiculo.getMarca();
 		this.seguros = veiculo.getSeguros();
 		this.servico = veiculo.getServico();
-		this.clientes = veiculo.getClientes();
+		
 
 	}
 
@@ -117,13 +117,6 @@ public class VeiculoDTO implements Serializable {
 		this.seguros = seguros;
 	}
 
-	public Cliente getClientes() {
-		return clientes;
-	}
-
-	public void setClientes(Cliente clientes) {
-		this.clientes = clientes;
-	}
 
 	public List<Servico> getServico() {
 		return servico;

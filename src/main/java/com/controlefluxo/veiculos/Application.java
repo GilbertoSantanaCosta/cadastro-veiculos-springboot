@@ -66,19 +66,6 @@ public class Application implements CommandLineRunner{
 		
 		Oficina of1 = new Oficina(null, "flamacar");
 		
-		Servico t1 = new Servico(null, "3254825", null, Tipo.PARTICULAR,sdf.parse("10/06/2021"),sdf.parse("11/06/2021"),sdf.parse("13/06/2021"),sdf.parse("13/06/2021"),null,Status.ENTREGUE,null,Fornecimento.OFICINA,v1);
-		Servico t2 = new Servico(null, "2547878", "582154", Tipo.SEGURO,sdf.parse("08/06/2021"),sdf.parse("10/06/2021"),sdf.parse("16/06/2021"),sdf.parse("30/06/2021"),sdf.parse("25/07/2021"),Status.RETORNO,null,Fornecimento.OFICINA,v2);
-		Servico t3 = new Servico(null, "7845892", null, Tipo.SEG_PART,sdf.parse("02/06/2021"),sdf.parse("03/06/2021"),sdf.parse("05/06/2021"),sdf.parse("25/06/2021"),null,Status.ENTREGUE,null,Fornecimento.OFIC_SEG,v3);
-		Servico t4 = new Servico(null, "9854758", "585426", Tipo.SEGURO,sdf.parse("15/06/2021"),sdf.parse("16/06/2021"),sdf.parse("20/06/2021"),sdf.parse("15/07/2021"),null,Status.ENTREGUE,null,Fornecimento.OFICINA,v4);
-		Servico t5 = new Servico(null, "9847856", null, Tipo.PARTICULAR,sdf.parse("10/07/2021"),sdf.parse("12/07/2021"),sdf.parse("16/07/2021"),null,null,Status.PINTURA,null,Fornecimento.OFICINA,v5);
-		Servico t6 = new Servico(null, "3621458", "584741", Tipo.SEG_PART,sdf.parse("09/08/2021"),sdf.parse("10/09/2021"),sdf.parse("13/09/2021"),null,null,Status.FUNILARIA,null,Fornecimento.SEGURO,v6);
-		Servico t7 = new Servico(null, "3652485", null, Tipo.PARTICULAR,sdf.parse("16/09/2021"),sdf.parse("18/09/2021"),sdf.parse("27/09/2021"),null,null,Status.MONTAGEM,null,Fornecimento.OFICINA,v7);
-		Servico t8 = new Servico(null, "3621858", "968471", Tipo.SEGURO,sdf.parse("21/10/2021"),sdf.parse("25/10/2021"),sdf.parse("26/10/2021"),null,null,Status.DESMONTAGEM,null,Fornecimento.OFIC_SEG,v8);
-		Servico t9 = new Servico(null, "3625148", null, Tipo.PARTICULAR,sdf.parse("18/10/2021"),null,null,null,null,Status.LIBERADO,null,null,v9);
-		Servico t10 = new Servico(null,"6528499", "362481", Tipo.SEGURO,sdf.parse("19/10/2021"),null,null,null,null,Status.LIBERADO,null,null,v10);
-		Servico t11 = new Servico(null, "3254887", null, Tipo.SEGURO,sdf.parse("10/09/2021"),sdf.parse("11/09/2021"),sdf.parse("13/10/2021"),sdf.parse("13/10/2021"),null,Status.ENTREGUE,null,Fornecimento.OFICINA,v1);
-		
-		
 		Cliente c1 = new Cliente(null, "gil", "santana", "37049612804", "425274457", "gil@gmail.com");
 		c1.getTelefones().addAll(Arrays.asList("27363323", "93838393"));
 		
@@ -103,20 +90,35 @@ public class Application implements CommandLineRunner{
 		Cliente c8 = new Cliente(null, "eduardo", "cantão", "84525466221", "362458715", "eduardo@gmail.com");
 		c8.getTelefones().addAll(Arrays.asList("4635-7263", "98473-2324"));
 		
+		Servico t1 = new Servico(null, "3254825", null, Tipo.PARTICULAR,sdf.parse("10/06/2021"),sdf.parse("11/06/2021"),sdf.parse("13/06/2021"),sdf.parse("13/06/2021"),null,Status.ENTREGUE,null,Fornecimento.OFICINA,v1,c1);
+		Servico t2 = new Servico(null, "2547878", "582154", Tipo.SEGURO,sdf.parse("08/06/2021"),sdf.parse("10/06/2021"),sdf.parse("16/06/2021"),sdf.parse("30/06/2021"),sdf.parse("25/07/2021"),Status.RETORNO,null,Fornecimento.OFICINA,v2,c2);
+		Servico t3 = new Servico(null, "7845892", null, Tipo.SEG_PART,sdf.parse("02/06/2021"),sdf.parse("03/06/2021"),sdf.parse("05/06/2021"),sdf.parse("25/06/2021"),null,Status.ENTREGUE,null,Fornecimento.OFIC_SEG,v3,c3);
+		Servico t4 = new Servico(null, "9854758", "585426", Tipo.SEGURO,sdf.parse("15/06/2021"),sdf.parse("16/06/2021"),sdf.parse("20/06/2021"),sdf.parse("15/07/2021"),null,Status.ENTREGUE,null,Fornecimento.OFICINA,v4, c4);
+		Servico t5 = new Servico(null, "9847856", null, Tipo.PARTICULAR,sdf.parse("10/07/2021"),sdf.parse("12/07/2021"),sdf.parse("16/07/2021"),null,null,Status.PINTURA,null,Fornecimento.OFICINA,v5, c5);
+		Servico t6 = new Servico(null, "3621458", "584741", Tipo.SEG_PART,sdf.parse("09/08/2021"),sdf.parse("10/09/2021"),sdf.parse("13/09/2021"),null,null,Status.FUNILARIA,null,Fornecimento.SEGURO,v6, c6);
+		Servico t7 = new Servico(null, "3652485", null, Tipo.PARTICULAR,sdf.parse("16/09/2021"),sdf.parse("18/09/2021"),sdf.parse("27/09/2021"),null,null,Status.MONTAGEM,null,Fornecimento.OFICINA,v7 , c7);
+		Servico t8 = new Servico(null, "3621858", "968471", Tipo.SEGURO,sdf.parse("21/10/2021"),sdf.parse("25/10/2021"),sdf.parse("26/10/2021"),null,null,Status.DESMONTAGEM,null,Fornecimento.OFIC_SEG,v8 , c8);
+		Servico t9 = new Servico(null, "3625148", null, Tipo.PARTICULAR,sdf.parse("18/10/2021"),null,null,null,null,Status.LIBERADO,null,null,v9 , c1);
+		Servico t10 = new Servico(null,"6528499", "362481", Tipo.SEGURO,sdf.parse("19/10/2021"),null,null,null,null,Status.LIBERADO,null,null,v10 , c2);
+		Servico t11 = new Servico(null, "3254887", null, Tipo.SEGURO,sdf.parse("10/09/2021"),sdf.parse("11/09/2021"),sdf.parse("13/10/2021"),sdf.parse("13/10/2021"),null,Status.ENTREGUE,null,Fornecimento.OFICINA,v1 , c3);
+		
+		
+		
+		
 		
 		Seguro sg1 = new Seguro(null, "porto", "123132113");
 		
 	
 		
 		
-		c1.getVeiculos().addAll(Arrays.asList(v1, v7));
-		c2.getVeiculos().addAll(Arrays.asList(v2, v8));
-		c3.getVeiculos().addAll(Arrays.asList(v3));
-		c4.getVeiculos().addAll(Arrays.asList(v4));
-		c5.getVeiculos().addAll(Arrays.asList(v5));
-		c6.getVeiculos().addAll(Arrays.asList(v6));
-		c7.getVeiculos().addAll(Arrays.asList(v9));
-		c8.getVeiculos().addAll(Arrays.asList(v10));
+		c1.getServicos().addAll(Arrays.asList(t1, t9));
+		c2.getServicos().addAll(Arrays.asList(t2, t10));
+		c3.getServicos().addAll(Arrays.asList(t3));
+		c4.getServicos().addAll(Arrays.asList(t4));
+		c5.getServicos().addAll(Arrays.asList(t5));
+		c6.getServicos().addAll(Arrays.asList(t6));
+		c7.getServicos().addAll(Arrays.asList(t7));
+		c8.getServicos().addAll(Arrays.asList(t8));
 		
 		
 		v2.getSeguros().addAll(Arrays.asList(sg1));
@@ -139,16 +141,7 @@ public class Application implements CommandLineRunner{
 		v9.getOficinas().addAll(Arrays.asList(of1));
 		v10.getOficinas().addAll(Arrays.asList(of1));
 	
-		v1.setClientes(c1);
-		v2.setClientes(c2);
-		v3.setClientes(c3);
-		v4.setClientes(c4);
-		v5.setClientes(c5);
-		v6.setClientes(c6);
-		v7.setClientes(c1);
-		v8.setClientes(c2);
-		v9.setClientes(c7);
-		v10.setClientes(c8);
+	
 		
 		v1.getServico().addAll(Arrays.asList(t1,t11));
 		v2.getServico().addAll(Arrays.asList(t2));

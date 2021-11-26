@@ -45,10 +45,6 @@ public class Veiculo implements Serializable {
 				inverseJoinColumns = @JoinColumn (name= "seguro_id"))
 	private List<Seguro> seguros = new ArrayList<>();
 	
-	@JsonIgnore
-	@ManyToOne
-	@JoinColumn(name = "cliente_id")
-	private Cliente clientes;
 	
 	@JsonIgnore
 	@OneToMany(mappedBy = "veiculos")
@@ -127,16 +123,6 @@ public class Veiculo implements Serializable {
 	}
 	
 	
-	public Cliente getClientes() {
-		return clientes;
-	}
-
-	public void setClientes(Cliente clientes) {
-		this.clientes = clientes;
-	}
-	
-	
-
 	public List<Servico> getServico() {
 		return servico;
 	}

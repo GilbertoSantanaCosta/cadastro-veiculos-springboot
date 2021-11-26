@@ -13,6 +13,8 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToOne;
+
 import com.controlefluxo.veiculos.domain.enums.Fornecimento;
 import com.controlefluxo.veiculos.domain.enums.Status;
 import com.controlefluxo.veiculos.domain.enums.Tipo;
@@ -48,6 +50,10 @@ public class Servico implements Serializable {
 	@ManyToOne
 	@JoinColumn(name = "veiculo_id")
 	private Veiculo veiculos;
+	
+	@OneToOne
+	@JoinColumn(name = "servico_id")
+	private Cliente cliente;
 
 	public Servico() {
 
@@ -55,7 +61,7 @@ public class Servico implements Serializable {
 
 	public Servico(Integer id, String codigoParticular, String sinistro, Tipo tipo,
 			Date previsaoDeEntrada, Date entrada, Date previsaoDeEntrega, Date entrega, Date entregaRetorno, Status status, String obs,
-			Fornecimento forn, Veiculo veiculos) {
+			Fornecimento forn, Veiculo veiculos, Cliente cliente) {
 		super();
 		this.id = id;
 		this.codigoParticular = codigoParticular;
@@ -70,6 +76,7 @@ public class Servico implements Serializable {
 		this.obs = obs;
 		this.forn = forn;
 		this.veiculos = veiculos;
+		this.cliente = cliente;
 		
 	}
 
@@ -177,6 +184,15 @@ public class Servico implements Serializable {
 
 	public void setPrevisaoDeEntrega(Date previsaoDeEntrega) {
 		this.previsaoDeEntrega = previsaoDeEntrega;
+	}
+	
+
+	public Cliente getCliente() {
+		return cliente;
+	}
+
+	public void setCliente(Cliente cliente) {
+		this.cliente = cliente;
 	}
 
 	@Override
