@@ -38,9 +38,9 @@ public class CadastroService {
 	public SeguroRepository seguro;
 
 
-	public Veiculo cadastro(CadastroDTO cadastro) throws ParseException {
+	public Veiculo insert(CadastroDTO cadastro) throws ParseException {
 
-		SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
+		
 
 		Veiculo v1 = new Veiculo(null, cadastro.getPlaca(), cadastro.getAno(), cadastro.getNomeVeiculo(),
 				cadastro.getMarca(), cadastro.getModelo());
@@ -54,13 +54,13 @@ public class CadastroService {
 				.addAll(Arrays.asList(cadastro.getTelefone1(), cadastro.getTelefone2(), cadastro.getTelefone3()));
 
 		Servico t1 = new Servico(null, cadastro.getCodigoParticular(), cadastro.getSinistro(), cadastro.getTipo(),
-				sdf.parse(cadastro.getPrevisaoDeEntrada()), sdf.parse(cadastro.getEntrada()),
-				sdf.parse(cadastro.getPrevisaoDeEntrega()), sdf.parse(cadastro.getEntrega()),
-				sdf.parse(cadastro.getEntregaRetorno()), cadastro.getStatus(), cadastro.getObs(), cadastro.getForn(),
+				cadastro.getPrevisaoDeEntrada(), cadastro.getEntrada(),
+				cadastro.getPrevisaoDeEntrega(), cadastro.getEntrega(),
+				cadastro.getEntregaRetorno(), cadastro.getStatus(), cadastro.getObs(), cadastro.getForn(),
 				v1, c1);
 
 		// Seguro teste
-		Seguro sg1 = new Seguro(1, "porto", "123132113");
+		Seguro sg1 = new Seguro( 1, "porto","123132113");
 
 		c1.getServicos().addAll(Arrays.asList(t1));
 
@@ -75,11 +75,11 @@ public class CadastroService {
 		sg1.getVeiculos().addAll(Arrays.asList(v1));
 
 		cliente.saveAll(Arrays.asList(c1));
-		seguro.saveAll(Arrays.asList(sg1));
+		//seguro.saveAll(Arrays.asList(sg1));
 		veiculo.saveAll(Arrays.asList(v1));
-		oficina.saveAll(Arrays.asList(of1));
+		//oficina.saveAll(Arrays.asList(of1));
 		servico.saveAll(Arrays.asList(t1));
 
-		return null;
+		return v1;
 	}
 }

@@ -28,11 +28,11 @@ public class CadastroDTO implements Serializable {
 	private String codigoParticular;
 	private String sinistro;
 	private Tipo tipo;
-	private String previsaoDeEntrada;
-	private String entrada;
-	private String previsaoDeEntrega;
-	private String entrega;
-	private String entregaRetorno;
+	private Date previsaoDeEntrada;
+	private Date entrada;
+	private Date previsaoDeEntrega;
+	private Date entrega;
+	private Date entregaRetorno;
 	private Status status;
 	private String obs;
 	private Fornecimento forn;
@@ -47,8 +47,8 @@ public class CadastroDTO implements Serializable {
 
 	public CadastroDTO(String nome, String sobrenome, String cpf, String rg, String telefone1, String telefone2,
 			String telefone3, String email, String nomeOficina, String nomeSeguro, String codigoParticular,
-			String sinistro, Tipo tipo, String previsaoDeEntrada, String entrada, String previsaoDeEntrega, String entrega,
-			String entregaRetorno, Status status, String obs, Fornecimento forn, String placa, String ano,
+			String sinistro, Tipo tipo, Date previsaoDeEntrada, Date entrada, Date previsaoDeEntrega, Date entrega,
+			Date entregaRetorno, Status status, String obs, Fornecimento forn, String placa, String ano,
 			String nomeVeiculo, String marca, String modelo) {
 		super();
 		this.nome = nome;
@@ -151,43 +151,43 @@ public class CadastroDTO implements Serializable {
 		this.tipo = tipo;
 	}
 
-	public String getPrevisaoDeEntrada() {
+	public Date getPrevisaoDeEntrada() {
 		return previsaoDeEntrada;
 	}
 
-	public void setPrevisaoDeEntrada(String previsaoDeEntrada) {
+	public void setPrevisaoDeEntrada(Date previsaoDeEntrada) {
 		this.previsaoDeEntrada = previsaoDeEntrada;
 	}
 
-	public String getEntrada() {
+	public Date getEntrada() {
 		return entrada;
 	}
 
-	public void setEntrada(String entrada) {
+	public void setEntrada(Date entrada) {
 		this.entrada = entrada;
 	}
 
-	public String getPrevisaoDeEntrega() {
+	public Date getPrevisaoDeEntrega() {
 		return previsaoDeEntrega;
 	}
 
-	public void setPrevisaoDeEntrega(String previsaoDeEntrega) {
+	public void setPrevisaoDeEntrega(Date previsaoDeEntrega) {
 		this.previsaoDeEntrega = previsaoDeEntrega;
 	}
 
-	public String getEntrega() {
+	public Date getEntrega() {
 		return entrega;
 	}
 
-	public void setEntrega(String entrega) {
+	public void setEntrega(Date entrega) {
 		this.entrega = entrega;
 	}
 
-	public String getEntregaRetorno() {
+	public Date getEntregaRetorno() {
 		return entregaRetorno;
 	}
 
-	public void setEntregaRetorno(String entregaRetorno) {
+	public void setEntregaRetorno(Date entregaRetorno) {
 		this.entregaRetorno = entregaRetorno;
 	}
 
