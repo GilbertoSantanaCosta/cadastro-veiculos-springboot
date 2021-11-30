@@ -1,0 +1,85 @@
+package com.controlefluxo.veiculos.service;
+
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Arrays;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+import com.controlefluxo.veiculos.domain.Cliente;
+import com.controlefluxo.veiculos.domain.Oficina;
+import com.controlefluxo.veiculos.domain.Seguro;
+import com.controlefluxo.veiculos.domain.Servico;
+import com.controlefluxo.veiculos.domain.Veiculo;
+import com.controlefluxo.veiculos.domain.dto.CadastroDTO;
+import com.controlefluxo.veiculos.repositories.ClienteRepository;
+import com.controlefluxo.veiculos.repositories.OficinaRepository;
+import com.controlefluxo.veiculos.repositories.SeguroRepository;
+import com.controlefluxo.veiculos.repositories.ServicoRepository;
+import com.controlefluxo.veiculos.repositories.VeiculoRepository;
+
+@Service
+public class CadastroService {
+
+	@Autowired
+	public VeiculoRepository veiculo;
+
+	@Autowired
+	public ClienteRepository cliente;
+
+	@Autowired
+	public ServicoRepository servico;
+
+	@Autowired
+	public OficinaRepository oficina;
+
+	@Autowired
+	public SeguroRepository seguro;
+
+
+	public Veiculo cadastro(CadastroDTO cadastro) throws ParseException {
+
+		SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
+
+		Veiculo v1 = new Veiculo(null, cadastro.getPlaca(), cadastro.getAno(), cadastro.getNomeVeiculo(),
+				cadastro.getMarca(), cadastro.getModelo());
+
+		// Oficina statica apenas para teste
+		Oficina of1 = new Oficina(1, "flamacar");
+
+		Cliente c1 = new Cliente(null, cadastro.getNome(), cadastro.getSobrenome(), cadastro.getCpf(), cadastro.getRg(),
+				cadastro.getEmail());
+		c1.getTelefones()
+				.addAll(Arrays.asList(cadastro.getTelefone1(), cadastro.getTelefone2(), cadastro.getTelefone3()));
+
+		Servico t1 = new Servico(null, cadastro.getCodigoParticular(), cadastro.getSinistro(), cadastro.getTipo(),
+				sdf.parse(cadastro.getPrevisaoDeEntrada()), sdf.parse(cadastro.getEntrada()),
+				sdf.parse(cadastro.getPrevisaoDeEntrega()), sdf.parse(cadastro.getEntrega()),
+				sdf.parse(cadastro.getEntregaRetorno()), cadastro.getStatus(), cadastro.getObs(), cadastro.getForn(),
+				v1, c1);
+
+		// Seguro teste
+		Seguro sg1 = new Seguro(1, "porto", "123132113");
+
+		c1.getServicos().addAll(Arrays.asList(t1));
+
+		v1.getSeguros().addAll(Arrays.asList(sg1));
+
+		v1.getOficinas().addAll(Arrays.asList(of1));
+
+		v1.getServico().addAll(Arrays.asList(t1));
+
+		of1.getVeiculos().addAll(Arrays.asList(v1));
+
+		sg1.getVeiculos().addAll(Arrays.asList(v1));
+
+		cliente.saveAll(Arrays.asList(c1));
+		seguro.saveAll(Arrays.asList(sg1));
+		veiculo.saveAll(Arrays.asList(v1));
+		oficina.saveAll(Arrays.asList(of1));
+		servico.saveAll(Arrays.asList(t1));
+
+		return null;
+	}
+}
