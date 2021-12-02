@@ -11,6 +11,7 @@ public class CadastroDTO implements Serializable {
 
 	private static final long serialVersionUID = 1L;
 
+	private Integer idCliente;
 	private String nome;
 	private String sobrenome;
 	private String cpf;
@@ -20,11 +21,13 @@ public class CadastroDTO implements Serializable {
 	private String telefone3;
 	private String email;
 
-	
+	private Integer idOficina;
 	private String nomeOficina;
-
+	
+	private Integer idSeguro;
 	private String nomeSeguro;
 
+	private Integer idServico;
 	private String codigoParticular;
 	private String sinistro;
 	private Tipo tipo;
@@ -37,20 +40,21 @@ public class CadastroDTO implements Serializable {
 	private String obs;
 	private Fornecimento forn;
 
+	private Integer idVeiculo;
 	private String placa;
 	private String ano;
 	private String nomeVeiculo;
 	private String marca;
 	private String modelo;
 
-	
-
-	public CadastroDTO(String nome, String sobrenome, String cpf, String rg, String telefone1, String telefone2,
-			String telefone3, String email, String nomeOficina, String nomeSeguro, String codigoParticular,
-			String sinistro, Tipo tipo, Date previsaoDeEntrada, Date entrada, Date previsaoDeEntrega, Date entrega,
-			Date entregaRetorno, Status status, String obs, Fornecimento forn, String placa, String ano,
+	public CadastroDTO(Integer idCliente, String nome, String sobrenome, String cpf, String rg, String telefone1,
+			String telefone2, String telefone3, String email, Integer idOficina, String nomeOficina, Integer idSeguro,
+			String nomeSeguro, Integer idServico, String codigoParticular, String sinistro, Tipo tipo,
+			Date previsaoDeEntrada, Date entrada, Date previsaoDeEntrega, Date entrega, Date entregaRetorno,
+			Status status, String obs, Fornecimento forn, Integer idVeiculo, String placa, String ano,
 			String nomeVeiculo, String marca, String modelo) {
 		super();
+		this.idCliente = idCliente;
 		this.nome = nome;
 		this.sobrenome = sobrenome;
 		this.cpf = cpf;
@@ -59,8 +63,11 @@ public class CadastroDTO implements Serializable {
 		this.telefone2 = telefone2;
 		this.telefone3 = telefone3;
 		this.email = email;
+		this.idOficina = idOficina;
 		this.nomeOficina = nomeOficina;
+		this.idSeguro = idSeguro;
 		this.nomeSeguro = nomeSeguro;
+		this.idServico = idServico;
 		this.codigoParticular = codigoParticular;
 		this.sinistro = sinistro;
 		this.tipo = tipo;
@@ -72,6 +79,7 @@ public class CadastroDTO implements Serializable {
 		this.status = status;
 		this.obs = obs;
 		this.forn = forn;
+		this.idVeiculo = idVeiculo;
 		this.placa = placa;
 		this.ano = ano;
 		this.nomeVeiculo = nomeVeiculo;
@@ -286,6 +294,48 @@ public class CadastroDTO implements Serializable {
 	public void setEmail(String email) {
 		this.email = email;
 	}
+
+	public Integer getIdCliente() {
+		return idCliente;
+	}
+
+	public void setIdCliente(Integer idCliente) {
+		this.idCliente = idCliente;
+	}
+
+	public Integer getIdOficina() {
+		return idOficina;
+	}
+
+	public void setIdOficina(Integer idOficina) {
+		this.idOficina = idOficina;
+	}
+
+	public Integer getIdSeguro() {
+		return idSeguro;
+	}
+
+	public void setIdSeguro(Integer idSeguro) {
+		this.idSeguro = idSeguro;
+	}
+
+	public Integer getIdServico() {
+		return idServico;
+	}
+
+	public void setIdServico(Integer idServico) {
+		this.idServico = idServico;
+	}
+
+	public Integer getIdVeiculo() {
+		return idVeiculo;
+	}
+
+	public void setIdVeiculo(Integer idVeiculo) {
+		this.idVeiculo = idVeiculo;
+	}
+	
+	
 	
 	
 

@@ -30,9 +30,8 @@ public class Servico implements Serializable {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer id;
 	
-	@Column(unique = true , nullable = true )
+	
 	private String codigoParticular;
-	@Column(unique = true, nullable = true)
 	private String sinistro;
 	private Tipo tipo;
 	private Date previsaoDeEntrada;

@@ -9,6 +9,7 @@ import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -28,35 +29,45 @@ public class VeiculoResource {
 
 	@Autowired
 	public VeiculoService veiculoService;
-	
+
 	@Autowired
 	public CadastroService cadastroService;
-	
-	
+
 	@GetMapping(value = "/{placa}")
-	public ResponseEntity<VeiculoDTO> findByPlaca(@PathVariable String placa){
-		
+	public ResponseEntity<VeiculoDTO> findByPlaca(@PathVariable String placa) {
+
 		VeiculoDTO veiculo = veiculoService.findByPlaca(placa);
 		return ResponseEntity.ok().body(veiculo);
 	}
-	
+
 	@GetMapping(value = "/find_placa/{placa}")
-	public ResponseEntity<VeiculoFindDTO> findByPlacaSummary(@PathVariable String placa){
-		
+	public ResponseEntity<VeiculoFindDTO> findByPlacaSummary(@PathVariable String placa) {
+
 		VeiculoFindDTO veiculo = veiculoService.findByPlacaSummary(placa);
 		return ResponseEntity.ok().body(veiculo);
 	}
-	
+
 	@PostMapping
-	public ResponseEntity<Void> insert(@Validated @RequestBody CadastroDTO cadastro) throws ParseException{
-		
+	public ResponseEntity<Void> insert(@Validated @RequestBody CadastroDTO cadastro) throws ParseException {
+
 		Veiculo obj = cadastroService.insert(cadastro);
-		
-		URI uri = ServletUriComponentsBuilder.fromCurrentRequest()
-				.path("/{placa}").buildAndExpand(obj.getPlaca()).toUri();
-		
+
+		URI uri = ServletUriComponentsBuilder.fromCurrentRequest().path("/{placa}").buildAndExpand(obj.getPlaca())
+				.toUri();
+
 		return ResponseEntity.created(uri).build();
-		
-		
+
+	}
+
+	@PutMapping
+	public ResponseEntity<Void> update(@Validated @RequestBody CadastroDTO cadastro) throws ParseException {
+
+		Veiculo obj = cadastroService.update(cadastro);
+
+		URI uri = ServletUriComponentsBuilder.fromCurrentRequest().path("/{placa}").buildAndExpand(obj.getPlaca())
+				.toUri();
+
+		return ResponseEntity.created(uri).build();
+
 	}
 }
