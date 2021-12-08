@@ -102,14 +102,7 @@ public class Application implements CommandLineRunner{
 		Servico t10 = new Servico(null,"6528499", "362481", Tipo.SEGURO,sdf.parse("19/10/2021"),null,null,null,null,Status.LIBERADO,null,null,v10 , c2);
 		Servico t11 = new Servico(null, "3254887", null, Tipo.SEGURO,sdf.parse("10/09/2021"),sdf.parse("11/09/2021"),sdf.parse("13/10/2021"),sdf.parse("13/10/2021"),null,Status.ENTREGUE,null,Fornecimento.OFICINA,v1 , c3);
 		
-		
-		
-		
-		
-		Seguro sg1 = new Seguro(null, "porto", "123132113");
-		
-	
-		
+		Seguro sg1 = new Seguro(null, "porto");
 		
 		c1.getServicos().addAll(Arrays.asList(t1, t9));
 		c2.getServicos().addAll(Arrays.asList(t2, t10));
@@ -120,28 +113,6 @@ public class Application implements CommandLineRunner{
 		c7.getServicos().addAll(Arrays.asList(t7));
 		c8.getServicos().addAll(Arrays.asList(t8));
 		
-		
-		v2.getSeguros().addAll(Arrays.asList(sg1));
-		v3.getSeguros().addAll(Arrays.asList(sg1));
-		v4.getSeguros().addAll(Arrays.asList(sg1));
-		v6.getSeguros().addAll(Arrays.asList(sg1));
-		v8.getSeguros().addAll(Arrays.asList(sg1));
-		v10.getSeguros().addAll(Arrays.asList(sg1));
-		
-		
-		
-		v1.getOficinas().addAll(Arrays.asList(of1));
-		v2.getOficinas().addAll(Arrays.asList(of1));
-		v3.getOficinas().addAll(Arrays.asList(of1));
-		v4.getOficinas().addAll(Arrays.asList(of1));
-		v5.getOficinas().addAll(Arrays.asList(of1));
-		v6.getOficinas().addAll(Arrays.asList(of1));
-		v7.getOficinas().addAll(Arrays.asList(of1));
-		v8.getOficinas().addAll(Arrays.asList(of1));
-		v9.getOficinas().addAll(Arrays.asList(of1));
-		v10.getOficinas().addAll(Arrays.asList(of1));
-	
-	
 		
 		v1.getServico().addAll(Arrays.asList(t1,t11));
 		v2.getServico().addAll(Arrays.asList(t2));
@@ -154,13 +125,35 @@ public class Application implements CommandLineRunner{
 		v9.getServico().addAll(Arrays.asList(t9));
 		v10.getServico().addAll(Arrays.asList(t10));
 		
-		of1.getVeiculos().addAll(Arrays.asList(v1,v2,v3,v4,v5,v6,v7,v8,v9,v10));
+		of1.getServicos().addAll(Arrays.asList(t1,t2,t3,t4,t5,t6,t7,t8,t9,t10,t11));
 		
 		
-		sg1.getVeiculos().addAll(Arrays.asList(v2,v3,v4,v6,v8,v10));
+		sg1.getServicos().addAll(Arrays.asList(t1,t2,t3,t4,t5,t6,t7,t8,t9,t10,t11));
 		
+		t1.setOficina(of1);
+		t2.setOficina(of1);
+		t3.setOficina(of1);
+		t4.setOficina(of1);
+		t5.setOficina(of1);
+		t6.setOficina(of1);
+		t7.setOficina(of1);
+		t8.setOficina(of1);
+		t9.setOficina(of1);
+		t10.setOficina(of1);
+		t11.setOficina(of1);
 		
-	
+		t1.setSeguro(sg1);
+		t2.setSeguro(sg1);
+		t3.setSeguro(sg1);
+		t4.setSeguro(sg1);
+		t5.setSeguro(sg1);
+		t6.setSeguro(sg1);
+		t7.setSeguro(sg1);
+		t8.setSeguro(sg1);
+		t9.setSeguro(sg1);
+		t10.setSeguro(sg1);
+		t11.setSeguro(sg1);
+		
 		
 		clienteRepository.saveAll(Arrays.asList(c1,c2,c3,c4,c5,c6,c7,c8));
 		seguroRepository.saveAll(Arrays.asList(sg1));

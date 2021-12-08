@@ -31,20 +31,8 @@ public class Veiculo implements Serializable {
 	private String nome;
 	private String marca;
 	private String modelo;
-	
 
 	@JsonIgnore
-	@ManyToMany(mappedBy="veiculos")
-	private List<Oficina> oficinas = new ArrayList<>();
-	
-	@JsonIgnore
-	@ManyToMany
-	@JoinTable(name="VEICULO_SEGURO",
-				joinColumns = @JoinColumn (name= "veiculo_id"),
-				inverseJoinColumns = @JoinColumn (name= "seguro_id"))
-	private List<Seguro> seguros = new ArrayList<>();
-	
-	@JsonIgnore	
 	@OneToMany(mappedBy = "veiculos")
 	private List<Servico> servico = new ArrayList<>();
 	
@@ -101,23 +89,6 @@ public class Veiculo implements Serializable {
 
 	public void setMarca(String marca) {
 		this.marca = marca;
-	}
-
-	public List<Oficina> getOficinas() {
-		return oficinas;
-	}
-
-	public void setOficinas(List<Oficina> oficinas) {
-		this.oficinas = oficinas;
-	}
-	
-	
-	public List<Seguro> getSeguros() {
-		return seguros;
-	}
-
-	public void setSeguros(List<Seguro> seguros) {
-		this.seguros = seguros;
 	}
 	
 	

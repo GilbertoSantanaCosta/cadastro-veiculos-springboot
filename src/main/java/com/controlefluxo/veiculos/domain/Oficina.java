@@ -8,9 +8,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.JoinTable;
-import javax.persistence.ManyToMany;
+import javax.persistence.OneToMany;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
@@ -25,9 +23,8 @@ public class Oficina implements Serializable {
 	private String nome;
 
 	@JsonIgnore
-	@ManyToMany
-	@JoinTable(name = "OFICINA_VEICULO", joinColumns = @JoinColumn(name = "oficina_id"), inverseJoinColumns = @JoinColumn(name = "veiculo_id"))
-	private List<Veiculo> veiculos = new ArrayList<>();
+	@OneToMany(mappedBy = "oficina")
+	private List<Servico> servicos = new ArrayList<>();
 
 	public Oficina() {
 
@@ -56,12 +53,12 @@ public class Oficina implements Serializable {
 		this.nome = nome;
 	}
 
-	public List<Veiculo> getVeiculos() {
-		return veiculos;
+	public List<Servico> getServicos() {
+		return servicos;
 	}
 
-	public void setVeiculos(List<Veiculo> veiculos) {
-		this.veiculos = veiculos;
+	public void setServicos(List<Servico> servicos) {
+		this.servicos = servicos;
 	}
 
 	@Override

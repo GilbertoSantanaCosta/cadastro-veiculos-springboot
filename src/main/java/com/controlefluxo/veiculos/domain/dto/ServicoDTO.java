@@ -4,6 +4,8 @@ import java.io.Serializable;
 import java.util.Date;
 
 import com.controlefluxo.veiculos.domain.Cliente;
+import com.controlefluxo.veiculos.domain.Oficina;
+import com.controlefluxo.veiculos.domain.Seguro;
 import com.controlefluxo.veiculos.domain.Servico;
 import com.controlefluxo.veiculos.domain.enums.Fornecimento;
 import com.controlefluxo.veiculos.domain.enums.Status;
@@ -26,6 +28,8 @@ public class ServicoDTO implements Serializable {
 	private String obs;
 	private Fornecimento forn;
 	private Cliente cliente;
+	private Seguro seguro;
+	private Oficina oficina;
 
 	public ServicoDTO() {
 
@@ -33,7 +37,7 @@ public class ServicoDTO implements Serializable {
 
 	public ServicoDTO(Integer id, String codigoParticular, String sinistro, Tipo tipo, Date previsaoDeEntrada,
 			Date entrada, Date previsaoDeEntrega, Date entrega, Date entregaRetorno, Status status, String obs,
-			Fornecimento forn , Cliente cliente) {
+			Fornecimento forn , Cliente cliente, Seguro seguro, Oficina oficina) {
 		super();
 		this.id = id;
 		this.codigoParticular = codigoParticular;
@@ -47,6 +51,8 @@ public class ServicoDTO implements Serializable {
 		this.obs = obs;
 		this.forn = forn;
 		this.cliente = cliente;
+		this.seguro = seguro;
+		this.oficina = oficina;
 
 	}
 
@@ -64,6 +70,8 @@ public class ServicoDTO implements Serializable {
 		this.obs = servico.getObs();
 		this.forn = servico.getForn();
 		this.cliente = servico.getCliente();
+		this.seguro = servico.getSeguro();
+		this.oficina = servico.getOficina();
 
 	}
 
@@ -170,6 +178,23 @@ public class ServicoDTO implements Serializable {
 	public void setCliente(Cliente cliente) {
 		this.cliente = cliente;
 	}
+
+	public Seguro getSeguro() {
+		return seguro;
+	}
+
+	public void setSeguro(Seguro seguro) {
+		this.seguro = seguro;
+	}
+
+	public Oficina getOficina() {
+		return oficina;
+	}
+
+	public void setOficina(Oficina oficina) {
+		this.oficina = oficina;
+	}
+	
 	
 	
 

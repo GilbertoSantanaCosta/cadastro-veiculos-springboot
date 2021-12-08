@@ -39,15 +39,11 @@ public class CadastroService {
 	
 
 	public Veiculo insert(CadastroDTO cadastro) throws ParseException {
-
-		
-		
+	
 		Veiculo v1 = new Veiculo(null, cadastro.getPlaca(), cadastro.getAno(), cadastro.getNomeVeiculo(),
 				cadastro.getMarca(), cadastro.getModelo());
-
-		// Oficina statica apenas para teste
 		
-		Oficina of1 = new Oficina(cadastro.getIdOficina(), "flamacar");
+		Oficina of1 = new Oficina(cadastro.getIdOficina(), cadastro.getNomeOficina());
 
 		Cliente c1 = new Cliente(null, cadastro.getNome(), cadastro.getSobrenome(), cadastro.getCpf(), cadastro.getRg(),
 				cadastro.getEmail());
@@ -59,15 +55,16 @@ public class CadastroService {
 				cadastro.getEntrega(), cadastro.getEntregaRetorno(), cadastro.getStatus(), cadastro.getObs(),
 				cadastro.getForn(), v1, c1);
 
-		// Seguro teste
-		Seguro sg1 = new Seguro(1, "porto", "123132113");
+		Seguro sg1 = new Seguro(cadastro.getIdSeguro(), cadastro.getNomeSeguro());
+		
+		of1.getServicos().addAll(Arrays.asList(t1));
+		sg1.getServicos().addAll(Arrays.asList(t1));
 
 		c1.getServicos().addAll(Arrays.asList(t1));
-		v1.getSeguros().addAll(Arrays.asList(sg1));
-		v1.getOficinas().addAll(Arrays.asList(of1));
 		v1.getServico().addAll(Arrays.asList(t1));
-		of1.getVeiculos().addAll(Arrays.asList(v1));
-		sg1.getVeiculos().addAll(Arrays.asList(v1));
+		
+		t1.setOficina(of1);
+		t1.setSeguro(sg1);
 
 		cliente.saveAll(Arrays.asList(c1));
 		 seguro.saveAll(Arrays.asList(sg1));
@@ -99,15 +96,16 @@ public class CadastroService {
 				cadastro.getStatus(), cadastro.getObs(), cadastro.getForn(), v1, c1);
 
 		// Seguro teste
-		Seguro sg1 = new Seguro(cadastro.getIdSeguro(), cadastro.getNomeSeguro(), "123132113");
+		Seguro sg1 = new Seguro(cadastro.getIdSeguro(), cadastro.getNomeSeguro());
+
+		of1.getServicos().addAll(Arrays.asList(t1));
+		sg1.getServicos().addAll(Arrays.asList(t1));
 
 		c1.getServicos().addAll(Arrays.asList(t1));
-		v1.getSeguros().addAll(Arrays.asList(sg1));
-		v1.getOficinas().addAll(Arrays.asList(of1));
 		v1.getServico().addAll(Arrays.asList(t1));
-		of1.getVeiculos().addAll(Arrays.asList(v1));
-		sg1.getVeiculos().addAll(Arrays.asList(v1));
 		
+		t1.setOficina(of1);
+		t1.setSeguro(sg1);
 		
 
 		cliente.save(c1);

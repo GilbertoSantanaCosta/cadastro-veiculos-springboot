@@ -9,7 +9,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.ManyToMany;
+import javax.persistence.OneToMany;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
@@ -22,21 +22,21 @@ public class Seguro implements Serializable {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer id;
 	private String nome;
-	private String sinistro;
+	
 	
 	@JsonIgnore
-	@ManyToMany(mappedBy="seguros")
-	private List<Veiculo> veiculos = new ArrayList<>();
+	@OneToMany(mappedBy="seguro")
+	private List<Servico> servicos = new ArrayList<>();
 	
 	public Seguro() {
 		
 	}
 	
-	public Seguro(Integer id, String nome, String sinistro) {
+	public Seguro(Integer id, String nome) {
 		super();
 		this.id = id;
 		this.nome = nome;
-		this.sinistro = sinistro;
+		
 	}
 	
 	public Integer getId() {
@@ -55,20 +55,12 @@ public class Seguro implements Serializable {
 		this.nome = nome;
 	}
 
-	public String getSinistro() {
-		return sinistro;
+	public List<Servico> getServicos() {
+		return servicos;
 	}
 
-	public void setSinistro(String sinistro) {
-		this.sinistro = sinistro;
-	}
-
-	public List<Veiculo> getVeiculos() {
-		return veiculos;
-	}
-
-	public void setVeiculos(List<Veiculo> veiculos) {
-		this.veiculos = veiculos;
+	public void setServicos(List<Servico> servicos) {
+		this.servicos = servicos;
 	}
 
 	@Override

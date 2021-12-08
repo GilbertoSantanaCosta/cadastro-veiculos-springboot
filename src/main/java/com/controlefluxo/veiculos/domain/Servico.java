@@ -5,8 +5,6 @@ import java.io.Serializable;
 import java.util.Date;
 
 import java.util.Objects;
-
-import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -14,7 +12,6 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToOne;
-
 import com.controlefluxo.veiculos.domain.enums.Fornecimento;
 import com.controlefluxo.veiculos.domain.enums.Status;
 import com.controlefluxo.veiculos.domain.enums.Tipo;
@@ -45,15 +42,26 @@ public class Servico implements Serializable {
 
 	
 
-	@JsonIgnore
+
 	@ManyToOne
 	@JoinColumn(name = "veiculo_id")
 	private Veiculo veiculos;
 	
+	
 	@OneToOne
-	@JoinColumn(name = "servico_id")
+	@JoinColumn(name = "cliente_id")
 	private Cliente cliente;
+	
+	
+	@ManyToOne
+	@JoinColumn(name = "oficina_id")
+	private Oficina oficina;
 
+	
+	@ManyToOne
+	@JoinColumn(name = "seguro_id")
+	private Seguro seguro;
+	
 	public Servico() {
 
 	}
@@ -192,6 +200,24 @@ public class Servico implements Serializable {
 
 	public void setCliente(Cliente cliente) {
 		this.cliente = cliente;
+	}
+	
+
+	public Oficina getOficina() {
+		return oficina;
+	}
+
+	public void setOficina(Oficina oficina) {
+		this.oficina = oficina;
+	}
+	
+
+	public Seguro getSeguro() {
+		return seguro;
+	}
+
+	public void setSeguro(Seguro seguro) {
+		this.seguro = seguro;
 	}
 
 	@Override
