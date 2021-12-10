@@ -5,6 +5,8 @@ import java.io.Serializable;
 import java.util.Date;
 
 import java.util.Objects;
+
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -27,7 +29,7 @@ public class Servico implements Serializable {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer id;
 	
-	
+	@Column(unique = true, nullable = false)
 	private String codigoParticular;
 	private String sinistro;
 	private Tipo tipo;
@@ -41,8 +43,6 @@ public class Servico implements Serializable {
 	private Fornecimento forn;
 
 	
-
-
 	@ManyToOne
 	@JoinColumn(name = "veiculo_id")
 	private Veiculo veiculos;

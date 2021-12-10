@@ -50,15 +50,6 @@ public class VeiculoDTO implements Serializable {
 
 	}
 
-	public VeiculoDTO(List<Veiculo> veiculo) {
-		super();
-		this.id = ((Cliente) veiculo).getId();
-		this.placa = ((Veiculo) veiculo).getPlaca();
-		this.ano = ((Veiculo) veiculo).getAno();
-		this.modelo = ((Veiculo) veiculo).getModelo();
-		this.marca = ((Veiculo) veiculo).getMarca();
-
-	}
 
 	public Integer getId() {
 		return id;
