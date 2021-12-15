@@ -4,6 +4,7 @@ import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
+
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -13,27 +14,26 @@ import javax.persistence.OneToMany;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
 @Entity
-public class Oficina implements Serializable {
+public class Safe implements Serializable {
 
 	private static final long serialVersionUID = 1L;
-
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer id;
-	private String nome;
+	private String name;
 
 	@JsonIgnore
-	@OneToMany(mappedBy = "oficina")
-	private List<Servico> servicos = new ArrayList<>();
+	@OneToMany(mappedBy = "safe")
+	private List<Work> work = new ArrayList<>();
 
-	public Oficina() {
+	public Safe() {
 
 	}
 
-	public Oficina(Integer id, String nome) {
+	public Safe(Integer id, String name) {
 		super();
 		this.id = id;
-		this.nome = nome;
+		this.name = name;
 
 	}
 
@@ -45,25 +45,20 @@ public class Oficina implements Serializable {
 		this.id = id;
 	}
 
-	public String getNome() {
-		return nome;
+	public String getName() {
+		return name;
 	}
 
-	public void setNome(String nome) {
-		this.nome = nome;
+	public void setName(String name) {
+		this.name = name;
 	}
 
-	public List<Servico> getServicos() {
-		return servicos;
+	public List<Work> getWork() {
+		return work;
 	}
 
-	public void setServicos(List<Servico> servicos) {
-		this.servicos = servicos;
-	}
-
-	@Override
-	public int hashCode() {
-		return Objects.hash(id);
+	public void setWork(List<Work> work) {
+		this.work = work;
 	}
 
 	@Override
@@ -74,8 +69,8 @@ public class Oficina implements Serializable {
 			return false;
 		if (getClass() != obj.getClass())
 			return false;
-		Oficina other = (Oficina) obj;
-		return id == other.id;
+		Safe other = (Safe) obj;
+		return Objects.equals(id, other.id);
 	}
 
 }

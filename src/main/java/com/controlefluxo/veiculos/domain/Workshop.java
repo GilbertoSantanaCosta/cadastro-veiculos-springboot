@@ -4,7 +4,6 @@ import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
-
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -14,31 +13,30 @@ import javax.persistence.OneToMany;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
 @Entity
-public class Seguro implements Serializable {
-
+public class Workshop implements Serializable {
 
 	private static final long serialVersionUID = 1L;
+
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer id;
-	private String nome;
-	
-	
+	private String name;
+
 	@JsonIgnore
-	@OneToMany(mappedBy="seguro")
-	private List<Servico> servicos = new ArrayList<>();
-	
-	public Seguro() {
-		
+	@OneToMany(mappedBy = "workshop")
+	private List<Work> work = new ArrayList<>();
+
+	public Workshop() {
+
 	}
-	
-	public Seguro(Integer id, String nome) {
+
+	public Workshop(Integer id, String name) {
 		super();
 		this.id = id;
-		this.nome = nome;
-		
+		this.name = name;
+
 	}
-	
+
 	public Integer getId() {
 		return id;
 	}
@@ -47,20 +45,20 @@ public class Seguro implements Serializable {
 		this.id = id;
 	}
 
-	public String getNome() {
-		return nome;
+	public String getName() {
+		return name;
 	}
 
-	public void setNome(String nome) {
-		this.nome = nome;
+	public void setName(String name) {
+		this.name = name;
 	}
 
-	public List<Servico> getServicos() {
-		return servicos;
+	public List<Work> getWork() {
+		return work;
 	}
 
-	public void setServicos(List<Servico> servicos) {
-		this.servicos = servicos;
+	public void setWork(List<Work> work) {
+		this.work = work;
 	}
 
 	@Override
@@ -76,9 +74,8 @@ public class Seguro implements Serializable {
 			return false;
 		if (getClass() != obj.getClass())
 			return false;
-		Seguro other = (Seguro) obj;
-		return Objects.equals(id, other.id);
+		Workshop other = (Workshop) obj;
+		return id == other.id;
 	}
-	
-	
+
 }

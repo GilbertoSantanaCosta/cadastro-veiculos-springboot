@@ -7,29 +7,29 @@ import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 
-import com.controlefluxo.veiculos.domain.Servico;
+import com.controlefluxo.veiculos.domain.Work;
 import com.controlefluxo.veiculos.domain.enums.Status;
 
 
 
 @Repository
-public interface ServicoRepository extends JpaRepository<Servico, Integer> {
+public interface WorkRepository extends JpaRepository<Work, Integer> {
 
 	 	
 	@Transactional(readOnly = true) 	
 	@Query(value ="select * from SERVICO where entrada is not null and entrega is null  order by  PREVISAO_DE_ENTREGA asc", nativeQuery = true)
-	List<Servico> findByCarInTheWorkShop();
+	List<Work> findByCarInTheWorkShop();
 	
 	@Transactional(readOnly = true)
-	Servico findBySinistro(String sinistro);
+	Work findBySinister(String sinister);
 	
 	@Transactional(readOnly = true)
-	Servico findByCodigoParticular(String codigoParticular);
+	Work findByPrivateCode(String privateCode);
 	
 	@Transactional(readOnly = true)
-	List<Servico> findByStatus(Status status);
+	List<Work> findByStatus(Status status);
 	
 	@Transactional(readOnly = true)
-	List<Servico> findByEntrada(Date entrada);
+	List<Work> findByInput(Date input);
 	
 }

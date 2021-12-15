@@ -1,8 +1,8 @@
 package com.controlefluxo.veiculos.domain.enums;
 
-public enum Tipo {
+public enum Type {
 
-	PARTICULAR,
-	SEGURO,
-	SEG_PART;
+	PARTICLE,
+	SAFE,
+	SAFE_PARTICLE;
 }

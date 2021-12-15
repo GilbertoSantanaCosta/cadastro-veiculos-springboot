@@ -18,41 +18,42 @@ import javax.persistence.OneToMany;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
 @Entity
-public class Cliente implements Serializable {
+public class Client implements Serializable {
 
 	private static final long serialVersionUID = 1L;
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer id;
-	private String nome;
-	private String sobrenome;
+	private String name;
+	private String surname;
 	private String cpf;
 	private String rg;
 
 	private String email;
 
 	@ElementCollection
-	@CollectionTable(name = "TELEFONES")
-	private Set<String> telefones = new HashSet<>();
+	@CollectionTable(name = "telephone")
+	private Set<String> telephone = new HashSet<>();
 
 	@JsonIgnore
-	@OneToMany(mappedBy = "cliente")
-	private List<Servico> servicos = new ArrayList<>();
+	@OneToMany(mappedBy = "client")
+	private List<Work> work = new ArrayList<>();
 
-	public Cliente() {
+	public Client() {
 
 	}
 
-	public Cliente(Integer id, String nome, String sobrenome, String cpf, String rg, String email) {
+	public Client(Integer id, String name, String surname, String cpf, String rg, String email) {
 		super();
 		this.id = id;
-		this.nome = nome;
-		this.sobrenome = sobrenome;
+		this.name = name;
+		this.surname = surname;
 		this.cpf = cpf;
 		this.rg = rg;
 		this.email = email;
 	}
+
 
 	public Integer getId() {
 		return id;
@@ -62,20 +63,20 @@ public class Cliente implements Serializable {
 		this.id = id;
 	}
 
-	public String getNome() {
-		return nome;
+	public String getName() {
+		return name;
 	}
 
-	public void setNome(String nome) {
-		this.nome = nome;
+	public void setName(String name) {
+		this.name = name;
 	}
 
-	public String getSobrenome() {
-		return sobrenome;
+	public String getSurname() {
+		return surname;
 	}
 
-	public void setSobrenome(String sobrenome) {
-		this.sobrenome = sobrenome;
+	public void setSurname(String surname) {
+		this.surname = surname;
 	}
 
 	public String getCpf() {
@@ -94,21 +95,6 @@ public class Cliente implements Serializable {
 		this.rg = rg;
 	}
 
-	
-	
-	public List<Servico> getServicos() {
-		return servicos;
-	}
-
-	public void setServicos(List<Servico> servicos) {
-		this.servicos = servicos;
-	}
-
-	@Override
-	public int hashCode() {
-		return Objects.hash(cpf, id, nome, rg, sobrenome);
-	}
-
 	public String getEmail() {
 		return email;
 	}
@@ -117,12 +103,20 @@ public class Cliente implements Serializable {
 		this.email = email;
 	}
 
-	public Set<String> getTelefones() {
-		return telefones;
+	public Set<String> getTelephone() {
+		return telephone;
 	}
 
-	public void setTelefones(Set<String> telefones) {
-		this.telefones = telefones;
+	public void setTelephone(Set<String> telephone) {
+		this.telephone = telephone;
+	}
+
+	public List<Work> getWork() {
+		return work;
+	}
+
+	public void setWork(List<Work> work) {
+		this.work = work;
 	}
 
 	@Override
@@ -133,9 +127,9 @@ public class Cliente implements Serializable {
 			return false;
 		if (getClass() != obj.getClass())
 			return false;
-		Cliente other = (Cliente) obj;
-		return Objects.equals(cpf, other.cpf) && Objects.equals(id, other.id) && Objects.equals(nome, other.nome)
-				&& Objects.equals(rg, other.rg) && Objects.equals(sobrenome, other.sobrenome);
+		Client other = (Client) obj;
+		return Objects.equals(cpf, other.cpf) && Objects.equals(id, other.id) && Objects.equals(name, other.name)
+				&& Objects.equals(rg, other.rg) && Objects.equals(surname, other.surname);
 	}
 
 }

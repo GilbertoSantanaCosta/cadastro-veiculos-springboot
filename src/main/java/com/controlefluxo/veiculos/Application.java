@@ -8,38 +8,38 @@ import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.web.bind.annotation.RestController;
-import com.controlefluxo.veiculos.domain.Cliente;
-import com.controlefluxo.veiculos.domain.Oficina;
-import com.controlefluxo.veiculos.domain.Seguro;
-import com.controlefluxo.veiculos.domain.Servico;
-import com.controlefluxo.veiculos.domain.Veiculo;
-import com.controlefluxo.veiculos.domain.enums.Fornecimento;
+import com.controlefluxo.veiculos.domain.Client;
+import com.controlefluxo.veiculos.domain.Workshop;
+import com.controlefluxo.veiculos.domain.Safe;
+import com.controlefluxo.veiculos.domain.Work;
+import com.controlefluxo.veiculos.domain.Car;
+import com.controlefluxo.veiculos.domain.enums.Supply;
 import com.controlefluxo.veiculos.domain.enums.Status;
-import com.controlefluxo.veiculos.domain.enums.Tipo;
-import com.controlefluxo.veiculos.repositories.ClienteRepository;
-import com.controlefluxo.veiculos.repositories.OficinaRepository;
-import com.controlefluxo.veiculos.repositories.SeguroRepository;
-import com.controlefluxo.veiculos.repositories.ServicoRepository;
-import com.controlefluxo.veiculos.repositories.VeiculoRepository;
+import com.controlefluxo.veiculos.domain.enums.Type;
+import com.controlefluxo.veiculos.repositories.ClientRepository;
+import com.controlefluxo.veiculos.repositories.WorkshopRepository;
+import com.controlefluxo.veiculos.repositories.SafeRepository;
+import com.controlefluxo.veiculos.repositories.WorkRepository;
+import com.controlefluxo.veiculos.repositories.CarRepository;
 
 @RestController
 @SpringBootApplication
 public class Application implements CommandLineRunner{
 
 	@Autowired
-	private VeiculoRepository veiculoRepository;
+	private CarRepository carRepository;
 	
 	@Autowired
-	private OficinaRepository oficinaRepository;
+	private WorkshopRepository workshopRepository;
 	
 	@Autowired
-	private SeguroRepository seguroRepository;
+	private SafeRepository safeRepository;
 	
 	@Autowired
-	private ServicoRepository ServicoRepository;
+	private WorkRepository WorkRepository;
 	
 	@Autowired
-	private ClienteRepository clienteRepository;
+	private ClientRepository clientRepository;
 	
 	public static void main(String[] args) {
 		SpringApplication.run(Application.class, args);	
@@ -53,114 +53,114 @@ public class Application implements CommandLineRunner{
 	
 		SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
 		
-		Veiculo v1 = new Veiculo(null,"abc1234", "1988", "corsa", "gm" , "wind" );
-		Veiculo v2 = new Veiculo(null,"sed2547", "2000", "palio", "fiat", "fire");
-		Veiculo v3 = new Veiculo(null,"teg7845", "1999", "gol", "vw", "1000");
-		Veiculo v4 = new Veiculo(null,"oeb7894", "2010", "uno", "fiat", "fire");
-		Veiculo v5 = new Veiculo(null,"lro4812", "2011", "prisma", "gm" , "joy");
-		Veiculo v6 = new Veiculo(null,"rqf8364", "2001", "ka", "ford", "zotac");
-		Veiculo v7 = new Veiculo(null,"beg094", "2004", "207", "peugeot", "prime");
-		Veiculo v8 = new Veiculo(null,"uen4231", "2012", "versa", "nissan", "1.8");
-		Veiculo v9 = new Veiculo(null,"oen8634", "2014", "strada", "fiat", "1.6");
-		Veiculo v10 = new Veiculo(null,"peo9473", "2020", "bmw", "bmw", "prime");
+		Car v1 = new Car(null,"abc1234", "1988", "corsa", "gm" , "wind" );
+		Car v2 = new Car(null,"sed2547", "2000", "palio", "fiat", "fire");
+		Car v3 = new Car(null,"teg7845", "1999", "gol", "vw", "1000");
+		Car v4 = new Car(null,"oeb7894", "2010", "uno", "fiat", "fire");
+		Car v5 = new Car(null,"lro4812", "2011", "prisma", "gm" , "joy");
+		Car v6 = new Car(null,"rqf8364", "2001", "ka", "ford", "zotac");
+		Car v7 = new Car(null,"beg094", "2004", "207", "peugeot", "prime");
+		Car v8 = new Car(null,"uen4231", "2012", "versa", "nissan", "1.8");
+		Car v9 = new Car(null,"oen8634", "2014", "strada", "fiat", "1.6");
+		Car v10 = new Car(null,"peo9473", "2020", "bmw", "bmw", "prime");
 		
-		Oficina of1 = new Oficina(null, "flamacar");
+		Workshop of1 = new Workshop(null, "flamacar");
 		
-		Cliente c1 = new Cliente(null, "gil", "santana", "37049612804", "425274457", "gil@gmail.com");
-		c1.getTelefones().addAll(Arrays.asList("27363323", "93838393"));
+		Client c1 = new Client(null, "gil", "santana", "37049612804", "425274457", "gil@gmail.com");
+		c1.getTelephone().addAll(Arrays.asList("27363323", "93838393"));
 		
-		Cliente c2 = new Cliente(null, "ramom", "souza", "64736488326", "382977365", "ramom@gmail.com");
-		c2.getTelefones().addAll(Arrays.asList("2424-5332", "98473-9283"));
+		Client c2 = new Client(null, "ramom", "souza", "64736488326", "382977365", "ramom@gmail.com");
+		c2.getTelephone().addAll(Arrays.asList("2424-5332", "98473-9283"));
 		
-		Cliente c3 = new Cliente(null, "julio", "fernandes", "7845814587", "45218694", "julio@gmail.com");
-		c3.getTelefones().addAll(Arrays.asList("4635-6253", "93838-3930"));
+		Client c3 = new Client(null, "julio", "fernandes", "7845814587", "45218694", "julio@gmail.com");
+		c3.getTelephone().addAll(Arrays.asList("4635-6253", "93838-3930"));
 		
-		Cliente c4 = new Cliente(null, "paula", "souza", "874515588", "985647874", "paula@gmail.com");
-		c4.getTelefones().addAll(Arrays.asList("93847-6254", "93876-5142"));
+		Client c4 = new Client(null, "paula", "souza", "874515588", "985647874", "paula@gmail.com");
+		c4.getTelephone().addAll(Arrays.asList("93847-6254", "93876-5142"));
 		
-		Cliente c5 = new Cliente(null, "rodolfo", "pereira", "755589556", "489656548", "rodolfo@gmail.com");
-		c5.getTelefones().addAll(Arrays.asList("5635-4747", "90847-3732"));
+		Client c5 = new Client(null, "rodolfo", "pereira", "755589556", "489656548", "rodolfo@gmail.com");
+		c5.getTelephone().addAll(Arrays.asList("5635-4747", "90847-3732"));
 		
-		Cliente c6 = new Cliente(null, "carlos", "soares", "156489665", "5151665484", "carlos@gmail.com");
-		c6.getTelefones().addAll(Arrays.asList("3524-5635", "97365-4142"));
+		Client c6 = new Client(null, "carlos", "soares", "156489665", "5151665484", "carlos@gmail.com");
+		c6.getTelephone().addAll(Arrays.asList("3524-5635", "97365-4142"));
 		
-		Cliente c7 = new Cliente(null, "kelly", "costa", "525658295", "844651566", "kelly@gmail.com");
-		c7.getTelefones().addAll(Arrays.asList("3425-4345", "98237-9263"));
+		Client c7 = new Client(null, "kelly", "costa", "525658295", "844651566", "kelly@gmail.com");
+		c7.getTelephone().addAll(Arrays.asList("3425-4345", "98237-9263"));
 		
-		Cliente c8 = new Cliente(null, "eduardo", "cantão", "84525466221", "362458715", "eduardo@gmail.com");
-		c8.getTelefones().addAll(Arrays.asList("4635-7263", "98473-2324"));
+		Client c8 = new Client(null, "eduardo", "cantão", "84525466221", "362458715", "eduardo@gmail.com");
+		c8.getTelephone().addAll(Arrays.asList("4635-7263", "98473-2324"));
 		
-		Servico t1 = new Servico(null, "3254825", null, Tipo.PARTICULAR,sdf.parse("10/06/2021"),sdf.parse("11/06/2021"),sdf.parse("13/06/2021"),sdf.parse("13/06/2021"),null,Status.ENTREGUE,null,Fornecimento.OFICINA,v1,c1);
-		Servico t2 = new Servico(null, "2547878", "582154", Tipo.SEGURO,sdf.parse("08/06/2021"),sdf.parse("10/06/2021"),sdf.parse("16/06/2021"),sdf.parse("30/06/2021"),sdf.parse("25/07/2021"),Status.RETORNO,null,Fornecimento.OFICINA,v2,c2);
-		Servico t3 = new Servico(null, "7845892", null, Tipo.SEG_PART,sdf.parse("02/06/2021"),sdf.parse("03/06/2021"),sdf.parse("05/06/2021"),sdf.parse("25/06/2021"),null,Status.ENTREGUE,null,Fornecimento.OFIC_SEG,v3,c3);
-		Servico t4 = new Servico(null, "9854758", "585426", Tipo.SEGURO,sdf.parse("15/06/2021"),sdf.parse("16/06/2021"),sdf.parse("20/06/2021"),sdf.parse("15/07/2021"),null,Status.ENTREGUE,null,Fornecimento.OFICINA,v4, c4);
-		Servico t5 = new Servico(null, "9847856", null, Tipo.PARTICULAR,sdf.parse("10/07/2021"),sdf.parse("12/07/2021"),sdf.parse("16/07/2021"),null,null,Status.PINTURA,null,Fornecimento.OFICINA,v5, c5);
-		Servico t6 = new Servico(null, "3621458", "584741", Tipo.SEG_PART,sdf.parse("09/08/2021"),sdf.parse("10/09/2021"),sdf.parse("13/09/2021"),null,null,Status.FUNILARIA,null,Fornecimento.SEGURO,v6, c6);
-		Servico t7 = new Servico(null, "3652485", null, Tipo.PARTICULAR,sdf.parse("16/09/2021"),sdf.parse("18/09/2021"),sdf.parse("27/09/2021"),null,null,Status.MONTAGEM,null,Fornecimento.OFICINA,v7 , c7);
-		Servico t8 = new Servico(null, "3621858", "968471", Tipo.SEGURO,sdf.parse("21/10/2021"),sdf.parse("25/10/2021"),sdf.parse("26/10/2021"),null,null,Status.DESMONTAGEM,null,Fornecimento.OFIC_SEG,v8 , c8);
-		Servico t9 = new Servico(null, "3625148", null, Tipo.PARTICULAR,sdf.parse("18/10/2021"),null,null,null,null,Status.LIBERADO,null,null,v9 , c1);
-		Servico t10 = new Servico(null,"6528499", "362481", Tipo.SEGURO,sdf.parse("19/10/2021"),null,null,null,null,Status.LIBERADO,null,null,v10 , c2);
-		Servico t11 = new Servico(null, "3254887", null, Tipo.SEGURO,sdf.parse("10/09/2021"),sdf.parse("11/09/2021"),sdf.parse("13/10/2021"),sdf.parse("13/10/2021"),null,Status.ENTREGUE,null,Fornecimento.OFICINA,v1 , c3);
+		Work t1 = new Work(null, "3254825", null, Type.PARTICLE,sdf.parse("10/06/2021"),sdf.parse("11/06/2021"),sdf.parse("13/06/2021"),sdf.parse("13/06/2021"),null,Status.DELIVERED,null,Supply.WORKSHOP,v1,c1);
+		Work t2 = new Work(null, "2547878", "582154", Type.SAFE,sdf.parse("08/06/2021"),sdf.parse("10/06/2021"),sdf.parse("16/06/2021"),sdf.parse("30/06/2021"),sdf.parse("25/07/2021"),Status.RETURN,null,Supply.WORKSHOP,v2,c2);
+		Work t3 = new Work(null, "7845892", null, Type.SAFE_PARTICLE,sdf.parse("02/06/2021"),sdf.parse("03/06/2021"),sdf.parse("05/06/2021"),sdf.parse("25/06/2021"),null,Status.DELIVERED,null,Supply.WORKSHOP_SAFE,v3,c3);
+		Work t4 = new Work(null, "9854758", "585426", Type.SAFE,sdf.parse("15/06/2021"),sdf.parse("16/06/2021"),sdf.parse("20/06/2021"),sdf.parse("15/07/2021"),null,Status.DELIVERED,null,Supply.WORKSHOP,v4, c4);
+		Work t5 = new Work(null, "9847856", null, Type.PARTICLE,sdf.parse("10/07/2021"),sdf.parse("12/07/2021"),sdf.parse("16/07/2021"),null,null,Status.PAINTING,null,Supply.WORKSHOP,v5, c5);
+		Work t6 = new Work(null, "3621458", "584741", Type.SAFE_PARTICLE,sdf.parse("09/08/2021"),sdf.parse("10/09/2021"),sdf.parse("13/09/2021"),null,null,Status.TUBE,null,Supply.SAFE,v6, c6);
+		Work t7 = new Work(null, "3652485", null, Type.PARTICLE,sdf.parse("16/09/2021"),sdf.parse("18/09/2021"),sdf.parse("27/09/2021"),null,null,Status.DISASSEMBLY,null,Supply.WORKSHOP,v7 , c7);
+		Work t8 = new Work(null, "3621858", "968471", Type.SAFE,sdf.parse("21/10/2021"),sdf.parse("25/10/2021"),sdf.parse("26/10/2021"),null,null,Status.DELIVERED,null,Supply.WORKSHOP_SAFE,v8 , c8);
+		Work t9 = new Work(null, "3625148", null, Type.PARTICLE,sdf.parse("18/10/2021"),null,null,null,null,Status.RELEASED,null,null,v9 , c1);
+		Work t10 = new Work(null,"6528499", "362481", Type.SAFE,sdf.parse("19/10/2021"),null,null,null,null,Status.RELEASED,null,null,v10 , c2);
+		Work t11 = new Work(null, "3254887", null, Type.SAFE,sdf.parse("10/09/2021"),sdf.parse("11/09/2021"),sdf.parse("13/10/2021"),sdf.parse("13/10/2021"),null,Status.RELEASED,null,Supply.WORKSHOP,v1 , c3);
 		
-		Seguro sg1 = new Seguro(null, "porto");
+		Safe sg1 = new Safe(null, "porto");
 		
-		c1.getServicos().addAll(Arrays.asList(t1, t9));
-		c2.getServicos().addAll(Arrays.asList(t2, t10));
-		c3.getServicos().addAll(Arrays.asList(t3));
-		c4.getServicos().addAll(Arrays.asList(t4));
-		c5.getServicos().addAll(Arrays.asList(t5));
-		c6.getServicos().addAll(Arrays.asList(t6));
-		c7.getServicos().addAll(Arrays.asList(t7));
-		c8.getServicos().addAll(Arrays.asList(t8));
-		
-		
-		v1.getServico().addAll(Arrays.asList(t1,t11));
-		v2.getServico().addAll(Arrays.asList(t2));
-		v3.getServico().addAll(Arrays.asList(t3));
-		v4.getServico().addAll(Arrays.asList(t4));
-		v5.getServico().addAll(Arrays.asList(t5));
-		v6.getServico().addAll(Arrays.asList(t6));
-		v7.getServico().addAll(Arrays.asList(t7));
-		v8.getServico().addAll(Arrays.asList(t8));
-		v9.getServico().addAll(Arrays.asList(t9));
-		v10.getServico().addAll(Arrays.asList(t10));
-		
-		of1.getServicos().addAll(Arrays.asList(t1,t2,t3,t4,t5,t6,t7,t8,t9,t10,t11));
+		c1.getWork().addAll(Arrays.asList(t1, t9));
+		c2.getWork().addAll(Arrays.asList(t2, t10));
+		c3.getWork().addAll(Arrays.asList(t3));
+		c4.getWork().addAll(Arrays.asList(t4));
+		c5.getWork().addAll(Arrays.asList(t5));
+		c6.getWork().addAll(Arrays.asList(t6));
+		c7.getWork().addAll(Arrays.asList(t7));
+		c8.getWork().addAll(Arrays.asList(t8));
 		
 		
-		sg1.getServicos().addAll(Arrays.asList(t1,t2,t3,t4,t5,t6,t7,t8,t9,t10,t11));
+		v1.getWork().addAll(Arrays.asList(t1,t11));
+		v2.getWork().addAll(Arrays.asList(t2));
+		v3.getWork().addAll(Arrays.asList(t3));
+		v4.getWork().addAll(Arrays.asList(t4));
+		v5.getWork().addAll(Arrays.asList(t5));
+		v6.getWork().addAll(Arrays.asList(t6));
+		v7.getWork().addAll(Arrays.asList(t7));
+		v8.getWork().addAll(Arrays.asList(t8));
+		v9.getWork().addAll(Arrays.asList(t9));
+		v10.getWork().addAll(Arrays.asList(t10));
 		
-		t1.setOficina(of1);
-		t2.setOficina(of1);
-		t3.setOficina(of1);
-		t4.setOficina(of1);
-		t5.setOficina(of1);
-		t6.setOficina(of1);
-		t7.setOficina(of1);
-		t8.setOficina(of1);
-		t9.setOficina(of1);
-		t10.setOficina(of1);
-		t11.setOficina(of1);
-		
-		t1.setSeguro(sg1);
-		t2.setSeguro(sg1);
-		t3.setSeguro(sg1);
-		t4.setSeguro(sg1);
-		t5.setSeguro(sg1);
-		t6.setSeguro(sg1);
-		t7.setSeguro(sg1);
-		t8.setSeguro(sg1);
-		t9.setSeguro(sg1);
-		t10.setSeguro(sg1);
-		t11.setSeguro(sg1);
+		of1.getWork().addAll(Arrays.asList(t1,t2,t3,t4,t5,t6,t7,t8,t9,t10,t11));
 		
 		
-		clienteRepository.saveAll(Arrays.asList(c1,c2,c3,c4,c5,c6,c7,c8));
-		seguroRepository.saveAll(Arrays.asList(sg1));
-		veiculoRepository.saveAll(Arrays.asList(v1,v2,v3,v4,v5,v6,v7,v8,v9,v10));
-		oficinaRepository.saveAll(Arrays.asList(of1));
+		sg1.getWork().addAll(Arrays.asList(t1,t2,t3,t4,t5,t6,t7,t8,t9,t10,t11));
 		
-	    ServicoRepository.saveAll(Arrays.asList(t1,t2,t3,t4,t5,t6,t7,t8,t9,t10,t11));
+		t1.setWorkshop(of1);
+		t2.setWorkshop(of1);
+		t3.setWorkshop(of1);
+		t4.setWorkshop(of1);
+		t5.setWorkshop(of1);
+		t6.setWorkshop(of1);
+		t7.setWorkshop(of1);
+		t8.setWorkshop(of1);
+		t9.setWorkshop(of1);
+		t10.setWorkshop(of1);
+		t11.setWorkshop(of1);
+		
+		t1.setSafe(sg1);
+		t2.setSafe(sg1);
+		t3.setSafe(sg1);
+		t4.setSafe(sg1);
+		t5.setSafe(sg1);
+		t6.setSafe(sg1);
+		t7.setSafe(sg1);
+		t8.setSafe(sg1);
+		t9.setSafe(sg1);
+		t10.setSafe(sg1);
+		t11.setSafe(sg1);
+		
+		
+		clientRepository.saveAll(Arrays.asList(c1,c2,c3,c4,c5,c6,c7,c8));
+		safeRepository.saveAll(Arrays.asList(sg1));
+		carRepository.saveAll(Arrays.asList(v1,v2,v3,v4,v5,v6,v7,v8,v9,v10));
+		workshopRepository.saveAll(Arrays.asList(of1));
+		
+	    WorkRepository.saveAll(Arrays.asList(t1,t2,t3,t4,t5,t6,t7,t8,t9,t10,t11));
 		
 	   
 		
