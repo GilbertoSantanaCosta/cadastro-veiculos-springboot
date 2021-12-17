@@ -20,4 +20,12 @@ public class ResourceExceptionHandler extends ResponseEntityExceptionHandler {
 		return ResponseEntity.badRequest().body(err);
 		
 	}
+	
+	@ExceptionHandler(NullPointerException.class)
+	public ResponseEntity<StandarError> nullPointerExceptionException (NullPointerException e, HttpServletRequest request) {
+		
+		StandarError err = new StandarError(System.currentTimeMillis(), HttpStatus.NOT_FOUND, "Veiculo não cadastrado", e.getMessage(), request.getRequestURI());
+		return ResponseEntity.badRequest().body(err);
+		
+	}
 	}

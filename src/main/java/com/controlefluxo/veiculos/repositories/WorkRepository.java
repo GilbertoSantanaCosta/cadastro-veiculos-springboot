@@ -17,7 +17,7 @@ public interface WorkRepository extends JpaRepository<Work, Integer> {
 
 	 	
 	@Transactional(readOnly = true) 	
-	@Query(value ="select * from SERVICO where entrada is not null and entrega is null  order by  PREVISAO_DE_ENTREGA asc", nativeQuery = true)
+	@Query(value ="select * from WORK where input is not null and delivery is null  order by DELIVERY_FORECAST asc", nativeQuery = true)
 	List<Work> findByCarInTheWorkShop();
 	
 	@Transactional(readOnly = true)

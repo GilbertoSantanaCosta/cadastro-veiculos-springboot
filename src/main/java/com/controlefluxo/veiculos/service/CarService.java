@@ -13,8 +13,13 @@ public class CarService {
 	@Autowired
 	private CarRepository carRepository;
 
-	
-	public CarDTO findByPlaca(String board) {
+	public void delete(String board) {
+
+		CarDTO obj = findByBoard(board);
+		carRepository.deleteById(obj.getId());
+	}
+
+	public CarDTO findByBoard(String board) {
 
 		Car obj = carRepository.findByBoard(board);
 		return new CarDTO(obj);
@@ -26,4 +31,5 @@ public class CarService {
 
 		return new CarFindDTO(obj);
 	}
+
 }

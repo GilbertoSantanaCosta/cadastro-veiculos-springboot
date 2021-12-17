@@ -6,6 +6,7 @@ import java.text.ParseException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.validation.annotation.Validated;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -22,7 +23,7 @@ import com.controlefluxo.veiculos.service.RegisterService;
 import com.controlefluxo.veiculos.service.CarService;
 
 @RestController
-@RequestMapping(value = "/Car")
+@RequestMapping(value = "/car")
 public class CarResource {
 
 	@Autowired
@@ -30,11 +31,18 @@ public class CarResource {
 
 	@Autowired
 	public RegisterService registerService;
+	
+	@DeleteMapping(value = "/{board}")
+	public ResponseEntity<Void> delete(@PathVariable String board){
+		
+		carService.delete(board);
+		return ResponseEntity.noContent().build();
+	}
 
 	@GetMapping(value = "/{board}")
 	public ResponseEntity<CarDTO> findByBoard(@PathVariable String board) {
 
-		CarDTO car = carService.findByPlaca(board);
+		CarDTO car = carService.findByBoard(board);
 		return ResponseEntity.ok().body(car);
 	}
 

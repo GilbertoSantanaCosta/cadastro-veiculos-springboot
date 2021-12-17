@@ -44,7 +44,7 @@ public class WorkResource {
 		return ResponseEntity.ok().body(obj);
 	}
 
-	@GetMapping(value = "/codigoParticular/{codigoParticular}")
+	@GetMapping(value = "/privateCode/{privateCode}")
 	public ResponseEntity<WorkInTheWorkShopDTO> findByCodigoParticular(
 			@PathVariable String privateCode) {
 
