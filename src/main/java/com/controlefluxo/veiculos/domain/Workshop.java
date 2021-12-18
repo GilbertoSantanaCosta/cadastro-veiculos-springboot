@@ -25,6 +25,12 @@ public class Workshop implements Serializable {
 	@JsonIgnore
 	@OneToMany(mappedBy = "workshop")
 	private List<Work> work = new ArrayList<>();
+	
+	@JsonIgnore
+	@OneToMany(mappedBy = "workshop")
+	private List<Usuario> usuario = new ArrayList<>();
+	
+	
 
 	public Workshop() {
 
@@ -59,6 +65,15 @@ public class Workshop implements Serializable {
 
 	public void setWork(List<Work> work) {
 		this.work = work;
+	}
+
+
+	public List<Usuario> getUsuario() {
+		return usuario;
+	}
+
+	public void setUsuario(List<Usuario> usuario) {
+		this.usuario = usuario;
 	}
 
 	@Override
