@@ -23,15 +23,15 @@ public interface WorkRepository extends JpaRepository<Work, Integer> {
 	List<Work> findByCarInTheWorkShop(@Param("workshop") Workshop workshop);
 	
 	@Transactional(readOnly = true)
-	Work findBySinister(String sinister);
+	Work findBySinisterAndWorkshop(String sinister, Workshop workshop);
 	
 	@Transactional(readOnly = true)
-	Work findByPrivateCode(String privateCode);
+	Work findByPrivateCodeAndWorkshop(String privateCode, Workshop workshop);
 	
 	@Transactional(readOnly = true)
-	List<Work> findByStatus(Status status);
+	List<Work> findByStatusAndWorkshop(Status status, Workshop workshop);
 	
 	@Transactional(readOnly = true)
-	List<Work> findByInput(Date input);
+	List<Work> findByInputAndWorkshop(Date input, Workshop workshop);
 	
 }

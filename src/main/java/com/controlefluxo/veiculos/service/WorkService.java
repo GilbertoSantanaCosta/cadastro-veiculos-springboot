@@ -34,29 +34,33 @@ public class WorkService {
 		return obj.stream().map(x -> new WorkInTheWorkShopDTO(x)).collect(Collectors.toList());
 	}
 
-	public WorkInTheWorkShopDTO findBySinister(String sinister) {
-
-		Work obj = workRepository.findBySinister(sinister);
+	public WorkInTheWorkShopDTO findBySinister(String sinister, Integer idWorkshop) {
+		
+		Workshop workshop = workshopRepository.findById(idWorkshop).get();
+		Work obj = workRepository.findBySinisterAndWorkshop(sinister, workshop);
 		return new WorkInTheWorkShopDTO(obj);
-
+ 
 	}
 
-	public WorkInTheWorkShopDTO findByPrivateCode(String privateCode) {
+	public WorkInTheWorkShopDTO findByPrivateCode(String privateCode, Integer idWorkshop) {
 
-		Work obj = workRepository.findByPrivateCode(privateCode);
+		Workshop workshop = workshopRepository.findById(idWorkshop).get();
+		Work obj = workRepository.findByPrivateCodeAndWorkshop(privateCode, workshop);
 		return new WorkInTheWorkShopDTO(obj);
 
 	}
 	
-	public List<WorkInTheWorkShopDTO> findByStatus() {
+	public List<WorkInTheWorkShopDTO> findByStatus(Integer idWorkshop) {
 
-		List<Work> obj = workRepository.findByStatus(Status.RETURN);
+		Workshop workshop = workshopRepository.findById(idWorkshop).get();
+		List<Work> obj = workRepository.findByStatusAndWorkshop(Status.RETURN, workshop );
 		return obj.stream().map(x -> new WorkInTheWorkShopDTO(x)).collect(Collectors.toList());
 	}
 	
-	public List<WorkInTheWorkShopDTO> findByInput(){
+	public List<WorkInTheWorkShopDTO> findByInput(Integer idWorkshop){
 		
-		List<Work> obj = workRepository.findByInput(null);
+		Workshop workshop = workshopRepository.findById(idWorkshop).get();
+		List<Work> obj = workRepository.findByInputAndWorkshop(null, workshop);
 		return obj.stream().map(x -> new WorkInTheWorkShopDTO(x)).collect(Collectors.toList());
 	}
 	

@@ -32,41 +32,41 @@ public class WorkResource {
 	}
 
 	@RequestMapping(value = "/in_the_workshop/{idWorkshop}", method = RequestMethod.GET)
-	public ResponseEntity<List<WorkInTheWorkShopDTO>> findByCarInTheWorkShop(@PathVariable Integer idWorkshop) {
+	public ResponseEntity<List<WorkInTheWorkShopDTO>> findByCarInTheWorkShop(@PathVariable("idWorkshop") Integer idWorkshop) {
 
 		List<WorkInTheWorkShopDTO> typeWork = workService.findByCarInTheWorkShop(idWorkshop);
 
 		return ResponseEntity.ok().body(typeWork);
 	}
 
-	@GetMapping(value = "/sinister/{sinister}")
-	public ResponseEntity<WorkInTheWorkShopDTO> findBySinister(@PathVariable String sinister) {
+	@GetMapping(value = "/sinister/{sinister}/workshop/{idWorkshop}")
+	public ResponseEntity<WorkInTheWorkShopDTO> findBySinister(@PathVariable("sinister") String sinister, @PathVariable("idWorkshop") Integer idWorkshop ) {
 
-		WorkInTheWorkShopDTO obj = workService.findBySinister(sinister);
-
-		return ResponseEntity.ok().body(obj);
-	}
-
-	@GetMapping(value = "/privateCode/{privateCode}")
-	public ResponseEntity<WorkInTheWorkShopDTO> findByCodigoParticular(@PathVariable String privateCode) {
-
-		WorkInTheWorkShopDTO obj = workService.findByPrivateCode(privateCode);
+		WorkInTheWorkShopDTO obj = workService.findBySinister(sinister, idWorkshop);
 
 		return ResponseEntity.ok().body(obj);
 	}
 
-	@RequestMapping(value = "/status", method = RequestMethod.GET)
-	public ResponseEntity<List<WorkInTheWorkShopDTO>> findByStatus() {
+	@GetMapping(value = "/privateCode/{privateCode}/workshop/{idWorkshop}")
+	public ResponseEntity<WorkInTheWorkShopDTO> findByCodigoParticular(@PathVariable("privateCode") String privateCode , @PathVariable("idWorkshop") Integer idWorkshop) {
 
-		List<WorkInTheWorkShopDTO> typeWork = workService.findByStatus();
+		WorkInTheWorkShopDTO obj = workService.findByPrivateCode(privateCode, idWorkshop);
+
+		return ResponseEntity.ok().body(obj);
+	}
+
+	@RequestMapping(value = "/status/workshop/{idWorkshop}", method = RequestMethod.GET)
+	public ResponseEntity<List<WorkInTheWorkShopDTO>> findByStatus(@PathVariable("idWorkshop") Integer idWorkshop) {
+
+		List<WorkInTheWorkShopDTO> typeWork = workService.findByStatus(idWorkshop);
 
 		return ResponseEntity.ok().body(typeWork);
 	}
 
-	@GetMapping(value = "/input")
-	public ResponseEntity<List<WorkInTheWorkShopDTO>> findByInput() {
+	@GetMapping(value = "/input/workshop/{idWorkshop}")
+	public ResponseEntity<List<WorkInTheWorkShopDTO>> findByInput(@PathVariable("idWorkshop") Integer idWorkshop) {
 
-		List<WorkInTheWorkShopDTO> obj = workService.findByInput();
+		List<WorkInTheWorkShopDTO> obj = workService.findByInput(idWorkshop);
 
 		return ResponseEntity.ok().body(obj);
 	}
