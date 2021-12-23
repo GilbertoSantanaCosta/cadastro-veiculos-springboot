@@ -11,7 +11,7 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 
 @Entity
-public class Usuario implements Serializable {
+public class User implements Serializable {
 
 	private static final long serialVersionUID = 1L;
 
@@ -21,20 +21,20 @@ public class Usuario implements Serializable {
 	private String name;
 	private String cpf;
 	private String rg;
-	private String usuario;
+	private String login;
 	private String senha;
 
 	@ManyToOne
-	@JoinColumn(name = "usuario_id")
+	@JoinColumn(name = "login_id")
 	private Workshop workshop;
 
-	public Usuario(Integer id, String name, String cpf, String rg, String usuario, String senha, Workshop workshop) {
+	public User(Integer id, String name, String cpf, String rg, String login, String senha, Workshop workshop) {
 		super();
 		this.id = id;
 		this.name = name;
 		this.cpf = cpf;
 		this.rg = rg;
-		this.usuario = usuario;
+		this.login = login;
 		this.senha = senha;
 		this.workshop = workshop;
 	}
@@ -71,12 +71,12 @@ public class Usuario implements Serializable {
 		this.rg = rg;
 	}
 
-	public String getUsuario() {
-		return usuario;
+	public String getLogin() {
+		return login;
 	}
 
-	public void setUsuario(String usuario) {
-		this.usuario = usuario;
+	public void setLogin(String login) {
+		this.login = login;
 	}
 
 	public String getSenha() {
@@ -108,7 +108,7 @@ public class Usuario implements Serializable {
 			return false;
 		if (getClass() != obj.getClass())
 			return false;
-		Usuario other = (Usuario) obj;
+		User other = (User) obj;
 		return Objects.equals(id, other.id);
 	}
 

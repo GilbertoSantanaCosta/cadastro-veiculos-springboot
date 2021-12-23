@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.RestController;
 import com.controlefluxo.veiculos.domain.Client;
 import com.controlefluxo.veiculos.domain.Workshop;
 import com.controlefluxo.veiculos.domain.Safe;
+import com.controlefluxo.veiculos.domain.User;
 import com.controlefluxo.veiculos.domain.Work;
 import com.controlefluxo.veiculos.domain.Car;
 import com.controlefluxo.veiculos.domain.enums.Supply;
@@ -19,6 +20,7 @@ import com.controlefluxo.veiculos.domain.enums.Type;
 import com.controlefluxo.veiculos.repositories.ClientRepository;
 import com.controlefluxo.veiculos.repositories.WorkshopRepository;
 import com.controlefluxo.veiculos.repositories.SafeRepository;
+import com.controlefluxo.veiculos.repositories.UserRepository;
 import com.controlefluxo.veiculos.repositories.WorkRepository;
 import com.controlefluxo.veiculos.repositories.CarRepository;
 
@@ -41,6 +43,9 @@ public class Application implements CommandLineRunner{
 	@Autowired
 	private ClientRepository clientRepository;
 	
+	@Autowired
+	private UserRepository userRepository;
+	
 	public static void main(String[] args) {
 		SpringApplication.run(Application.class, args);	
 	}
@@ -52,6 +57,8 @@ public class Application implements CommandLineRunner{
 	
 	
 		SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
+		
+		
 		
 		Car v1 = new Car(null,"abc1234", "1988", "corsa", "gm" , "wind" );
 		Car v2 = new Car(null,"sed2547", "2000", "palio", "fiat", "fire");
@@ -65,6 +72,10 @@ public class Application implements CommandLineRunner{
 		Car v10 = new Car(null,"peo9473", "2020", "bmw", "bmw", "prime");
 		
 		Workshop of1 = new Workshop(null, "flamacar");
+		Workshop of2 = new Workshop(null, "coronato");
+		
+		User u1 = new User(null, "Regina", "3865415154", "678565564", "regi1", "1234", of1);
+		User u2 = new User(null, "marcos", "365417852", "98547561", "marcos1", "4321", of2);
 		
 		Client c1 = new Client(null, "gil", "santana", "37049612804", "425274457", "gil@gmail.com");
 		c1.getTelephone().addAll(Arrays.asList("27363323", "93838393"));
@@ -127,6 +138,8 @@ public class Application implements CommandLineRunner{
 		
 		of1.getWork().addAll(Arrays.asList(t1,t2,t3,t4,t5,t6,t7,t8,t9,t10,t11));
 		
+		of1.getUser().addAll(Arrays.asList(u1));
+		of2.getUser().addAll(Arrays.asList(u2));
 		
 		sg1.getWork().addAll(Arrays.asList(t1,t2,t3,t4,t5,t6,t7,t8,t9,t10,t11));
 		
@@ -134,13 +147,13 @@ public class Application implements CommandLineRunner{
 		t2.setWorkshop(of1);
 		t3.setWorkshop(of1);
 		t4.setWorkshop(of1);
-		t5.setWorkshop(of1);
+		t5.setWorkshop(of2);
 		t6.setWorkshop(of1);
 		t7.setWorkshop(of1);
 		t8.setWorkshop(of1);
 		t9.setWorkshop(of1);
-		t10.setWorkshop(of1);
-		t11.setWorkshop(of1);
+		t10.setWorkshop(of2);
+		t11.setWorkshop(of2);
 		
 		t1.setSafe(sg1);
 		t2.setSafe(sg1);
@@ -158,10 +171,9 @@ public class Application implements CommandLineRunner{
 		clientRepository.saveAll(Arrays.asList(c1,c2,c3,c4,c5,c6,c7,c8));
 		safeRepository.saveAll(Arrays.asList(sg1));
 		carRepository.saveAll(Arrays.asList(v1,v2,v3,v4,v5,v6,v7,v8,v9,v10));
-		workshopRepository.saveAll(Arrays.asList(of1));
-		
+		workshopRepository.saveAll(Arrays.asList(of1,of2));
 	    WorkRepository.saveAll(Arrays.asList(t1,t2,t3,t4,t5,t6,t7,t8,t9,t10,t11));
-		
+		userRepository.saveAll(Arrays.asList(u1,u2));
 	   
 		
 		

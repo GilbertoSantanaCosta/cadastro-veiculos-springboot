@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 import com.controlefluxo.veiculos.domain.dto.WorkFindDTO;
 import com.controlefluxo.veiculos.domain.dto.WorkInTheWorkShopDTO;
+import com.controlefluxo.veiculos.repositories.WorkshopRepository;
 import com.controlefluxo.veiculos.service.WorkService;
 
 @RestController
@@ -20,6 +21,8 @@ public class WorkResource {
 	@Autowired
 	public WorkService workService;
 
+	public WorkshopRepository workRepository;
+
 	@RequestMapping(method = RequestMethod.GET)
 	public ResponseEntity<List<WorkFindDTO>> findAll() {
 
@@ -28,10 +31,10 @@ public class WorkResource {
 		return ResponseEntity.ok().body(typeWork);
 	}
 
-	@RequestMapping(value = "/in_the_workshop", method = RequestMethod.GET)
-	public ResponseEntity<List<WorkInTheWorkShopDTO>> findByCarInTheWorkShop() {
+	@RequestMapping(value = "/in_the_workshop/{idWorkshop}", method = RequestMethod.GET)
+	public ResponseEntity<List<WorkInTheWorkShopDTO>> findByCarInTheWorkShop(@PathVariable Integer idWorkshop) {
 
-		List<WorkInTheWorkShopDTO> typeWork = workService.findByCarInTheWorkShop();
+		List<WorkInTheWorkShopDTO> typeWork = workService.findByCarInTheWorkShop(idWorkshop);
 
 		return ResponseEntity.ok().body(typeWork);
 	}
@@ -45,14 +48,13 @@ public class WorkResource {
 	}
 
 	@GetMapping(value = "/privateCode/{privateCode}")
-	public ResponseEntity<WorkInTheWorkShopDTO> findByCodigoParticular(
-			@PathVariable String privateCode) {
+	public ResponseEntity<WorkInTheWorkShopDTO> findByCodigoParticular(@PathVariable String privateCode) {
 
 		WorkInTheWorkShopDTO obj = workService.findByPrivateCode(privateCode);
 
 		return ResponseEntity.ok().body(obj);
 	}
-	
+
 	@RequestMapping(value = "/status", method = RequestMethod.GET)
 	public ResponseEntity<List<WorkInTheWorkShopDTO>> findByStatus() {
 
@@ -60,13 +62,13 @@ public class WorkResource {
 
 		return ResponseEntity.ok().body(typeWork);
 	}
-	
+
 	@GetMapping(value = "/input")
-	public ResponseEntity<List<WorkInTheWorkShopDTO>> findByInput(){
-		
+	public ResponseEntity<List<WorkInTheWorkShopDTO>> findByInput() {
+
 		List<WorkInTheWorkShopDTO> obj = workService.findByInput();
-		
+
 		return ResponseEntity.ok().body(obj);
 	}
-	
+
 }

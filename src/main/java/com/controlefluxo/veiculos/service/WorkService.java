@@ -5,16 +5,21 @@ import java.util.stream.Collectors;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import com.controlefluxo.veiculos.domain.Work;
+import com.controlefluxo.veiculos.domain.Workshop;
 import com.controlefluxo.veiculos.domain.dto.WorkFindDTO;
 import com.controlefluxo.veiculos.domain.dto.WorkInTheWorkShopDTO;
 import com.controlefluxo.veiculos.domain.enums.Status;
 import com.controlefluxo.veiculos.repositories.WorkRepository;
+import com.controlefluxo.veiculos.repositories.WorkshopRepository;
 
 @Service
 public class WorkService {
 
 	@Autowired
 	private WorkRepository workRepository;
+	
+	@Autowired
+	private WorkshopRepository workshopRepository;
 
 	public List<WorkFindDTO> findAll() {
 
@@ -22,9 +27,10 @@ public class WorkService {
 		return obj.stream().map(x -> new WorkFindDTO(x)).collect(Collectors.toList());
 	}
 
-	public List<WorkInTheWorkShopDTO> findByCarInTheWorkShop() {
-
-		List<Work> obj = workRepository.findByCarInTheWorkShop();
+	public List<WorkInTheWorkShopDTO> findByCarInTheWorkShop(Integer idWorkshop) {
+		
+		Workshop workshop = workshopRepository.findById(idWorkshop).get();
+		List<Work> obj = workRepository.findByCarInTheWorkShop(workshop);
 		return obj.stream().map(x -> new WorkInTheWorkShopDTO(x)).collect(Collectors.toList());
 	}
 
