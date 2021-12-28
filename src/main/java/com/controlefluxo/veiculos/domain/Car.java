@@ -31,7 +31,7 @@ public class Car implements Serializable {
 	private String model;
 
 	@JsonIgnore
-	@OneToMany(mappedBy = "cars", cascade = CascadeType.REMOVE)
+	@OneToMany(mappedBy = "car", cascade = CascadeType.REMOVE)
 	private List<Work> work = new ArrayList<>();
 
 	public Car() {

@@ -31,23 +31,23 @@ public class CarResource {
 
 	@Autowired
 	public RegisterService registerService;
-	
+
 	@DeleteMapping(value = "/{board}")
-	public ResponseEntity<Void> delete(@PathVariable String board){
-		
+	public ResponseEntity<Void> delete(@PathVariable String board) {
+
 		carService.delete(board);
 		return ResponseEntity.noContent().build();
 	}
 
 	@GetMapping(value = "/{board}")
-	public ResponseEntity<CarDTO> findByBoard(@PathVariable String board) {
+	public ResponseEntity<CarDTO> findByBoardContainingAndWork(@PathVariable(value = "board") String board) {
 
 		CarDTO car = carService.findByBoard(board);
 		return ResponseEntity.ok().body(car);
 	}
 
 	@GetMapping(value = "/find_board/{board}")
-	public ResponseEntity<CarFindDTO> findByBoardSummary(@PathVariable String board) {
+	public ResponseEntity<CarFindDTO> findByBoardContainingAndWorkSummary(@PathVariable(value = "board") String board) {
 
 		CarFindDTO car = carService.findByBoardSummary(board);
 		return ResponseEntity.ok().body(car);

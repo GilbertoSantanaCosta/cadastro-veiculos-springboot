@@ -13,6 +13,7 @@ public class WorkInTheWorkShopDTO implements Serializable {
 	private static final long serialVersionUID = 1L;
 
 	private Type type;
+	private String privateCode;
 	private Date entryForecast;
 	private Date deliveryForecast;
 	private Status status;
@@ -23,10 +24,11 @@ public class WorkInTheWorkShopDTO implements Serializable {
 
 	}
 
-	public WorkInTheWorkShopDTO(Type type, Date entryForecast, Date deliveryForecast, Status status, Supply supply,
+	public WorkInTheWorkShopDTO(Type type,String privateCode, Date entryForecast, Date deliveryForecast, Status status, Supply supply,
 			CarInTheWorkShopDTO veiculo) {
 		super();
 		this.type = type;
+		this.privateCode = privateCode;
 		this.entryForecast = entryForecast;
 		this.deliveryForecast = deliveryForecast;
 		this.status = status;
@@ -37,11 +39,12 @@ public class WorkInTheWorkShopDTO implements Serializable {
 	public WorkInTheWorkShopDTO(Work work) {
 		super();
 		this.type = work.getType();
+		this.privateCode = work.getPrivateCode();
 		this.entryForecast = work.getEntryForecast();
 		this.deliveryForecast = work.getDeliveryForecast();
 		this.status = work.getStatus();
 		this.supply = work.getSupply();
-		this.veiculo = new CarInTheWorkShopDTO(work.getCars());
+		this.veiculo = new CarInTheWorkShopDTO(work.getCar());
 	}
 
 	public Type getType() {
@@ -50,6 +53,15 @@ public class WorkInTheWorkShopDTO implements Serializable {
 
 	public void setType(Type type) {
 		this.type = type;
+	}
+	
+
+	public String getPrivateCode() {
+		return privateCode;
+	}
+
+	public void setPrivateCode(String privateCode) {
+		this.privateCode = privateCode;
 	}
 
 	public Date getEntryForecast() {

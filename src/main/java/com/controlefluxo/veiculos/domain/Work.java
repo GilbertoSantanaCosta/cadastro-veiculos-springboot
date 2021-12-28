@@ -45,7 +45,7 @@ public class Work implements Serializable {
 	
 	@ManyToOne
 	@JoinColumn(name = "car_id")
-	private Car cars;
+	private Car car;
 	
 	
 	@OneToOne
@@ -68,7 +68,7 @@ public class Work implements Serializable {
 
 	public Work(Integer id, String privateCode, String sinister, Type type,
 			Date entryForecast, Date input, Date deliveryForecast, Date delivery, Date returnDelivery, Status status, String note,
-			Supply supply, Car cars, Client client) {
+			Supply supply, Car car, Client client) {
 		super();
 		this.id = id;
 		this.privateCode = privateCode;
@@ -82,7 +82,7 @@ public class Work implements Serializable {
 		this.status = status;
 		this.note = note;
 		this.supply = supply;
-		this.cars = cars;
+		this.car = car;
 		this.client = client;
 		
 	}
@@ -185,12 +185,12 @@ public class Work implements Serializable {
 		this.supply = supply;
 	}
 
-	public Car getCars() {
-		return cars;
+	public Car getCar() {
+		return car;
 	}
 
-	public void setCars(Car cars) {
-		this.cars = cars;
+	public void setCar(Car car) {
+		this.car = car;
 	}
 
 	public Client getClient() {

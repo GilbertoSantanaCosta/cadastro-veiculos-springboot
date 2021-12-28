@@ -136,7 +136,8 @@ public class Application implements CommandLineRunner{
 		v9.getWork().addAll(Arrays.asList(t9));
 		v10.getWork().addAll(Arrays.asList(t10));
 		
-		of1.getWork().addAll(Arrays.asList(t1,t2,t3,t4,t5,t6,t7,t8,t9,t10,t11));
+		of1.getWork().addAll(Arrays.asList(t1,t2,t3,t4,t6,t7,t8,t9,t10));
+		of1.getWork().addAll(Arrays.asList(t5,t11));
 		
 		of1.getUser().addAll(Arrays.asList(u1));
 		of2.getUser().addAll(Arrays.asList(u2));
@@ -152,7 +153,7 @@ public class Application implements CommandLineRunner{
 		t7.setWorkshop(of1);
 		t8.setWorkshop(of1);
 		t9.setWorkshop(of1);
-		t10.setWorkshop(of2);
+		t10.setWorkshop(of1);
 		t11.setWorkshop(of2);
 		
 		t1.setSafe(sg1);

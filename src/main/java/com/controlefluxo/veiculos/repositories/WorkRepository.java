@@ -8,6 +8,7 @@ import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 
+import com.controlefluxo.veiculos.domain.Car;
 import com.controlefluxo.veiculos.domain.Work;
 import com.controlefluxo.veiculos.domain.Workshop;
 import com.controlefluxo.veiculos.domain.enums.Status;
@@ -33,5 +34,10 @@ public interface WorkRepository extends JpaRepository<Work, Integer> {
 	
 	@Transactional(readOnly = true)
 	List<Work> findByInputAndWorkshop(Date input, Workshop workshop);
+	
+	@Transactional(readOnly = true)
+	List<Work> findByCarAndWorkshop(Car car, Workshop workshop);
+	
+	
 	
 }

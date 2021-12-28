@@ -27,10 +27,11 @@ public class WorkDTO implements Serializable {
 	private Status status;
 	private String note;
 	private Supply supply;
-	private Car cars;
+	private Car car;
 	private Client client;
 	private Workshop workshop;
 	private Safe safe;
+
 
 	public WorkDTO() {
 
@@ -38,7 +39,7 @@ public class WorkDTO implements Serializable {
 
 	public WorkDTO(Integer id, String privateCode, String sinister, Type type, Date entryForecast, Date input,
 			Date deliveryForecast, Date delivery, Date returnDelivery, Status status, String note, Supply supply,
-			Car cars, Client client, Workshop workshop, Safe safe) {
+			Car car, Client client, Workshop workshop, Safe safe) {
 		super();
 		this.id = id;
 		this.privateCode = privateCode;
@@ -52,7 +53,7 @@ public class WorkDTO implements Serializable {
 		this.status = status;
 		this.note = note;
 		this.supply = supply;
-		this.cars = cars;
+		this.car = car;
 		this.client = client;
 		this.workshop = workshop;
 		this.safe = safe;
@@ -73,7 +74,7 @@ public class WorkDTO implements Serializable {
 		this.status = work.getStatus();
 		this.note = work.getNote();
 		this.supply = work.getSupply();
-		this.cars = work.getCars();
+		this.car = work.getCar();
 		this.client = work.getClient();
 		this.workshop = work.getWorkshop();
 		this.safe = work.getSafe();
@@ -176,12 +177,12 @@ public class WorkDTO implements Serializable {
 		this.supply = supply;
 	}
 
-	public Car getCars() {
-		return cars;
+	public Car getCar() {
+		return car;
 	}
 
 	public void setCars(Car cars) {
-		this.cars = cars;
+		this.car = cars;
 	}
 
 	public Client getClient() {

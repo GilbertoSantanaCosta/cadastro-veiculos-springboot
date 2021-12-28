@@ -9,6 +9,8 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
+
+import com.controlefluxo.veiculos.domain.dto.WorkDTO;
 import com.controlefluxo.veiculos.domain.dto.WorkFindDTO;
 import com.controlefluxo.veiculos.domain.dto.WorkInTheWorkShopDTO;
 import com.controlefluxo.veiculos.repositories.WorkshopRepository;
@@ -40,17 +42,17 @@ public class WorkResource {
 	}
 
 	@GetMapping(value = "/sinister/{sinister}/workshop/{idWorkshop}")
-	public ResponseEntity<WorkInTheWorkShopDTO> findBySinister(@PathVariable("sinister") String sinister, @PathVariable("idWorkshop") Integer idWorkshop ) {
+	public ResponseEntity<WorkDTO> findBySinister(@PathVariable("sinister") String sinister, @PathVariable("idWorkshop") Integer idWorkshop ) {
 
-		WorkInTheWorkShopDTO obj = workService.findBySinister(sinister, idWorkshop);
+		WorkDTO obj = workService.findBySinister(sinister, idWorkshop);
 
 		return ResponseEntity.ok().body(obj);
 	}
 
 	@GetMapping(value = "/privateCode/{privateCode}/workshop/{idWorkshop}")
-	public ResponseEntity<WorkInTheWorkShopDTO> findByCodigoParticular(@PathVariable("privateCode") String privateCode , @PathVariable("idWorkshop") Integer idWorkshop) {
+	public ResponseEntity<WorkDTO> findByCodigoParticular(@PathVariable("privateCode") String privateCode , @PathVariable("idWorkshop") Integer idWorkshop) {
 
-		WorkInTheWorkShopDTO obj = workService.findByPrivateCode(privateCode, idWorkshop);
+		WorkDTO obj = workService.findByPrivateCode(privateCode, idWorkshop);
 
 		return ResponseEntity.ok().body(obj);
 	}
@@ -67,6 +69,14 @@ public class WorkResource {
 	public ResponseEntity<List<WorkInTheWorkShopDTO>> findByInput(@PathVariable("idWorkshop") Integer idWorkshop) {
 
 		List<WorkInTheWorkShopDTO> obj = workService.findByInput(idWorkshop);
+
+		return ResponseEntity.ok().body(obj);
+	}
+	
+	@GetMapping(value = "/car/{board}/workshop/{idWorkshop}")
+	public ResponseEntity<List<WorkInTheWorkShopDTO>> findByCarAndWorkshop(@PathVariable("board") String board , @PathVariable("idWorkshop") Integer idWorkshop) {
+
+		List<WorkInTheWorkShopDTO> obj = workService.findByCarAndWorkshop(board, idWorkshop);
 
 		return ResponseEntity.ok().body(obj);
 	}
