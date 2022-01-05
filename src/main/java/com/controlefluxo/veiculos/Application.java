@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.web.bind.annotation.RestController;
 import com.controlefluxo.veiculos.domain.Client;
 import com.controlefluxo.veiculos.domain.Workshop;
@@ -46,6 +47,9 @@ public class Application implements CommandLineRunner{
 	@Autowired
 	private UserRepository userRepository;
 	
+	@Autowired
+	private BCryptPasswordEncoder pe;
+	
 	public static void main(String[] args) {
 		SpringApplication.run(Application.class, args);	
 	}
@@ -74,8 +78,8 @@ public class Application implements CommandLineRunner{
 		Workshop of1 = new Workshop(null, "flamacar");
 		Workshop of2 = new Workshop(null, "coronato");
 		
-		User u1 = new User(null, "Regina", "3865415154", "678565564", "regi1", "1234", of1);
-		User u2 = new User(null, "marcos", "365417852", "98547561", "marcos1", "4321", of2);
+		User u1 = new User(null, "Regina", "3865415154", "678565564", "regi1", pe.encode("1234"), of1);
+		User u2 = new User(null, "marcos", "365417852", "98547561", "marcos1", pe.encode("4321"), of2);
 		
 		Client c1 = new Client(null, "gil", "santana", "37049612804", "425274457", "gil@gmail.com");
 		c1.getTelephone().addAll(Arrays.asList("27363323", "93838393"));
