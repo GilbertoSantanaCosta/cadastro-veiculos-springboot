@@ -34,7 +34,8 @@ public class WorkResource {
 	}
 
 	@RequestMapping(value = "/in_the_workshop/{idWorkshop}", method = RequestMethod.GET)
-	public ResponseEntity<List<WorkInTheWorkShopDTO>> findByCarInTheWorkShop(@PathVariable("idWorkshop") Integer idWorkshop) {
+	public ResponseEntity<List<WorkInTheWorkShopDTO>> findByCarInTheWorkShop(
+			@PathVariable("idWorkshop") Integer idWorkshop) {
 
 		List<WorkInTheWorkShopDTO> typeWork = workService.findByCarInTheWorkShop(idWorkshop);
 
@@ -42,7 +43,8 @@ public class WorkResource {
 	}
 
 	@GetMapping(value = "/sinister/{sinister}/workshop/{idWorkshop}")
-	public ResponseEntity<WorkDTO> findBySinister(@PathVariable("sinister") String sinister, @PathVariable("idWorkshop") Integer idWorkshop ) {
+	public ResponseEntity<WorkDTO> findBySinister(@PathVariable("sinister") String sinister,
+			@PathVariable("idWorkshop") Integer idWorkshop) {
 
 		WorkDTO obj = workService.findBySinister(sinister, idWorkshop);
 
@@ -50,7 +52,8 @@ public class WorkResource {
 	}
 
 	@GetMapping(value = "/privateCode/{privateCode}/workshop/{idWorkshop}")
-	public ResponseEntity<WorkDTO> findByCodigoParticular(@PathVariable("privateCode") String privateCode , @PathVariable("idWorkshop") Integer idWorkshop) {
+	public ResponseEntity<WorkDTO> findByCodigoParticular(@PathVariable("privateCode") String privateCode,
+			@PathVariable("idWorkshop") Integer idWorkshop) {
 
 		WorkDTO obj = workService.findByPrivateCode(privateCode, idWorkshop);
 
@@ -72,9 +75,10 @@ public class WorkResource {
 
 		return ResponseEntity.ok().body(obj);
 	}
-	
+
 	@GetMapping(value = "/car/{board}/workshop/{idWorkshop}")
-	public ResponseEntity<List<WorkInTheWorkShopDTO>> findByCarAndWorkshop(@PathVariable("board") String board , @PathVariable("idWorkshop") Integer idWorkshop) {
+	public ResponseEntity<List<WorkInTheWorkShopDTO>> findByCarAndWorkshop(@PathVariable("board") String board,
+			@PathVariable("idWorkshop") Integer idWorkshop) {
 
 		List<WorkInTheWorkShopDTO> obj = workService.findByCarAndWorkshop(board, idWorkshop);
 
