@@ -27,6 +27,10 @@ public class User implements Serializable {
 	@ManyToOne
 	@JoinColumn(name = "login_id")
 	private Workshop workshop;
+	
+	public User() {
+		
+	}
 
 	public User(Integer id, String name, String cpf, String rg, String login, String senha, Workshop workshop) {
 		super();

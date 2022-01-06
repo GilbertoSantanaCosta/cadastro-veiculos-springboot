@@ -34,7 +34,7 @@ public class RegisterService {
 	public WorkshopRepository oficina;
 
 	@Autowired
-	public SafeRepository seguro;
+	public SafeRepository seguro;  
 	
 	
 
