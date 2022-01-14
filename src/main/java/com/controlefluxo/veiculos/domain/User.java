@@ -1,14 +1,23 @@
 package com.controlefluxo.veiculos.domain;
 
 import java.io.Serializable;
+import java.util.HashSet;
 import java.util.Objects;
+import java.util.Set;
+import java.util.stream.Collectors;
 
+import javax.persistence.CollectionTable;
+import javax.persistence.ElementCollection;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+
+import com.controlefluxo.veiculos.domain.enums.Profile;
+
 
 @Entity
 public class User implements Serializable {
@@ -22,24 +31,28 @@ public class User implements Serializable {
 	private String cpf;
 	private String rg;
 	private String login;
-	private String senha;
+	private String password;
 
 	@ManyToOne
 	@JoinColumn(name = "login_id")
 	private Workshop workshop;
 	
+	@ElementCollection(fetch=FetchType.EAGER)
+	@CollectionTable(name="PROFILE")
+	private Set<Integer> profile = new HashSet<>();
+	
 	public User() {
 		
 	}
 
-	public User(Integer id, String name, String cpf, String rg, String login, String senha, Workshop workshop) {
+	public User(Integer id, String name, String cpf, String rg, String login, String password, Workshop workshop) {
 		super();
 		this.id = id;
 		this.name = name;
 		this.cpf = cpf;
 		this.rg = rg;
 		this.login = login;
-		this.senha = senha;
+		this.password = password;
 		this.workshop = workshop;
 	}
 
@@ -83,12 +96,12 @@ public class User implements Serializable {
 		this.login = login;
 	}
 
-	public String getSenha() {
-		return senha;
+	public String getPassword() {
+		return password;
 	}
 
-	public void setSenha(String senha) {
-		this.senha = senha;
+	public void setPassword(String password) {
+		this.password = password;
 	}
 
 	public Workshop getWorkshop() {
@@ -97,6 +110,15 @@ public class User implements Serializable {
 
 	public void setWorkshop(Workshop workshop) {
 		this.workshop = workshop;
+	}
+	
+
+	public Set<Profile> getProfile() {
+		return profile.stream().map(x -> Profile.toEnum(x)).collect(Collectors.toSet());
+	}
+
+	public void setProfile(Set<Integer> profile) {
+		this.profile = profile;
 	}
 
 	@Override

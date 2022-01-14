@@ -10,5 +10,5 @@ import com.controlefluxo.veiculos.domain.User;
 @Repository
 public interface UserRepository extends JpaRepository<User, Integer> {
 	
-	
+	User findByLogin(String login);
 }

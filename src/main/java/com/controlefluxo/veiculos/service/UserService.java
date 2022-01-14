@@ -29,7 +29,7 @@ public class UserService {
 	public User insert(User user) {
 		
 		User obj = user;
-		obj.setSenha(pe.encode(user.getSenha()));
+		obj.setPassword(pe.encode(user.getPassword()));
 		userRepository.save(obj);
 		
 		return obj;
