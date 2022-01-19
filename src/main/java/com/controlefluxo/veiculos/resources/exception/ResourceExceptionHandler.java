@@ -12,7 +12,7 @@ import org.springframework.web.servlet.mvc.method.annotation.ResponseEntityExcep
 @ControllerAdvice
 public class ResourceExceptionHandler extends ResponseEntityExceptionHandler {
 
-	/*
+	
 	@ExceptionHandler(DataIntegrityViolationException.class)
 	public ResponseEntity<StandarError> dataIntegrityViolationException(DataIntegrityViolationException e,
 			HttpServletRequest request) {
@@ -32,5 +32,5 @@ public class ResourceExceptionHandler extends ResponseEntityExceptionHandler {
 		return ResponseEntity.badRequest().body(err);
 
 	}
-*/
+
 }
