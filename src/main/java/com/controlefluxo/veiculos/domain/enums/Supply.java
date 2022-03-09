@@ -2,9 +2,9 @@ package com.controlefluxo.veiculos.domain.enums;
 
 public enum Supply {
 
-	WORKSHOP,
-	SAFE,
-	WORKSHOP_SAFE,
+	OFICINA,
+	SEGURO,
+	OFICINA_SEGURO,
 	PCS_OK
 	
 	

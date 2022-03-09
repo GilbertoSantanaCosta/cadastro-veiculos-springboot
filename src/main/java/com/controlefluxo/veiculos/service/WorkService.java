@@ -60,7 +60,7 @@ public class WorkService {
 	public List<WorkInTheWorkShopDTO> findByStatus(Integer idWorkshop) {
 
 		Workshop workshop = workshopRepository.findById(idWorkshop).get();
-		List<Work> obj = workRepository.findByStatusAndWorkshop(Status.RETURN, workshop);
+		List<Work> obj = workRepository.findByStatusAndWorkshop(Status.RETORNO, workshop);
 		return obj.stream().map(x -> new WorkInTheWorkShopDTO(x)).collect(Collectors.toList());
 	}
 

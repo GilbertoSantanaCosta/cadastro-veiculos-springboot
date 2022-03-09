@@ -105,17 +105,17 @@ public class Application implements CommandLineRunner{
 		Client c8 = new Client(null, "eduardo", "cantão", "84525466221", "362458715", "eduardo@gmail.com");
 		c8.getTelephone().addAll(Arrays.asList("4635-7263", "98473-2324"));
 		
-		Work t1 = new Work(null, "3254825", null, Type.PARTICLE,sdf.parse("10/06/2021"),sdf.parse("11/06/2021"),sdf.parse("13/06/2021"),sdf.parse("13/06/2021"),null,Status.DELIVERED,null,Supply.WORKSHOP,v1,c1);
-		Work t2 = new Work(null, "2547878", "582154", Type.SAFE,sdf.parse("08/06/2021"),sdf.parse("10/06/2021"),sdf.parse("16/06/2021"),sdf.parse("30/06/2021"),sdf.parse("25/07/2021"),Status.RETURN,null,Supply.WORKSHOP,v2,c2);
-		Work t3 = new Work(null, "7845892", null, Type.SAFE_PARTICLE,sdf.parse("02/06/2021"),sdf.parse("03/06/2021"),sdf.parse("05/06/2021"),sdf.parse("25/06/2021"),null,Status.DELIVERED,null,Supply.WORKSHOP_SAFE,v3,c3);
-		Work t4 = new Work(null, "9854758", "585426", Type.SAFE,sdf.parse("15/06/2021"),sdf.parse("16/06/2021"),sdf.parse("20/06/2021"),sdf.parse("15/07/2021"),null,Status.DELIVERED,null,Supply.WORKSHOP,v4, c4);
-		Work t5 = new Work(null, "9847856", null, Type.PARTICLE,sdf.parse("10/07/2021"),sdf.parse("12/07/2021"),sdf.parse("16/07/2021"),null,null,Status.PAINTING,null,Supply.WORKSHOP,v5, c5);
-		Work t6 = new Work(null, "3621458", "584741", Type.SAFE_PARTICLE,sdf.parse("09/08/2021"),sdf.parse("10/09/2021"),sdf.parse("13/09/2021"),null,null,Status.TUBE,null,Supply.SAFE,v6, c6);
-		Work t7 = new Work(null, "3652485", null, Type.PARTICLE,sdf.parse("16/09/2021"),sdf.parse("18/09/2021"),sdf.parse("27/09/2021"),null,null,Status.DISASSEMBLY,null,Supply.WORKSHOP,v7 , c7);
-		Work t8 = new Work(null, "3621858", "968471", Type.SAFE,sdf.parse("21/10/2021"),sdf.parse("25/10/2021"),sdf.parse("26/10/2021"),null,null,Status.DELIVERED,null,Supply.WORKSHOP_SAFE,v8 , c8);
-		Work t9 = new Work(null, "3625148", null, Type.PARTICLE,sdf.parse("18/10/2021"),null,null,null,null,Status.RELEASED,null,null,v9 , c1);
-		Work t10 = new Work(null,"6528499", "362481", Type.SAFE,sdf.parse("19/10/2021"),null,null,null,null,Status.RELEASED,null,null,v10 , c2);
-		Work t11 = new Work(null, "3254887", null, Type.SAFE,sdf.parse("10/09/2021"),sdf.parse("11/09/2021"),sdf.parse("13/10/2021"),sdf.parse("13/10/2021"),null,Status.RELEASED,null,Supply.WORKSHOP,v1 , c3);
+		Work t1 = new Work(null, "3254825", null, Type.PARTICULAR,sdf.parse("10/06/2021"),sdf.parse("11/06/2021"),sdf.parse("13/06/2021"),sdf.parse("13/06/2021"),null,Status.ENTREGUE,null,Supply.OFICINA,v1,c1);
+		Work t2 = new Work(null, "2547878", "582154", Type.SEGURO,sdf.parse("08/06/2021"),sdf.parse("10/06/2021"),sdf.parse("16/06/2021"),sdf.parse("30/06/2021"),sdf.parse("25/07/2021"),Status.RETORNO,null,Supply.OFICINA,v2,c2);
+		Work t3 = new Work(null, "7845892", null, Type.SEGURO_PARTICULAR,sdf.parse("02/06/2021"),sdf.parse("03/06/2021"),sdf.parse("05/06/2021"),sdf.parse("25/06/2021"),null,Status.ENTREGUE,null,Supply.OFICINA_SEGURO,v3,c3);
+		Work t4 = new Work(null, "9854758", "585426", Type.SEGURO,sdf.parse("15/06/2021"),sdf.parse("16/06/2021"),sdf.parse("20/06/2021"),sdf.parse("15/07/2021"),null,Status.ENTREGUE,null,Supply.OFICINA,v4, c4);
+		Work t5 = new Work(null, "9847856", null, Type.PARTICULAR,sdf.parse("10/07/2021"),sdf.parse("12/07/2021"),sdf.parse("16/07/2021"),null,null,Status.PINTURA,null,Supply.OFICINA,v5, c5);
+		Work t6 = new Work(null, "3621458", "584741", Type.SEGURO_PARTICULAR,sdf.parse("09/08/2021"),sdf.parse("10/09/2021"),sdf.parse("13/09/2021"),null,null,Status.FUNILARIA,null,Supply.SEGURO,v6, c6);
+		Work t7 = new Work(null, "3652485", null, Type.PARTICULAR,sdf.parse("16/09/2021"),sdf.parse("18/09/2021"),sdf.parse("27/09/2021"),null,null,Status.DESMONTAGEM,null,Supply.OFICINA,v7 , c7);
+		Work t8 = new Work(null, "3621858", "968471", Type.SEGURO,sdf.parse("21/10/2021"),sdf.parse("25/10/2021"),sdf.parse("26/10/2021"),null,null,Status.ENTREGUE,null,Supply.OFICINA_SEGURO,v8 , c8);
+		Work t9 = new Work(null, "3625148", null, Type.PARTICULAR,sdf.parse("18/10/2021"),null,null,null,null,Status.LIBERADO,null,null,v9 , c1);
+		Work t10 = new Work(null,"6528499", "362481", Type.SEGURO,sdf.parse("19/10/2021"),null,null,null,null,Status.LIBERADO,null,null,v10 , c2);
+		Work t11 = new Work(null, "3254887", null, Type.SEGURO,sdf.parse("10/09/2021"),sdf.parse("11/09/2021"),sdf.parse("13/10/2021"),sdf.parse("13/10/2021"),null,Status.LIBERADO,null,Supply.OFICINA,v1 , c3);
 		
 		Safe sg1 = new Safe(null, "porto");
 		
